@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ResearchSearch, type SearchItem } from "@/components/research-search";
 import { UiIcon } from "@/components/ui-icon";
 import { loadAnalysis, loadProcessedPosts, loadRunSummary, RESEARCH_DOCUMENTS } from "@/lib/research-data";
-import { formatCategory } from "@/lib/format";
+import { formatCategory, safeHref } from "@/lib/format";
 
 export const dynamic = "force-static";
 
@@ -145,7 +145,7 @@ export default async function OverviewPage() {
         </div>
         <div className="ranked-list">
           {actualProjects.slice(0, 5).map((project, index) => (
-            <a key={project.name} href={project.source} target="_blank" rel="noreferrer">
+            <a key={project.name} href={safeHref(project.source)} target="_blank" rel="noreferrer">
               <b>{String(index + 1).padStart(2, "0")}</b><h3>{project.name}</h3><p>{project.insight}</p><span>Open ↗</span>
             </a>
           ))}

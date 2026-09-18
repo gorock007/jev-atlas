@@ -1,5 +1,6 @@
 import { loadAnalysis, loadDocument, RESEARCH_DOCUMENTS } from "@/lib/research-data";
 import { formatCategory } from "@/lib/format";
+import { isSafeHttpUrl } from "@/processing/links";
 import type { BuildIdea, ProjectFinding, ResearchClaim } from "@/types";
 import { findLens } from "./lenses";
 import { canonicalPathFor, idSlug, knowledgeId, knowledgeSlug } from "./paths";
@@ -39,7 +40,9 @@ function sourceClass(url: string): KnowledgeSource["sourceClass"] {
 }
 
 function sourcesFromUrls(urls: string[]): KnowledgeSource[] {
-  return [...new Set(urls)].map((url, index) => ({ url, label: `Source ${index + 1}`, sourceClass: sourceClass(url) }));
+  // Every interface renders these as links, so the protocol check happens here
+  // rather than in each page that displays a source.
+  return [...new Set(urls)].filter(isSafeHttpUrl).map((url, index) => ({ url, label: `Source ${index + 1}`, sourceClass: sourceClass(url) }));
 }
 
 function recordBase(generatedAt: string) {

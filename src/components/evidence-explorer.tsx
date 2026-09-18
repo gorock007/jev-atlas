@@ -3,7 +3,7 @@
 import { ArrowSquareOutIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { useMemo, useState } from "react";
 import { CATEGORIES, type ProcessedPost } from "@/types";
-import { formatCategory } from "@/lib/format";
+import { formatCategory, safeHref } from "@/lib/format";
 
 export function EvidenceExplorer({ posts }: { posts: ProcessedPost[] }) {
   const [query, setQuery] = useState("");
@@ -42,7 +42,7 @@ export function EvidenceExplorer({ posts }: { posts: ProcessedPost[] }) {
             <div className="flex flex-row gap-5 lg:flex-col lg:items-end lg:text-right">
               <div><span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted">Depth</span><strong className="ml-2 font-mono text-xs text-ink">{entry.technical_depth}</strong></div>
               <div><span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted">Build</span><strong className="ml-2 font-mono text-xs text-ink">{entry.build_potential}</strong></div>
-              <a href={entry.post.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 border-b border-ink/25 pb-1 text-xs font-medium text-ink hover:border-accent hover:text-accent">Open on X <ArrowSquareOutIcon size={12} /></a>
+              <a href={safeHref(entry.post.url)} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 border-b border-ink/25 pb-1 text-xs font-medium text-ink hover:border-accent hover:text-accent">Open on X <ArrowSquareOutIcon size={12} /></a>
             </div>
           </article>
         ))}

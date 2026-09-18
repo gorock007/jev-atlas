@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { findLens, OPPORTUNITY_LENSES } from "@/knowledge/lenses";
 import { knowledgeSlug } from "@/knowledge/paths";
+import { safeHref } from "@/lib/format";
 import type { BuildIdea } from "@/types";
 
 function lensTitle(idea: BuildIdea): string {
@@ -96,7 +97,7 @@ function IdeaDetail({ idea }: { idea: BuildIdea }) {
           Open the full blueprint <ArrowRightIcon size={12} />
         </Link>
         <p className="text-xs leading-5 text-muted"><strong className="font-semibold text-ink">Confidence:</strong> {idea.confidenceReason}</p>
-        {idea.evidence.slice(0, 3).map((source, index) => <a key={source} href={source} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 border-b border-ink/20 text-[11px] font-medium text-ink hover:border-accent hover:text-accent">Evidence {index + 1} <ArrowSquareOutIcon size={11} /></a>)}
+        {idea.evidence.slice(0, 3).map((source, index) => <a key={source} href={safeHref(source)} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 border-b border-ink/20 text-[11px] font-medium text-ink hover:border-accent hover:text-accent">Evidence {index + 1} <ArrowSquareOutIcon size={11} /></a>)}
       </div>
     </article>
   );

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CopyContext } from "@/components/copy-context";
 import { UiIcon } from "@/components/ui-icon";
 import type { EvidenceStatus, KnowledgeRecord } from "@/knowledge/types";
+import { safeHref } from "@/lib/format";
 
 const STRONG: EvidenceStatus[] = ["Demonstrated", "Observed", "Official Documentation"];
 const VENDOR: EvidenceStatus[] = ["Vendor Claim", "Disputed"];
@@ -53,7 +54,7 @@ export function Sources({ sources }: { sources: KnowledgeRecord["sources"] }) {
       <ul className="mt-4 grid gap-2">
         {sources.map((source) => (
           <li key={source.url}>
-            <a href={source.url} target="_blank" rel="noreferrer" className="inline-flex items-start gap-1.5 text-xs leading-5 text-ink hover:text-accent">
+            <a href={safeHref(source.url)} target="_blank" rel="noreferrer" className="inline-flex items-start gap-1.5 text-xs leading-5 text-ink hover:text-accent">
               <span className="font-mono text-[9px] uppercase tracking-[0.1em] text-muted">{source.sourceClass}</span>
               <span className="break-all underline decoration-ink/25 underline-offset-2">{source.url}</span>
               <UiIcon name="arrow-out" size={11} />

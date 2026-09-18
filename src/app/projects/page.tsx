@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { loadAnalysis } from "@/lib/research-data";
 import { knowledgeSlug } from "@/knowledge/paths";
+import { safeHref } from "@/lib/format";
 import { UiIcon } from "@/components/ui-icon";
 
 export const metadata = { title: "Projects" };
@@ -37,7 +38,7 @@ export default async function ProjectsPage() {
                 <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.14em] text-accent">{project.builder}</p>
                 <div className="mt-5 flex flex-col items-start gap-3">
                   <Link href={`/projects/${knowledgeSlug(project.name)}`} className="inline-flex items-center gap-1.5 border-b border-ink/25 pb-1 text-xs font-medium text-ink hover:border-accent hover:text-accent">Read the case study <UiIcon name="arrow-right" size={12} /></Link>
-                  <a href={project.repositoryOrDemo ?? project.source} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 border-b border-ink/25 pb-1 text-xs font-medium text-ink hover:border-accent hover:text-accent">Open source <UiIcon name="arrow-out" size={13} /></a>
+                  <a href={safeHref(project.repositoryOrDemo ?? project.source)} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 border-b border-ink/25 pb-1 text-xs font-medium text-ink hover:border-accent hover:text-accent">Open source <UiIcon name="arrow-out" size={13} /></a>
                 </div>
               </div>
               <dl className="grid gap-5 sm:grid-cols-2">

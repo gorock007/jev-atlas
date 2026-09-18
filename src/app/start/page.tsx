@@ -4,6 +4,7 @@ import { StatusChip } from "@/components/record-chrome";
 import { UiIcon } from "@/components/ui-icon";
 import { renderRecordMarkdown } from "@/knowledge/repository";
 import { atlasRecords } from "@/lib/atlas";
+import { safeHref } from "@/lib/format";
 import { loadAnalysis } from "@/lib/research-data";
 
 export const metadata = { title: "Jev in 60 seconds", description: "What Jev is, what it is not, and where it belongs in a system." };
@@ -140,7 +141,7 @@ export default async function StartPage() {
           <ul className="mt-4 grid gap-2">
             {overview.sources.map((source) => (
               <li key={source.url}>
-                <a href={source.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-xs text-ink hover:text-accent">
+                <a href={safeHref(source.url)} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-xs text-ink hover:text-accent">
                   <span className="break-all underline decoration-ink/25 underline-offset-2">{source.url}</span>
                   <UiIcon name="arrow-out" size={11} />
                 </a>

@@ -4,6 +4,7 @@ import { ArrowRightIcon, ArrowSquareOutIcon, CaretDownIcon, MagnifyingGlassIcon 
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { knowledgeSlug } from "@/knowledge/paths";
+import { safeHref } from "@/lib/format";
 import type { ClaimStatus, ResearchClaim } from "@/types";
 
 const ORDER: ClaimStatus[] = ["Demonstrated", "Plausible", "Vendor Claim", "Speculative", "Disputed"];
@@ -78,7 +79,7 @@ export function ClaimsExplorer({ claims }: { claims: ResearchClaim[] }) {
                 <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-accent">Sources</p>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {claim.sources.map((source, sourceIndex) => (
-                    <a key={source} href={source} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 border-b border-ink/25 py-1 text-xs font-medium text-ink hover:border-accent hover:text-accent">
+                    <a key={source} href={safeHref(source)} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 border-b border-ink/25 py-1 text-xs font-medium text-ink hover:border-accent hover:text-accent">
                       Source {sourceIndex + 1} <ArrowSquareOutIcon size={12} />
                     </a>
                   ))}

@@ -4,6 +4,7 @@ import { UiIcon } from "@/components/ui-icon";
 import { atlasRecords, recordBySlug, recordSlugs } from "@/lib/atlas";
 import { relatedRecords, renderRecordMarkdown } from "@/knowledge/repository";
 import { knowledgeSlug } from "@/knowledge/paths";
+import { safeHref } from "@/lib/format";
 import { loadAnalysis } from "@/lib/research-data";
 
 export const dynamic = "force-static";
@@ -49,8 +50,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </p>
       </section>
 
-      {project.repositoryOrDemo ? (
-        <a href={project.repositoryOrDemo} target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center gap-1.5 border-b border-ink/25 pb-1 text-sm font-medium text-ink hover:border-accent hover:text-accent">
+      {safeHref(project.repositoryOrDemo) ? (
+        <a href={safeHref(project.repositoryOrDemo)} target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center gap-1.5 border-b border-ink/25 pb-1 text-sm font-medium text-ink hover:border-accent hover:text-accent">
           Open the repository or demo <UiIcon name="arrow-out" size={13} />
         </a>
       ) : null}
