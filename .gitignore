@@ -15,3 +15,6 @@ data/seen-posts.json
 data/*run-state.json
 !data/raw/.gitkeep
 !data/processed/.gitkeep
+.vercel
+.env*
+!.env.example
