@@ -1,6 +1,6 @@
 # Jev Research Report
 
-Generated: 2026-09-18T00:28:47.790Z
+Generated: 2026-09-18T05:59:04.754Z
 
 ## Executive Summary
 
@@ -83,14 +83,14 @@ The most substantive technical question is not whether Jev can return a typed va
 
 Selected high-signal cached evidence:
 
-- 🚨 TypeSafe AI just introduced Jev, its first System One Model. It’s built for fast, structured decisions , typed outputs, probabilities, and confidence scores that developers can plug directly into their workflows. Around 150ms latency… — [X post; heuristic relevance 91](https://x.com/i/web/status/2099928060644749682)
-- My read: When software needs to route between agents, classify intent, or make a binary API decision, it doesn't need a paragraph. It needs a number. That's what TypeSafe AI built Jev for. System One models, trained with RLCD (Reinforcem… — [X post; heuristic relevance 82](https://x.com/i/web/status/2100078473419104388)
-- @typesafeai The code is now open source 👇 I built Jev Snake to explore how TypeSafe AI’s Jev model makes typed decisions under uncertainty and real-time pressure. Explore the game, structured state pipeline, Jev integration, latency han… — [X post; heuristic relevance 78](https://x.com/i/web/status/2100499596095209849)
-- https://t.co/UVglKnQoDQ TypeSafe AI released Jev, calling it the first System One model built to return typed decisions and calibrated probabilities instead of generated text. The speed and cost claims are the company's own, measured on… — [X post; heuristic relevance 76](https://x.com/i/web/status/2100371159778746390)
-- Wait, intelligence is $42 per billion input tokens and output is free. TypeSafe just launched Jev, their first public System One Model. Not a chatbot. You send structured questions and get typed decisions your code can act on. &gt; ~150m… — [X post; heuristic relevance 75](https://x.com/i/web/status/2099927622335795646)
-- TypeSafe AI just launched JEV which is its first “System One” model built to answer structured questions in parallel instead of generating text token by token. That opens the door to AI systems that can return usable decisions with confi… — [X post; heuristic relevance 75](https://x.com/i/web/status/2099932058152050848)
-- @tchnclly_dsbld @typesafeai Fallback fits agentic workflows well as an alternative path on primary failure. Failover suits auto-switching to identical redundant systems for high availability. Jev is TypeSafe AI's flagship System One mode… — [X post; heuristic relevance 74](https://x.com/i/web/status/2100348935537660084)
-- TYPESAFE AI LAUNCHES JEV, ITS FIRST “SYSTEM ONE” AI MODEL Instead of generating text token by token, it answers structured questions in parallel and returns typed outputs with probabilities and confidence scores. - 20-200x faster - 40-40… — [X post; heuristic relevance 74](https://x.com/i/web/status/2099927802405654900)
+- [X post](https://x.com/i/web/status/2099928060644749682) — heuristic relevance 91 · Technical Explanation, Project, Performance, Speculation
+- [X post](https://x.com/i/web/status/2100078473419104388) — heuristic relevance 82 · Technical Explanation, Code, Project, Routing
+- [X post](https://x.com/i/web/status/2100499596095209849) — heuristic relevance 78 · Technical Explanation, Architecture, Code, Project, Performance
+- [X post](https://x.com/i/web/status/2100371159778746390) — heuristic relevance 76 · Announcement, Technical Explanation, Project, Cost
+- [X post](https://x.com/i/web/status/2099927622335795646) — heuristic relevance 75 · Technical Explanation, Code, Performance
+- [X post](https://x.com/i/web/status/2099932058152050848) — heuristic relevance 75 · Project
+- [X post](https://x.com/i/web/status/2100348935537660084) — heuristic relevance 74 · Technical Explanation, Limitation
+- [X post](https://x.com/i/web/status/2099927802405654900) — heuristic relevance 74 · Technical Explanation, Performance
 
 ## Criticism
 

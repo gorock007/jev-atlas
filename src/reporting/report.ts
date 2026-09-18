@@ -7,6 +7,10 @@ function link(url: string, label = "source"): string {
   return `[${label}](${url})`;
 }
 
+function labelCategory(category: string): string {
+  return category.toLocaleLowerCase().split("_").map((word) => word[0]?.toLocaleUpperCase() + word.slice(1)).join(" ");
+}
+
 function ideaList(ideas: BuildIdea[], count: number): string {
   return [...ideas]
     .sort((a, b) => b.indieFit - a.indieFit || a.name.localeCompare(b.name))
@@ -15,9 +19,15 @@ function ideaList(ideas: BuildIdea[], count: number): string {
     .join("\n");
 }
 
+/**
+ * Cites evidence by link, relevance, and classification rather than reproducing
+ * post text. X's Developer Agreement restricts redistributing Post content, and
+ * this report is committed to a public repository; the corpus itself stays
+ * local, so a reader follows the link to read the original.
+ */
 function evidenceList(analysis: ResearchAnalysis, count = 8): string {
   return analysis.topEvidence.slice(0, count).map((item) =>
-    `- ${item.summary} — ${link(item.url, `X post; heuristic relevance ${item.relevance}`)}`,
+    `- ${link(item.url, "X post")} — heuristic relevance ${item.relevance} · ${item.categories.map(labelCategory).join(", ")}`,
   ).join("\n");
 }
 
