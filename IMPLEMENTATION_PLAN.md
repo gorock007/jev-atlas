@@ -1,4 +1,4 @@
-# Jev X Research Engine — Implementation Plan
+# Jev Atlas — Engine Implementation Plan
 
 Last verified: 2026-09-18
 

@@ -105,7 +105,7 @@ export class XClient {
         const response = await this.fetcher(url, {
           headers: {
             Authorization: `Bearer ${this.bearerToken}`,
-            "User-Agent": "jev-x-research-engine/0.1",
+            "User-Agent": "jev-atlas/0.1",
           },
           signal: AbortSignal.timeout(30_000),
         });

@@ -27,7 +27,7 @@ interface ParsedArgs {
 }
 
 function usage(): string {
-  return `Jev X Research Engine
+  return `Jev Atlas research engine
 
 Usage:
   npm run research:dry

@@ -1,9 +1,9 @@
 {
-  "name": "jev-x-research-engine",
+  "name": "jev-atlas",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "A local Jev research engine and evidence-first Next.js research browser.",
+  "description": "An independent, evidence-first field guide to Jev (TypeSafe AI's System One model), for people and for coding agents.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

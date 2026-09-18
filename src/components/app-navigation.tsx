@@ -37,9 +37,9 @@ export function AppNavigation() {
   return (
     <header className="site-header">
       <div className="site-header-inner">
-        <Link href="/" className="masthead" aria-label="Jev Research Atlas home">
+        <Link href="/" className="masthead" aria-label="Jev Atlas home">
           <span className="masthead-mark" aria-hidden="true">J</span>
-          <span className="masthead-name">Jev Research Atlas</span>
+          <span className="masthead-name">Jev Atlas</span>
           <span className="masthead-rule" aria-hidden="true" />
           <span className="masthead-note">Field notes</span>
         </Link>

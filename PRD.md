@@ -1,4 +1,4 @@
-# PRD — Jev X Research Engine
+# PRD — Jev Atlas research engine
 
 ## 1. Overview
 

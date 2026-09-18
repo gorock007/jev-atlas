@@ -4,7 +4,7 @@ import { AppNavigation } from "@/components/app-navigation";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "Jev Research Atlas", template: "%s · Jev Research Atlas" },
+  title: { default: "Jev Atlas", template: "%s · Jev Atlas" },
   description: "An evidence-first interface for exploring Jev research, claims, projects, patterns, and opportunities.",
 };
 
@@ -25,7 +25,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         </main>
         <footer className="site-footer">
           <div className="site-footer-inner">
-            <p><span>J</span> Jev Research Atlas <b>/</b> Independent research</p>
+            <p><span>J</span> Jev Atlas <b>/</b> Independent research</p>
             <p>165 posts · 9 claims · 31 hypotheses</p>
             <a href="#main-content">Back to top ↑</a>
           </div>
