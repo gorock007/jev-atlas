@@ -1,0 +1,48 @@
+{
+  "name": "jev-x-research-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A local Jev research engine and evidence-first Next.js research browser.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "collect": "tsx src/cli.ts collect",
+    "process": "tsx src/cli.ts process",
+    "analyze": "tsx src/cli.ts analyze",
+    "report": "tsx src/cli.ts report",
+    "research": "npm run process && npm run analyze && npm run report",
+    "explore": "tsx src/cli.ts explore",
+    "expand": "tsx src/cli.ts expand",
+    "mcp:stdio": "tsx src/mcp/stdio.ts",
+    "research:dry": "tsx src/cli.ts collect --dry-run --budget-usd 3 --max-posts 750 --max-requests 50",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test test/**/*.test.ts",
+    "check": "npm run typecheck && npm test && npm run build"
+  },
+  "engines": {
+    "node": ">=20.10"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.0.0",
+    "@phosphor-icons/react": "^2.1.10",
+    "dotenv": "^17.2.2",
+    "next": "^16.3.5",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "^2.0.0",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^24.3.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}

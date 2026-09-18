@@ -1,0 +1,16 @@
+node_modules/
+.next/
+*.tsbuildinfo
+.env
+.DS_Store
+coverage/
+*.log
+
+# Runtime research data may contain licensed X content and is local by default.
+data/raw/*.jsonl
+data/processed/*.jsonl
+data/processed/analysis.json
+data/seen-posts.json
+data/*run-state.json
+!data/raw/.gitkeep
+!data/processed/.gitkeep
