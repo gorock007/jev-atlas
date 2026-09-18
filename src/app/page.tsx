@@ -27,7 +27,7 @@ export default async function OverviewPage() {
     ...analysis.claims.map((claim, index) => ({ id: `claim-${index}`, type: "Claim", title: claim.claim, description: claim.evidence, href: "/claims", tags: [claim.status] })),
     ...analysis.projects.map((project, index) => ({ id: `project-${index}`, type: "Project", title: project.name, description: project.description, href: "/projects", tags: [project.status, project.jevRole] })),
     ...analysis.ideas.map((idea, index) => ({ id: `idea-${index}`, type: "Idea", title: idea.name, description: idea.product, href: "/ideas", tags: [idea.confidence, idea.whyJev] })),
-    ...analysis.topEvidence.map((evidence, index) => ({ id: `evidence-${index}`, type: "Evidence", title: evidence.summary.slice(0, 88), description: evidence.categories.map(formatCategory).join(" · "), href: "/evidence", tags: evidence.categories })),
+    ...analysis.topEvidence.map((evidence, index) => ({ id: `evidence-${index}`, type: "Evidence", title: `${evidence.categories.map(formatCategory).join(", ")} source — relevance ${evidence.relevance}`, description: evidence.themes.length ? `Themes: ${evidence.themes.join(" · ")}` : evidence.scoreReasons.join(" · "), href: "/evidence", tags: [...evidence.categories, ...evidence.themes] })),
     ...RESEARCH_DOCUMENTS.map((document) => ({ id: `document-${document.slug}`, type: "Document", title: document.title, description: document.description, href: `/research/${document.slug}`, tags: [document.eyebrow] })),
   ];
 

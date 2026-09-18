@@ -154,20 +154,26 @@ export async function loadKnowledgeRecords(): Promise<KnowledgeRecord[]> {
       metadata: { caveat: pattern.caveat },
     })),
     ...analysis.ideas.map((idea) => opportunityRecord(idea, generatedAt)),
-    ...analysis.topEvidence.map((evidence, index) => ({
-      ...recordBase(generatedAt),
-      id: `evidence:${index + 1}`,
-      kind: "evidence" as const,
-      title: evidence.summary,
-      summary: evidence.summary,
-      body: `Research relevance score: ${evidence.relevance}. Categories: ${evidence.categories.map(formatCategory).join(", ")}.`,
-      status: "Source Evidence" as const,
-      tags: ["evidence", ...evidence.categories.map((category) => category.toLocaleLowerCase())],
-      sources: sourcesFromUrls([evidence.url]),
-      canonicalPath: canonicalPathFor("evidence", String(index + 1)),
-      limitations: ["A social post is a source artifact, not independent verification of every statement it contains."],
-      metadata: { relevance: evidence.relevance, categories: evidence.categories },
-    })),
+    ...analysis.topEvidence.map((evidence, index) => {
+      const labels = evidence.categories.map(formatCategory).join(", ");
+      return {
+        ...recordBase(generatedAt),
+        id: `evidence:${index + 1}`,
+        kind: "evidence" as const,
+        title: `${labels} source — relevance ${evidence.relevance}`,
+        summary: `A cached X post classified as ${labels}. Themes: ${evidence.themes.join(", ") || "none extracted"}.`,
+        body: `## Why it ranked\n\n${evidence.scoreReasons.map((reason) => `- ${reason}`).join("\n")}\n\n## Heuristic scores\n\n- Relevance: ${evidence.relevance}\n- Technical depth: ${evidence.technicalDepth}\n- Build potential: ${evidence.buildPotential}\n\nThis record cites the post rather than reproducing it. Follow the source link to read it.`,
+        status: "Source Evidence" as const,
+        tags: ["evidence", ...evidence.categories.map((category) => category.toLocaleLowerCase()), ...evidence.themes],
+        sources: sourcesFromUrls([evidence.url]),
+        canonicalPath: canonicalPathFor("evidence", String(index + 1)),
+        limitations: [
+          "A social post is a source artifact, not independent verification of every statement it contains.",
+          "Scores are transparent research heuristics, not objective measurements.",
+        ],
+        metadata: { relevance: evidence.relevance, technicalDepth: evidence.technicalDepth, buildPotential: evidence.buildPotential, categories: evidence.categories, themes: evidence.themes },
+      };
+    }),
     ...documents.map((document) => ({
       ...recordBase(generatedAt),
       id: `document:${document.slug}`,

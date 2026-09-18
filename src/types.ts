@@ -138,10 +138,19 @@ export interface ResearchAnalysis {
   projects: ProjectFinding[];
   patterns: PatternFinding[];
   ideas: BuildIdea[];
+  /**
+   * Citations for the highest-signal cached posts. Deliberately carries no post
+   * text: this artifact is committed and published, and X's Developer Agreement
+   * restricts redistributing Post content. Every field here is our own derived
+   * signal, so a reader follows the link to read the original.
+   */
   topEvidence: Array<{
     url: string;
-    summary: string;
     relevance: number;
+    technicalDepth: number;
+    buildPotential: number;
     categories: Category[];
+    themes: string[];
+    scoreReasons: string[];
   }>;
 }

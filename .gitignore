@@ -6,10 +6,11 @@ node_modules/
 coverage/
 *.log
 
-# Runtime research data may contain licensed X content and is local by default.
+# Collected X content is local by default: it may contain licensed Post text.
+# data/processed/analysis.json is deliberately NOT ignored — it carries only
+# authored analysis and derived signals, and the deployed site is built from it.
 data/raw/*.jsonl
 data/processed/*.jsonl
-data/processed/analysis.json
 data/seen-posts.json
 data/*run-state.json
 !data/raw/.gitkeep

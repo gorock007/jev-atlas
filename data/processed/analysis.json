@@ -1,0 +1,1346 @@
+{
+  "generatedAt": "2026-09-18T06:10:30.832Z",
+  "dataset": {
+    "totalPosts": 165,
+    "retainedPosts": 63,
+    "analyzedPosts": 6,
+    "highValuePosts": 1
+  },
+  "categoryCounts": {
+    "TECHNICAL_EXPLANATION": 31,
+    "PROJECT": 28,
+    "PERFORMANCE": 20,
+    "SPECULATION": 4,
+    "CODE": 10,
+    "ROUTING": 5,
+    "ARCHITECTURE": 6,
+    "ANNOUNCEMENT": 8,
+    "COST": 8,
+    "LIMITATION": 2,
+    "DEMO": 5,
+    "CLASSIFICATION": 1,
+    "QUESTION": 6,
+    "AUTOMATION": 4,
+    "AGENT_INFRASTRUCTURE": 2,
+    "CRITICISM": 3,
+    "PRODUCT_IDEA": 1,
+    "USE_CASE": 2,
+    "BENCHMARK": 1,
+    "OTHER": 3,
+    "COMPARISON": 6
+  },
+  "claims": [
+    {
+      "claim": "Jev exposes constrained decision primitives for Boolean probability, choice distributions, and ordered scores.",
+      "status": "Demonstrated",
+      "evidence": "The public API documentation defines `noul`, `choice`, and `score` response shapes.",
+      "sources": [
+        "https://docs.typesafe.ai/primitives"
+      ],
+      "counterarguments": "A documented interface demonstrates the contract, not the quality of decisions behind it.",
+      "openQuestions": "How stable are these contracts and calibration properties across model revisions?"
+    },
+    {
+      "claim": "TypeSafe reports Jev as materially faster than LLM workflows on its own evaluations.",
+      "status": "Vendor Claim",
+      "evidence": "The launch material reports large latency multiples; X discussion mostly repeats those figures.",
+      "sources": [
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ],
+      "counterarguments": "No independent benchmark in the collected dataset reproduces the headline range on representative workloads.",
+      "openQuestions": "What are p50/p95 latency and accuracy under equal task definitions and concurrency?"
+    },
+    {
+      "claim": "TypeSafe reports a low input-token price and no metered output-token charge for Jev.",
+      "status": "Vendor Claim",
+      "evidence": "Published pricing is echoed across launch discussion, but remains mutable vendor pricing.",
+      "sources": [
+        "https://typesafe.ai/",
+        "https://x.com/i/web/status/2099927622335795646"
+      ],
+      "counterarguments": "Application cost also includes retries, state construction, integration, and any fallback LLM calls.",
+      "openQuestions": "Will pricing and limits remain attractive at production volume?"
+    },
+    {
+      "claim": "Typed output removes free-form parsing but does not make wrong decisions impossible.",
+      "status": "Demonstrated",
+      "evidence": "The API contract constrains output types; correctness and calibration are separate empirical properties.",
+      "sources": [
+        "https://docs.typesafe.ai/primitives"
+      ],
+      "counterarguments": "Marketing language such as “zero hallucinations” may use hallucination narrowly to mean invalid free text.",
+      "openQuestions": "How should incorrect but schema-valid decisions be measured and communicated?"
+    },
+    {
+      "claim": "Routing, classification, verification, and workflow control are the dominant early mental models.",
+      "status": "Plausible",
+      "evidence": "Those categories recur in the collected launch discussion and align with the documented output primitives.",
+      "sources": [
+        "https://docs.typesafe.ai/primitives",
+        "https://x.com/i/web/status/2100078473419104388"
+      ],
+      "counterarguments": "The sample is launch-week and query-conditioned, so repeated framing does not establish adoption.",
+      "openQuestions": "Which use case produces independent, reproducible value first?"
+    },
+    {
+      "claim": "Developers have published small Jev integrations and demonstrations.",
+      "status": "Demonstrated",
+      "evidence": "13 retained posts were classified as code or demos; public repositories exist for Home Assistant, MCP, and a MAGI-style experiment.",
+      "sources": [
+        "https://github.com/AboveColin/HA-Jev",
+        "https://github.com/itsmostafa/typesafe-mcp",
+        "https://github.com/hide-G/magi-system-on-jev"
+      ],
+      "counterarguments": "Existence of code is not evidence of production reliability or commercial demand.",
+      "openQuestions": "Which projects have active users, evaluations, and maintained integrations?"
+    },
+    {
+      "claim": "The strongest near-term architecture is Jev as a complement and control layer around generative models.",
+      "status": "Plausible",
+      "evidence": "Jev produces decisions rather than prose, and Vercel exposes it through an evaluation-oriented API.",
+      "sources": [
+        "https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway",
+        "https://docs.typesafe.ai/primitives"
+      ],
+      "counterarguments": "Simple rules or conventional classifiers may be cheaper and more predictable for many bounded tasks.",
+      "openQuestions": "At what ambiguity and volume does Jev outperform rules, embeddings, and compact classifiers?"
+    },
+    {
+      "claim": "Cheap decision calls could make tens or hundreds of semantic judgments per event economical.",
+      "status": "Speculative",
+      "evidence": "The product design follows from published pricing and parallel question primitives, not independent production evidence.",
+      "sources": [
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://docs.typesafe.ai/primitives"
+      ],
+      "counterarguments": "Network latency, data preparation, correlated errors, and rate limits may dominate at high decision counts.",
+      "openQuestions": "Does batching many questions preserve accuracy and calibration?"
+    },
+    {
+      "claim": "Headline benchmark and reliability claims remain insufficiently independently verified.",
+      "status": "Plausible",
+      "evidence": "The collected discussion overwhelmingly relays launch claims; at least one source explicitly labels the figures self-reported.",
+      "sources": [
+        "https://x.com/i/web/status/2100371159778746390",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev"
+      ],
+      "counterarguments": "The ecosystem is only days old, so absence of independent evidence is expected rather than disconfirming.",
+      "openQuestions": "Who will publish the first task-matched, reproducible comparison?"
+    }
+  ],
+  "projects": [
+    {
+      "name": "HA-Jev",
+      "builder": "AboveColin",
+      "status": "ACTUALLY BUILT",
+      "source": "https://github.com/AboveColin/HA-Jev",
+      "description": "A Home Assistant custom integration exposing Jev evaluations as sensors and automation actions.",
+      "jevRole": "Repeated state classification and typed automation decisions.",
+      "architecture": "Home Assistant state → TypeSafe evaluation → sensor/action result with a local token-budget guard.",
+      "insight": "Decision models can act as a semantic layer inside an existing event-driven rules engine.",
+      "repositoryOrDemo": "https://github.com/AboveColin/HA-Jev"
+    },
+    {
+      "name": "typesafe-mcp",
+      "builder": "itsmostafa",
+      "status": "ACTUALLY BUILT",
+      "source": "https://github.com/itsmostafa/typesafe-mcp",
+      "description": "An MCP server exposing TypeSafe evaluation to coding agents.",
+      "jevRole": "Machine-readable decisions and probabilities available as agent tools.",
+      "architecture": "MCP client → server tool → TypeSafe API → typed response.",
+      "insight": "The probability-bearing result can be preserved through agent infrastructure instead of flattened to prose.",
+      "repositoryOrDemo": "https://github.com/itsmostafa/typesafe-mcp"
+    },
+    {
+      "name": "MAGI System on Jev",
+      "builder": "hide-G",
+      "status": "ACTUALLY BUILT",
+      "source": "https://x.com/i/web/status/2100695580096016611",
+      "description": "An open-source three-sage voting experiment inspired by Neon Genesis Evangelion.",
+      "jevRole": "Independent probabilistic judgments combined through majority voting.",
+      "architecture": "Question → three Jev evaluations → deterministic aggregation → decision.",
+      "insight": "Cheap typed judgments invite ensemble and quorum experiments, though correlated errors still need measurement.",
+      "repositoryOrDemo": "https://github.com/hide-G/magi-system-on-jev"
+    },
+    {
+      "name": "Goblin HR",
+      "builder": "Kostysh",
+      "status": "ACTUALLY BUILT",
+      "source": "https://x.com/i/web/status/2100386714250354786",
+      "description": "A small inspectable demo that evaluates candidates for an impossible mission.",
+      "jevRole": "Scores/selects candidates while deterministic TypeScript assembles the party.",
+      "architecture": "Mission state → candidate decisions → deterministic application logic.",
+      "insight": "Keeping selection probabilistic and execution deterministic makes the boundary easy to inspect.",
+      "repositoryOrDemo": "https://goblin-hr.kostysh.chatgpt.site/"
+    },
+    {
+      "name": "Axon Work integration",
+      "builder": "Axon Work author",
+      "status": "ACTUALLY BUILT",
+      "source": "https://x.com/i/web/status/2100166309405413785",
+      "description": "The author states that Axon Work uses Jev-style model decisions with a skill/action harness.",
+      "jevRole": "Decision layer feeding an action-delivery harness.",
+      "architecture": "Model decision → skill chain → action harness.",
+      "insight": "A decision model can be invisible infrastructure beneath a workflow product.",
+      "repositoryOrDemo": "https://axon123.com"
+    },
+    {
+      "name": "Confidence-gated agent control loops",
+      "builder": "Developer discussion",
+      "status": "PROPOSED",
+      "source": "https://x.com/i/web/status/2099928060644749682",
+      "description": "Use Jev repeatedly to route, verify, and decide whether an agent should continue or escalate.",
+      "jevRole": "Low-latency control decisions between generative steps.",
+      "architecture": "Agent state → route/verify/continue decisions → deterministic controller → next step.",
+      "insight": "The potential is fewer unnecessary generative calls, not simply replacing one model endpoint.",
+      "repositoryOrDemo": null
+    }
+  ],
+  "patterns": [
+    {
+      "name": "Decision sidecar",
+      "description": "A typed judgment service sits beside ordinary code; code owns effects and safety boundaries.",
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://x.com/i/web/status/2100499596095209849",
+        "https://x.com/i/web/status/2099928269785272613",
+        "https://x.com/i/web/status/2100075581115351115"
+      ],
+      "caveat": "The extra network hop must beat a local rule or classifier."
+    },
+    {
+      "name": "Cascade router",
+      "description": "A cheap decision chooses whether to use rules, a small model, a premium model, a specialist, or a human.",
+      "evidence": [
+        "https://x.com/i/web/status/2100078473419104388",
+        "https://x.com/i/web/status/2100544757248278933",
+        "https://x.com/i/web/status/2099928269785272613"
+      ],
+      "caveat": "Bad routing can erase all cost savings through failures and retries."
+    },
+    {
+      "name": "Confidence gate",
+      "description": "Automation proceeds above a threshold; ambiguous cases go to another check or a person.",
+      "evidence": [
+        "https://docs.typesafe.ai/primitives"
+      ],
+      "caveat": "Thresholds require workload-specific calibration and monitoring."
+    },
+    {
+      "name": "Parallel decision matrix",
+      "description": "One state is evaluated against many named questions, replacing repeated prompt/parse cycles.",
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev"
+      ],
+      "caveat": "Accuracy and question interactions under large batches remain unknown."
+    },
+    {
+      "name": "Probabilistic predicate + deterministic action",
+      "description": "Jev supplies fuzzy predicates while TypeScript, policies, and workflows execute constrained actions.",
+      "evidence": [
+        "https://goblin-hr.kostysh.chatgpt.site/",
+        "https://github.com/AboveColin/HA-Jev"
+      ],
+      "caveat": "Incorrect predicates are still operational errors even when outputs are valid."
+    },
+    {
+      "name": "Decision quorum",
+      "description": "Multiple typed judgments are aggregated through voting or confidence-aware stopping.",
+      "evidence": [
+        "https://github.com/hide-G/magi-system-on-jev"
+      ],
+      "caveat": "Calling the same model repeatedly may produce correlated rather than independent evidence."
+    }
+  ],
+  "ideas": [
+    {
+      "name": "Agent Tool Firewall",
+      "lens": "agent-tool-gating",
+      "problem": "Autonomous agents can select destructive or irrelevant tools from large catalogs.",
+      "product": "A local gateway that scores every proposed tool call and requires confirmation only when risk is high.",
+      "whyJev": "Tool execution needs a typed allow/deny/escalate decision with confidence, not generated prose.",
+      "architecture": "Agent proposal → Jev risk and intent questions → deterministic policy thresholds → tool or approval UI.",
+      "currentAlternative": "Prompt-based guardrails, static allowlists, or an LLM judge on every call.",
+      "advantage": "A decision can run inside every agent step while preserving explicit policy code.",
+      "mvp": "Build an MCP proxy for five filesystem and shell tools with a macOS confirmation panel.",
+      "validation": "Replay 200 benign and adversarial tool calls; measure unsafe allows, needless prompts, latency, and cost.",
+      "unknowns": "Calibration under prompt injection and whether confidence remains stable across tool schemas.",
+      "confidence": "HIGH",
+      "confidenceReason": "The typed-decision interface directly matches tool gating, though safety still needs deterministic backstops.",
+      "indieFit": 10,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Agent Model Router",
+      "lens": "routing-and-triage",
+      "problem": "Agents routinely send easy steps to expensive reasoning models and hard steps to models that fail.",
+      "product": "A drop-in router that selects model, reasoning effort, and fallback policy per step.",
+      "whyJev": "Routing is a repeated bounded choice plus confidence score.",
+      "architecture": "Request state → Choice(model) + Score(complexity) → route → outcome logging → offline evaluation.",
+      "currentAlternative": "Regex rules, hand-tuned heuristics, or another full LLM call.",
+      "advantage": "Routing overhead may remain small enough to apply before every inference.",
+      "mvp": "Proxy two inexpensive and two premium models for a coding-agent benchmark.",
+      "validation": "Compare task success, total spend, and latency against cheapest-only and premium-only baselines.",
+      "unknowns": "Whether the router generalizes to unseen tasks and remains cheaper after retries.",
+      "confidence": "HIGH",
+      "confidenceReason": "Routing is repeatedly cited in the source material and maps naturally to Choice.",
+      "indieFit": 9,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "CI Review Triage",
+      "lens": "routing-and-triage",
+      "problem": "Repositories waste reviewer attention on harmless diffs while risky changes can look deceptively small.",
+      "product": "A GitHub check that assigns review depth, owners, and required test classes to every pull request.",
+      "whyJev": "Each diff needs several parallel labels and risk scores rather than a review essay.",
+      "architecture": "Diff metadata → parallel risk/security/test questions → branch protection policy → check run.",
+      "currentAlternative": "CODEOWNERS, path rules, or expensive LLM review of every diff.",
+      "advantage": "Semantic triage can happen on every push before deeper reviewers are invoked.",
+      "mvp": "GitHub App for TypeScript projects that emits low/medium/high risk and recommended suites.",
+      "validation": "Backtest on 100 merged PRs and compare labels with bugs, reverts, and reviewer choices.",
+      "unknowns": "How much code context fits without losing calibration.",
+      "confidence": "MEDIUM",
+      "confidenceReason": "Strong primitive fit; independent accuracy evidence is not yet available.",
+      "indieFit": 9,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Notification Interruptibility Engine",
+      "lens": "real-time-decisions",
+      "problem": "Notification systems use crude per-app settings and interrupt at the wrong moment.",
+      "product": "A macOS/iOS layer that decides deliver, batch, summarize-later, or suppress for every event.",
+      "whyJev": "Continuous, private context requires cheap decisions per notification.",
+      "architecture": "Notification + focus/calendar/device state → delivery Choice and urgency Score → OS action.",
+      "currentAlternative": "Focus modes, keyword filters, or cloud LLM summaries.",
+      "advantage": "Thousands of tiny judgments can shape attention without generating content.",
+      "mvp": "A macOS menu-bar app using calendar state and a local notification inbox simulation.",
+      "validation": "Run a one-week shadow mode and ask users to approve or correct every proposed action.",
+      "unknowns": "Platform interception limits and privacy expectations for notification content.",
+      "confidence": "MEDIUM",
+      "confidenceReason": "Compelling high-frequency use case, but OS APIs may constrain the product.",
+      "indieFit": 9,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Semantic Feature-Flag Allocator",
+      "lens": "real-time-decisions",
+      "problem": "Feature flags target static cohorts but cannot react intelligently to the current session.",
+      "product": "A policy layer selecting safe UI variants based on session intent, friction, and risk.",
+      "whyJev": "Allocation needs a typed variant choice at request time with uncertainty-aware fallback.",
+      "architecture": "Approved session features → Jev variant Choice → deterministic eligibility checks → flag result.",
+      "currentAlternative": "Rule trees and broad A/B cohorts.",
+      "advantage": "Enables per-event adaptation while code retains the final eligibility boundary.",
+      "mvp": "SDK and dashboard for three variants in a sample SaaS onboarding flow.",
+      "validation": "Shadow against existing rules and inspect disagreement quality before any live allocation.",
+      "unknowns": "Fairness, explainability, and feedback loops from adaptive assignment.",
+      "confidence": "LOW",
+      "confidenceReason": "Architecture is novel but carries experimentation and fairness risks.",
+      "indieFit": 7,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Support Action Gate",
+      "lens": "routing-and-triage",
+      "problem": "Support automation either stops at drafting text or grants an agent dangerously broad authority.",
+      "product": "A decision layer approving refunds, credits, escalations, and account changes within explicit limits.",
+      "whyJev": "The useful output is an action class and confidence, with deterministic dollar and permission caps.",
+      "architecture": "Ticket state → action Choice + fraud/urgency Scores → policy engine → execute or human queue.",
+      "currentAlternative": "Manual macros or an LLM agent with extensive prompt constraints.",
+      "advantage": "Separates judgment from execution and allows frequent re-evaluation as state changes.",
+      "mvp": "Sandbox against a CSV of historical tickets with simulated refund actions.",
+      "validation": "Compare proposed actions with historical resolutions and specialist review.",
+      "unknowns": "Domain-specific calibration and access to representative support data.",
+      "confidence": "MEDIUM",
+      "confidenceReason": "Explicitly aligned with workflow decisions, but production action requires conservative policy.",
+      "indieFit": 7,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Inbox Micro-Router",
+      "lens": "routing-and-triage",
+      "problem": "Email rules fail on semantics, while generative inbox agents are costly and overpowered.",
+      "product": "An email client companion assigning folder, urgency, next-action, and safe automation eligibility.",
+      "whyJev": "Each message creates multiple small parallel decisions with no need for generated text.",
+      "architecture": "Message + relationship state → parallel Choice/Score questions → local rules → label or queue.",
+      "currentAlternative": "Filters, priority inbox classifiers, and LLM assistants.",
+      "advantage": "Can classify every inbound message and reclassify threads after replies.",
+      "mvp": "Local IMAP shadow classifier with an approval queue and accuracy dashboard.",
+      "validation": "Measure corrections and time-to-important-message over two weeks.",
+      "unknowns": "Provider access, sensitive content handling, and multilingual quality.",
+      "confidence": "MEDIUM",
+      "confidenceReason": "Well-bounded decisions and a feasible shadow-mode MVP.",
+      "indieFit": 10,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Calendar Commitment Guard",
+      "lens": "verification-and-guardrails",
+      "problem": "Calendars accept meetings without judging context switching, preparation burden, or strategic value.",
+      "product": "A scheduling guard that classifies each invitation and proposes accept, decline, delegate, or request agenda.",
+      "whyJev": "The core operation is a repeated typed decision over calendar and relationship state.",
+      "architecture": "Invite + calendar + user policy → decision probabilities → deterministic availability checks → suggestion.",
+      "currentAlternative": "Static scheduling rules or manual review.",
+      "advantage": "Semantic policy can run for every invitation without composing messages unless requested.",
+      "mvp": "Google Calendar read-only companion with a daily review feed.",
+      "validation": "Compare suggestions with the user's actual decisions for 50 invitations.",
+      "unknowns": "Sparse personal training signals and sensitive relationship context.",
+      "confidence": "MEDIUM",
+      "confidenceReason": "Clear indie MVP, with value depending on personalized accuracy.",
+      "indieFit": 9,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Agent Loop Stopper",
+      "lens": "agent-tool-gating",
+      "problem": "Agents continue after diminishing returns, repeat failed actions, or stop before verifying outcomes.",
+      "product": "A loop controller deciding continue, retry differently, verify, ask, or stop after every step.",
+      "whyJev": "Agent loops require many low-latency state judgments where prose is overhead.",
+      "architecture": "Trace state → progress/failure Scores + next-control Choice → hard iteration budget → agent runtime.",
+      "currentAlternative": "Fixed step limits and LLM self-reflection prompts.",
+      "advantage": "Makes control a first-class typed layer and may reduce wasted premium-model calls.",
+      "mvp": "Middleware for one open-source agent with trace replay and stop-decision visualization.",
+      "validation": "Run SWE-style tasks; compare completion, wasted calls, and premature stops.",
+      "unknowns": "Reliable progress detection from partial traces.",
+      "confidence": "HIGH",
+      "confidenceReason": "Directly uses cheap decisions inside agent loops, a central Jev-native design space.",
+      "indieFit": 9,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "MCP Capability Router",
+      "lens": "agent-tool-gating",
+      "problem": "Large MCP tool sets overload model context and increase incorrect tool selection.",
+      "product": "A proxy exposing only the small capability subset relevant to the current step.",
+      "whyJev": "Selecting capability groups is a bounded classification problem repeated at every turn.",
+      "architecture": "User intent + agent state → capability Choices → filtered MCP manifest → downstream model.",
+      "currentAlternative": "Expose all tools, manually configure servers, or ask an LLM to choose.",
+      "advantage": "Reduces schemas in context and can run before each agent turn.",
+      "mvp": "Proxy three MCP servers and visualize selected/hidden tools.",
+      "validation": "Measure token use and tool-selection accuracy across 100 tasks.",
+      "unknowns": "Cost of false exclusion and whether confidence is sufficient for fallback.",
+      "confidence": "HIGH",
+      "confidenceReason": "Concrete developer-tool problem with an observable, typed outcome.",
+      "indieFit": 10,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Personal File Attention Index",
+      "lens": "repeated-judgment-at-scale",
+      "problem": "Desktop search finds keyword matches but does not continuously infer what is currently important.",
+      "product": "A local index that scores files, downloads, screenshots, and documents for urgency and project relevance.",
+      "whyJev": "The index becomes useful through thousands of cheap decisions per filesystem event.",
+      "architecture": "File metadata/extract → parallel relevance Scores → local SQLite index → Spotlight-style UI.",
+      "currentAlternative": "Recency sorting, embeddings, or manual folders.",
+      "advantage": "Adds active judgment to every file event without generating summaries.",
+      "mvp": "macOS watcher for Downloads and Desktop with a ranked menu-bar view.",
+      "validation": "Track opened files and explicit corrections for one week.",
+      "unknowns": "Private-data controls and whether lightweight features provide enough context.",
+      "confidence": "MEDIUM",
+      "confidenceReason": "Visually compelling and high frequency, with unproven personalization quality.",
+      "indieFit": 10,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Webhook Decision Bus",
+      "lens": "event-driven-automation",
+      "problem": "SaaS webhooks trigger brittle rule chains that cannot interpret nuanced event context.",
+      "product": "A developer service mapping each event to typed route, priority, and action decisions.",
+      "whyJev": "Event streams need low-cost decisions per event rather than text generation.",
+      "architecture": "Webhook → normalized state → Jev questions → signed typed result → queues/functions.",
+      "currentAlternative": "Zapier filters, JSONPath rules, or per-event LLM calls.",
+      "advantage": "Semantic branching becomes an infrastructure primitive across large event volumes.",
+      "mvp": "Open-source gateway for GitHub and Stripe-like test events with replay tooling.",
+      "validation": "Build three real automations and compare rule complexity and misroutes.",
+      "unknowns": "Tenant-specific calibration and operational guarantees.",
+      "confidence": "HIGH",
+      "confidenceReason": "A natural typed-decision API and feasible open-source wedge.",
+      "indieFit": 9,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Privacy-Preserving Screen Event Filter",
+      "lens": "high-volume-classification",
+      "problem": "Screen-aware assistants send too much irrelevant or sensitive context upstream.",
+      "product": "A local preflight layer deciding whether a screen change is useful, sensitive, or ignorable.",
+      "whyJev": "Every screen event needs fast Boolean and category decisions before expensive processing.",
+      "architecture": "On-device OCR/accessibility snapshot → sensitivity/relevance decisions → redact/drop/forward.",
+      "currentAlternative": "Send all frames, sample periodically, or use fragile app allowlists.",
+      "advantage": "Can reduce both privacy exposure and downstream multimodal cost.",
+      "mvp": "macOS recorder in shadow mode with a timeline showing kept and rejected events.",
+      "validation": "Label 500 screen transitions and measure sensitive false negatives.",
+      "unknowns": "Whether Jev accepts sufficient multimodal-derived state and local-processing requirements.",
+      "confidence": "LOW",
+      "confidenceReason": "High upside but privacy and input-modality assumptions need testing.",
+      "indieFit": 8,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Adaptive Observability Sampler",
+      "lens": "ranking-and-scoring",
+      "problem": "Teams either retain too many traces or miss the rare traces that explain incidents.",
+      "product": "A collector making keep/drop/escalate decisions from trace metadata and partial spans.",
+      "whyJev": "Sampling happens at high volume and requires a tiny typed decision per trace.",
+      "architecture": "Span features → anomaly/value Scores → deterministic quotas → storage tier.",
+      "currentAlternative": "Random, head-based, or static rule sampling.",
+      "advantage": "Semantically interesting traces can survive without LLM-scale cost per request.",
+      "mvp": "OpenTelemetry collector processor with a replay benchmark.",
+      "validation": "Replay public traces with injected incidents; compare detection under equal storage budgets.",
+      "unknowns": "Latency at collector scale and bias introduced by learned sampling.",
+      "confidence": "MEDIUM",
+      "confidenceReason": "Excellent economics fit, but demanding throughput requirements.",
+      "indieFit": 7,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Smart Retry Policy",
+      "lens": "event-driven-automation",
+      "problem": "Distributed systems retry uniformly even when errors indicate permanent failure or overload.",
+      "product": "A library choosing retry, backoff class, fallback, or dead-letter from structured failure context.",
+      "whyJev": "Each failure needs a bounded control decision, often many times per request chain.",
+      "architecture": "Error + operation metadata → control Choice and recoverability Score → capped policy executor.",
+      "currentAlternative": "Status-code tables and exponential backoff everywhere.",
+      "advantage": "Semantic retry behavior can adapt while hard caps guarantee safety.",
+      "mvp": "TypeScript fetch wrapper with offline replay against recorded failures.",
+      "validation": "Measure successful recoveries, added load, and bad retries against standard policies.",
+      "unknowns": "Novel failure generalization and added latency on already-failing paths.",
+      "confidence": "MEDIUM",
+      "confidenceReason": "Strong primitive fit but system-level failure behavior needs rigorous testing.",
+      "indieFit": 8,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Dependency Update Gate",
+      "lens": "verification-and-guardrails",
+      "problem": "Automated dependency PRs create noise and hide the few updates requiring immediate action.",
+      "product": "A bot deciding auto-merge, test-more, human-review, defer, or block for every update.",
+      "whyJev": "Update disposition is a repeated typed choice over changelog, diff, usage, and risk state.",
+      "architecture": "Update metadata + repository usage → risk Scores/Choice → CI policy → action.",
+      "currentAlternative": "Version-range rules and manual Dependabot triage.",
+      "advantage": "Semantic triage can cover every package without a generative review call.",
+      "mvp": "GitHub Action for npm repositories with shadow recommendations.",
+      "validation": "Backtest six months of updates and security advisories.",
+      "unknowns": "Changelog quality and ecosystem-specific risk features.",
+      "confidence": "MEDIUM",
+      "confidenceReason": "Useful solo-developer wedge with measurable historical outcomes.",
+      "indieFit": 10,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Continuous Form Friction Controller",
+      "lens": "real-time-decisions",
+      "problem": "Forms ask every user the same questions even when many fields are irrelevant or risky.",
+      "product": "A form engine deciding which question to show next, skip, verify, or escalate.",
+      "whyJev": "Each field transition is a small decision based on accumulated typed state.",
+      "architecture": "Form state → next-question Choice + fraud/completeness Scores → schema-constrained UI.",
+      "currentAlternative": "Branching form logic or conversational forms.",
+      "advantage": "Supports many micro-decisions without turning the flow into a chatbot.",
+      "mvp": "React form builder for insurance-style intake with a visible decision trace.",
+      "validation": "Compare completion time and incorrect skips with a fixed form.",
+      "unknowns": "Compliance requirements and reliable handling of rare cases.",
+      "confidence": "MEDIUM",
+      "confidenceReason": "Typed output fits dynamic forms, though regulated uses need strict constraints.",
+      "indieFit": 8,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Autonomous QA Scenario Selector",
+      "lens": "ranking-and-scoring",
+      "problem": "UI test suites run too many redundant paths while missing state-dependent risky scenarios.",
+      "product": "A test controller choosing the next action and deciding when a distinct failure has been found.",
+      "whyJev": "Exploration requires hundreds of small action and novelty decisions per session.",
+      "architecture": "DOM/screenshot-derived state → next-action Choice + novelty/failure Scores → Playwright.",
+      "currentAlternative": "Scripted tests, random fuzzing, or full multimodal agents.",
+      "advantage": "Decision calls can sit inside a dense exploration loop.",
+      "mvp": "Playwright plugin for one demo app with a live exploration graph.",
+      "validation": "Seed known bugs and compare discovery time against random and scripted baselines.",
+      "unknowns": "Rich UI state representation and avoiding exploration loops.",
+      "confidence": "MEDIUM",
+      "confidenceReason": "High-frequency decisions are central, but state encoding is challenging.",
+      "indieFit": 9,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Meeting Participation Router",
+      "lens": "routing-and-triage",
+      "problem": "Teams invite people broadly because deciding who truly needs each agenda item is tedious.",
+      "product": "A planner assigning attend, async input, optional, or no-action per person and agenda item.",
+      "whyJev": "The product makes a matrix of small choices—many decisions per meeting.",
+      "architecture": "Agenda + roles + projects → per-person Choices → organizer review → calendar updates.",
+      "currentAlternative": "Organizer intuition and blanket invitations.",
+      "advantage": "Parallel typed questions can evaluate the entire participation matrix.",
+      "mvp": "Calendar add-on generating a reviewable attendance matrix.",
+      "validation": "Shadow 30 meetings and survey organizers and suggested non-attendees.",
+      "unknowns": "Organizational politics and incomplete role context.",
+      "confidence": "LOW",
+      "confidenceReason": "Technically suitable but behavior change and social acceptance are uncertain.",
+      "indieFit": 8,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Home Automation Intent Layer",
+      "lens": "event-driven-automation",
+      "problem": "Smart-home rules become unmanageable when context spans occupants, weather, devices, and routines.",
+      "product": "A Home Assistant layer turning state changes into typed comfort, safety, and automation decisions.",
+      "whyJev": "Home state changes continuously and needs bounded decisions with local budget controls.",
+      "architecture": "Home Assistant state → parallel decisions → safety rules → service calls.",
+      "currentAlternative": "Large YAML rule trees or cloud LLM automations.",
+      "advantage": "Frequent evaluation can simplify rules while deterministic safety constraints remain authoritative.",
+      "mvp": "Extend the existing HA-Jev integration with shadow-mode recommendations and evaluation logs.",
+      "validation": "Run for one week without actions, measuring corrections and token spend.",
+      "unknowns": "Cloud dependence, privacy, and reliability during outages.",
+      "confidence": "HIGH",
+      "confidenceReason": "An independent open-source integration already demonstrates feasibility.",
+      "indieFit": 9,
+      "evidence": [
+        "https://github.com/AboveColin/HA-Jev",
+        "https://docs.typesafe.ai/primitives",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Probabilistic Rules Engine",
+      "lens": "semantic-features",
+      "problem": "Business rule systems are deterministic even when concepts such as urgency, fit, or risk are fuzzy.",
+      "product": "An open-source engine combining Jev judgments with auditable deterministic conditions.",
+      "whyJev": "Jev supplies probabilistic predicates; ordinary code composes and enforces them.",
+      "architecture": "Typed state → named Jev predicates → threshold/versioned rules → action and audit log.",
+      "currentAlternative": "Huge decision tables or LLM prompts returning JSON.",
+      "advantage": "Treats intelligent judgment as a testable rule primitive rather than an autonomous agent.",
+      "mvp": "TypeScript DSL, local replay UI, and three example policies.",
+      "validation": "Ask developers to replace one brittle rule tree and measure complexity and accuracy.",
+      "unknowns": "Threshold governance, drift monitoring, and debugging expectations.",
+      "confidence": "HIGH",
+      "confidenceReason": "This directly exposes Jev's typed probabilities as a software primitive.",
+      "indieFit": 10,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "LLM Output Escalation Mesh",
+      "lens": "verification-and-guardrails",
+      "problem": "Systems apply one verifier to all generated outputs or trust them uniformly.",
+      "product": "A mesh of cheap per-claim decisions selecting accept, recheck, regenerate, retrieve, or ask a human.",
+      "whyJev": "A generated response can require dozens of independent confidence and policy decisions.",
+      "architecture": "Parsed output units → parallel verifier/router questions → selective expensive checks → response.",
+      "currentAlternative": "One LLM-as-judge pass or universal retrieval.",
+      "advantage": "Spends expensive verification only where cheap decisions indicate risk.",
+      "mvp": "Middleware for structured extraction outputs with a claim-level audit view.",
+      "validation": "Use a labeled extraction dataset and compare total cost at equal error rate.",
+      "unknowns": "Verifier correlation with the generator and claim segmentation quality.",
+      "confidence": "MEDIUM",
+      "confidenceReason": "Promising cascade architecture; independent verifier performance is unknown.",
+      "indieFit": 8,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Context Window Admission Controller",
+      "lens": "agent-tool-gating",
+      "problem": "Agents overfill context with available material instead of admitting only task-relevant evidence.",
+      "product": "A component scoring every candidate memory, file, or message before context assembly.",
+      "whyJev": "Hundreds of inclusion decisions may be needed for a single model request.",
+      "architecture": "Task + candidate metadata/snippets → relevance Scores → diversity and token-budget algorithm → context.",
+      "currentAlternative": "Top-k embeddings and recency heuristics.",
+      "advantage": "Allows semantic admission at a granularity that full LLM ranking makes expensive.",
+      "mvp": "Plugin for a coding agent that ranks repository files and explains admitted context.",
+      "validation": "Compare task success and input tokens against embedding-only retrieval.",
+      "unknowns": "Whether independent scoring preserves cross-item diversity.",
+      "confidence": "HIGH",
+      "confidenceReason": "Clear economic leverage from many decisions per expensive request.",
+      "indieFit": 9,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Local Activity Auto-Timeline",
+      "lens": "high-volume-classification",
+      "problem": "People cannot reconstruct what they worked on across apps without manual time tracking.",
+      "product": "A private desktop timeline deciding whether each app/window event starts, continues, or ends an activity.",
+      "whyJev": "Continuous desktop events demand cheap classification rather than narrative generation.",
+      "architecture": "Accessibility events → activity Choice and boundary Boolean → local timeline → editable UI.",
+      "currentAlternative": "App-name timers and periodic screenshots.",
+      "advantage": "Semantic events can produce a useful timeline without recording every frame.",
+      "mvp": "macOS menu-bar app for browser, editor, and terminal activity.",
+      "validation": "Compare inferred blocks with a user's end-of-day corrections.",
+      "unknowns": "Privacy, app permissions, and ambiguous multitasking.",
+      "confidence": "MEDIUM",
+      "confidenceReason": "Strong indie fit and event-level economics; personalization remains untested.",
+      "indieFit": 10,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "API Abuse Shape Detector",
+      "lens": "ranking-and-scoring",
+      "problem": "Rate limits catch volume but miss low-and-slow misuse that is semantically suspicious.",
+      "product": "An edge middleware assigning abuse type, severity, and response tier to suspicious request sequences.",
+      "whyJev": "Risk decisions must be cheap enough for frequent invocation and return constrained actions.",
+      "architecture": "Aggregated request features → abuse Choice/Score → hard security rules → allow/challenge/block.",
+      "currentAlternative": "WAF signatures and expensive anomaly pipelines.",
+      "advantage": "Could add semantic judgment between static rules and heavyweight investigation.",
+      "mvp": "Replay proxy over synthetic API traffic; never block live requests initially.",
+      "validation": "Measure false positives across scripted attacks and normal burst patterns.",
+      "unknowns": "Adversarial robustness and safe feature representation.",
+      "confidence": "LOW",
+      "confidenceReason": "Security value is high but unverified calibration makes autonomous blocking premature.",
+      "indieFit": 7,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Data Pipeline Quarantine Router",
+      "lens": "repeated-judgment-at-scale",
+      "problem": "Malformed or semantically odd records either fail whole jobs or silently contaminate downstream data.",
+      "product": "A stream processor choosing accept, normalize, quarantine, retry, or human review per record.",
+      "whyJev": "Large pipelines need a constrained decision on many ambiguous records.",
+      "architecture": "Schema result + record sample + lineage → action Choice/confidence → deterministic transform queues.",
+      "currentAlternative": "Validation rules and catch-all dead-letter queues.",
+      "advantage": "Adds semantic triage without generating transformed data.",
+      "mvp": "CLI for CSV/JSON imports with a reviewable quarantine folder.",
+      "validation": "Inject labeled anomalies into three public datasets and compare rule-only routing.",
+      "unknowns": "Throughput and handling sensitive data in model inputs.",
+      "confidence": "MEDIUM",
+      "confidenceReason": "Bounded action space and measurable quality, with scale still uncertain.",
+      "indieFit": 8,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Adaptive Game NPC Director",
+      "lens": "real-time-decisions",
+      "problem": "Game encounters rely on authored condition trees or expensive generative agents.",
+      "product": "A runtime director selecting tactics, attention, difficulty response, and group coordination every tick interval.",
+      "whyJev": "Games need many typed decisions, not dialogue, under tight latency and cost constraints.",
+      "architecture": "World state → parallel NPC Choices/Scores → deterministic behavior trees → animation/action.",
+      "currentAlternative": "Behavior trees, utility AI, or LLM-driven NPCs.",
+      "advantage": "Probabilistic judgment could complement authored action execution at much higher frequency.",
+      "mvp": "Top-down arena demo with Jev director versus a fixed utility-AI baseline.",
+      "validation": "Measure action diversity, player-rated coherence, latency, and cost over 1,000 encounters.",
+      "unknowns": "Network dependence and determinism requirements for games.",
+      "confidence": "MEDIUM",
+      "confidenceReason": "Doom and MAGI demonstrations suggest interest, not production readiness.",
+      "indieFit": 9,
+      "evidence": [
+        "https://github.com/hide-G/magi-system-on-jev",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Multi-Agent Vote Calibrator",
+      "lens": "agent-tool-gating",
+      "problem": "Agent ensembles use crude majority voting and ignore uncertainty or correlated errors.",
+      "product": "A coordinator deciding when votes agree enough, need another specialist, or require human escalation.",
+      "whyJev": "Coordination consists of repeated confidence and next-participant decisions.",
+      "architecture": "Agent outputs/votes → consensus Scores and next-step Choice → bounded orchestration loop.",
+      "currentAlternative": "Simple majority, fixed debate rounds, or a final LLM judge.",
+      "advantage": "Can allocate extra agents only to ambiguous cases.",
+      "mvp": "Reproduce the open MAGI concept and add confidence-aware stopping.",
+      "validation": "Compare accuracy and calls on a labeled decision dataset.",
+      "unknowns": "Whether Jev reduces rather than inherits correlated ensemble errors.",
+      "confidence": "MEDIUM",
+      "confidenceReason": "There is a concrete open-source inspiration, but ensemble gains need measurement.",
+      "indieFit": 9,
+      "evidence": [
+        "https://github.com/hide-G/magi-system-on-jev",
+        "https://docs.typesafe.ai/primitives",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Micro-Approval SDK",
+      "lens": "semantic-features",
+      "problem": "Product teams repeatedly rebuild confidence thresholds, fallback queues, and audit logs around AI decisions.",
+      "product": "An SDK and embeddable UI for approve/deny/escalate flows backed by typed probabilistic decisions.",
+      "whyJev": "The API can expose Jev probabilities directly while code owns threshold and action semantics.",
+      "architecture": "Domain adapter → Jev questions → versioned threshold policy → approval widget/audit store.",
+      "currentAlternative": "Custom prompt-and-JSON glue in every product.",
+      "advantage": "Turns safe partial automation into a reusable software pattern.",
+      "mvp": "TypeScript package, SQLite audit store, and React review queue.",
+      "validation": "Integrate into two different demos and measure integration effort and override rates.",
+      "unknowns": "How generic the state adapters and calibration UI can be.",
+      "confidence": "HIGH",
+      "confidenceReason": "A small, open-source developer tool that makes the core architecture tangible.",
+      "indieFit": 10,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Semantic Background-Task Scheduler",
+      "lens": "event-driven-automation",
+      "problem": "Apps schedule maintenance by clock time instead of current user intent, device state, and task urgency.",
+      "product": "A scheduler choosing run-now, defer, batch, cancel, or request power/network for each task.",
+      "whyJev": "Scheduling creates continuous, bounded decisions across many tasks and state changes.",
+      "architecture": "Task/device/user state → action Choice + urgency Score → OS constraints → executor.",
+      "currentAlternative": "Fixed intervals and hand-authored priority rules.",
+      "advantage": "Semantic batching could improve responsiveness and resource use without generative output.",
+      "mvp": "macOS daemon simulating decisions for backup, indexing, and sync jobs.",
+      "validation": "Replay a week of device-state traces and compare delays and contention.",
+      "unknowns": "OS scheduling permissions and benefits over well-designed heuristics.",
+      "confidence": "LOW",
+      "confidenceReason": "Architecturally distinctive, but conventional algorithms may already suffice.",
+      "indieFit": 7,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    },
+    {
+      "name": "Decision Regression Harness",
+      "lens": "verification-and-guardrails",
+      "problem": "Teams cannot safely change prompts, thresholds, or Jev model versions without seeing behavior drift.",
+      "product": "A test runner recording typed decisions and calibration metrics over versioned scenario suites.",
+      "whyJev": "Typed outputs and probabilities make decisions unusually amenable to regression testing.",
+      "architecture": "Fixture states → batch Jev evaluation → schema/calibration/diff checks → CI report.",
+      "currentAlternative": "Ad hoc prompt snapshots and manual playground testing.",
+      "advantage": "Tests the machine-facing contract rather than brittle generated wording.",
+      "mvp": "CLI with YAML fixtures, golden distributions, tolerance rules, and GitHub annotations.",
+      "validation": "Use it on three sample decision apps and intentionally introduce prompt regressions.",
+      "unknowns": "API support for deterministic comparison and expected probability variance.",
+      "confidence": "HIGH",
+      "confidenceReason": "Typed decisions create a clear developer-tool opportunity independent of broad model adoption.",
+      "indieFit": 10,
+      "evidence": [
+        "https://docs.typesafe.ai/primitives",
+        "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://x.com/i/web/status/2099928060644749682"
+      ]
+    }
+  ],
+  "topEvidence": [
+    {
+      "url": "https://x.com/i/web/status/2099928060644749682",
+      "relevance": 91,
+      "technicalDepth": 77,
+      "buildPotential": 55,
+      "categories": [
+        "TECHNICAL_EXPLANATION",
+        "PROJECT",
+        "PERFORMANCE",
+        "SPECULATION"
+      ],
+      "themes": [
+        "typed",
+        "confidence",
+        "latency",
+        "workflow",
+        "system one"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: typed, confidence, latency, workflow",
+        "build signals: built",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2100078473419104388",
+      "relevance": 82,
+      "technicalDepth": 67,
+      "buildPotential": 50,
+      "categories": [
+        "TECHNICAL_EXPLANATION",
+        "CODE",
+        "PROJECT",
+        "ROUTING"
+      ],
+      "themes": [
+        "api",
+        "rlcd",
+        "agent",
+        "system one"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: api, rlcd, agent, system one",
+        "build signals: built",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2100499596095209849",
+      "relevance": 78,
+      "technicalDepth": 43,
+      "buildPotential": 55,
+      "categories": [
+        "TECHNICAL_EXPLANATION",
+        "ARCHITECTURE",
+        "CODE",
+        "PROJECT",
+        "PERFORMANCE"
+      ],
+      "themes": [
+        "typed",
+        "latency"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: typed, latency",
+        "build signals: built, integration, open source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2100371159778746390",
+      "relevance": 76,
+      "technicalDepth": 52,
+      "buildPotential": 45,
+      "categories": [
+        "ANNOUNCEMENT",
+        "TECHNICAL_EXPLANATION",
+        "PROJECT",
+        "COST"
+      ],
+      "themes": [
+        "typed",
+        "workflow",
+        "system one"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: typed, workflow, system one",
+        "build signals: built",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2099927622335795646",
+      "relevance": 75,
+      "technicalDepth": 57,
+      "buildPotential": 30,
+      "categories": [
+        "TECHNICAL_EXPLANATION",
+        "CODE",
+        "PERFORMANCE"
+      ],
+      "themes": [
+        "typed",
+        "latency",
+        "system one"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: typed, latency, system one",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2099932058152050848",
+      "relevance": 75,
+      "technicalDepth": 43,
+      "buildPotential": 40,
+      "categories": [
+        "PROJECT"
+      ],
+      "themes": [
+        "confidence",
+        "system one"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: confidence, system one",
+        "build signals: built",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2100348935537660084",
+      "relevance": 74,
+      "technicalDepth": 71,
+      "buildPotential": 20,
+      "categories": [
+        "TECHNICAL_EXPLANATION",
+        "LIMITATION"
+      ],
+      "themes": [
+        "typed",
+        "workflow",
+        "agent",
+        "system one",
+        "failure"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: typed, workflow, agent, system one",
+        "evidence/limitation signals: failure"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2099927802405654900",
+      "relevance": 74,
+      "technicalDepth": 56,
+      "buildPotential": 30,
+      "categories": [
+        "TECHNICAL_EXPLANATION",
+        "PERFORMANCE"
+      ],
+      "themes": [
+        "typed",
+        "confidence",
+        "system one"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: typed, confidence, system one",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2100544757248278933",
+      "relevance": 74,
+      "technicalDepth": 35,
+      "buildPotential": 50,
+      "categories": [
+        "DEMO",
+        "CODE",
+        "PROJECT",
+        "ROUTING",
+        "CLASSIFICATION",
+        "COST"
+      ],
+      "themes": [
+        "api"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: api",
+        "build signals: built, demo",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2100678779790110912",
+      "relevance": 74,
+      "technicalDepth": 33,
+      "buildPotential": 50,
+      "categories": [
+        "TECHNICAL_EXPLANATION",
+        "DEMO",
+        "PROJECT",
+        "QUESTION"
+      ],
+      "themes": [
+        "typed"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: typed",
+        "build signals: built, demo",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2099928269785272613",
+      "relevance": 73,
+      "technicalDepth": 51,
+      "buildPotential": 30,
+      "categories": [
+        "ARCHITECTURE",
+        "CODE",
+        "ROUTING",
+        "AUTOMATION"
+      ],
+      "themes": [
+        "api",
+        "workflow",
+        "routing"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: api, workflow, routing",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2099950144863015089",
+      "relevance": 72,
+      "technicalDepth": 57,
+      "buildPotential": 30,
+      "categories": [
+        "ANNOUNCEMENT",
+        "TECHNICAL_EXPLANATION",
+        "PROJECT"
+      ],
+      "themes": [
+        "typed",
+        "rlcd",
+        "system one"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: typed, rlcd, system one",
+        "build signals: built"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2100166309405413785",
+      "relevance": 72,
+      "technicalDepth": 43,
+      "buildPotential": 40,
+      "categories": [
+        "TECHNICAL_EXPLANATION",
+        "PROJECT"
+      ],
+      "themes": [
+        "typed",
+        "probability"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: typed, probability",
+        "build signals: built",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2100125011444932869",
+      "relevance": 71,
+      "technicalDepth": 63,
+      "buildPotential": 15,
+      "categories": [
+        "TECHNICAL_EXPLANATION",
+        "AGENT_INFRASTRUCTURE",
+        "CRITICISM"
+      ],
+      "themes": [
+        "typed",
+        "confidence",
+        "agent",
+        "wrong"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: typed, confidence, agent",
+        "evidence/limitation signals: wrong"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2099940549973443047",
+      "relevance": 71,
+      "technicalDepth": 58,
+      "buildPotential": 30,
+      "categories": [
+        "TECHNICAL_EXPLANATION",
+        "CODE",
+        "PRODUCT_IDEA",
+        "ROUTING",
+        "QUESTION"
+      ],
+      "themes": [
+        "api",
+        "typed",
+        "confidence"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: api, typed, confidence",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2100357266616574169",
+      "relevance": 71,
+      "technicalDepth": 53,
+      "buildPotential": 30,
+      "categories": [
+        "TECHNICAL_EXPLANATION",
+        "PROJECT",
+        "PERFORMANCE"
+      ],
+      "themes": [
+        "typed",
+        "confidence",
+        "latency"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: typed, confidence, latency",
+        "build signals: built"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2099981047676940418",
+      "relevance": 71,
+      "technicalDepth": 44,
+      "buildPotential": 40,
+      "categories": [
+        "TECHNICAL_EXPLANATION",
+        "PROJECT",
+        "PERFORMANCE"
+      ],
+      "themes": [
+        "typed",
+        "agent"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: typed, agent",
+        "build signals: built",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2100161604549501214",
+      "relevance": 71,
+      "technicalDepth": 42,
+      "buildPotential": 40,
+      "categories": [
+        "PROJECT",
+        "AGENT_INFRASTRUCTURE",
+        "PERFORMANCE",
+        "COST"
+      ],
+      "themes": [
+        "latency",
+        "agent"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: latency, agent",
+        "build signals: built",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2100075581115351115",
+      "relevance": 70,
+      "technicalDepth": 48,
+      "buildPotential": 25,
+      "categories": [
+        "ARCHITECTURE",
+        "USE_CASE",
+        "AUTOMATION",
+        "BENCHMARK",
+        "PERFORMANCE"
+      ],
+      "themes": [
+        "benchmark",
+        "workflow"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: benchmark, workflow",
+        "evidence/limitation signals: benchmark",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2099926312194605418",
+      "relevance": 70,
+      "technicalDepth": 46,
+      "buildPotential": 25,
+      "categories": [
+        "CODE",
+        "COST"
+      ],
+      "themes": [
+        "api",
+        "system one"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: api, system one",
+        "contains an external source"
+      ]
+    }
+  ]
+}

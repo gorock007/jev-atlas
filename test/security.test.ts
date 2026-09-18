@@ -3,6 +3,7 @@ import test from "node:test";
 import { extractLinks, isSafeHttpUrl } from "../src/processing/links.js";
 import { safeHref } from "../src/lib/format.js";
 import { loadKnowledgeRecords } from "../src/knowledge/repository.js";
+import { loadAnalysis, loadProcessedPosts } from "../src/lib/research-data.js";
 import { GET as searchRoute } from "../src/app/api/v1/search.json/route.js";
 
 test("only http(s) links survive extraction from third-party post content", () => {
@@ -55,4 +56,25 @@ test("the public search endpoint bounds its input", async () => {
 
   const garbage = await searchRoute(new Request(`${base}?q=jev&limit=notanumber`));
   assert.equal(garbage.status, 200);
+});
+
+test("the published analysis artifact reproduces no post text", async () => {
+  const [analysis, posts] = await Promise.all([loadAnalysis(), loadProcessedPosts()]);
+  if (!analysis || !posts.length) return; // no local corpus to compare against
+
+  // analysis.json is committed and deployed. The corpus is not. Any run of post
+  // text appearing in the artifact would be republishing Post content.
+  const published = JSON.stringify(analysis);
+  for (const entry of posts) {
+    const text = entry.post.text.replace(/\s+/gu, " ").trim();
+    for (let start = 0; start + 60 <= text.length; start += 20) {
+      const run = text.slice(start, start + 60);
+      assert.ok(!published.includes(run), `analysis.json reproduces post text: "${run}"`);
+    }
+  }
+
+  for (const citation of analysis.topEvidence) {
+    assert.ok(!("summary" in citation), "evidence citations must not carry a post summary");
+    assert.ok(isSafeHttpUrl(citation.url));
+  }
 });

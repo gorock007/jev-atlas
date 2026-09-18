@@ -251,9 +251,12 @@ export async function analyzeResearch(rootDir = process.cwd(), relevanceThreshol
     ideas,
     topEvidence: retained.slice(0, 20).map((entry) => ({
       url: entry.post.url,
-      summary: entry.summary,
       relevance: entry.relevance_score,
+      technicalDepth: entry.technical_depth,
+      buildPotential: entry.build_potential,
       categories: entry.categories,
+      themes: entry.themes,
+      scoreReasons: entry.score_reasons,
     })),
   };
 
