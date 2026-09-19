@@ -3,6 +3,7 @@ import { join } from "node:path";
 import Link from "next/link";
 import { AtlasMindmap } from "@/components/atlas-mindmap";
 import { CopyMcpConfig } from "@/components/copy-mcp-config";
+import { ExplainerVideo } from "@/components/explainer-video";
 import { HeroVisual } from "@/components/hero-visual";
 import home from "@/components/home.module.css";
 import { PrimitiveDiagrams } from "@/components/primitive-diagrams";
@@ -80,9 +81,7 @@ export default async function OverviewPage() {
           <p>Your code asks a narrow question about whatever state it has. Jev answers in one of three typed shapes.</p>
         </div>
         {video ? (
-          <video className={home.video} controls playsInline preload="none" poster="/media/jev-in-60s-poster.jpg" aria-label="Jev in 60 seconds, an animated explainer">
-            {video.map((source) => <source key={source.src} src={source.src} type={source.type} />)}
-          </video>
+          <ExplainerVideo className={home.video} sources={video} poster="/media/jev-in-60s-poster.jpg" label="Jev in 60 seconds, a silent animated explainer" />
         ) : null}
         <PrimitiveDiagrams />
       </section>
