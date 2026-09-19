@@ -45,7 +45,7 @@ Generated from cached evidence. Repetition on X is not treated as independent co
 ## Developers have published small Jev integrations and demonstrations.
 
 - **Status:** Demonstrated
-- **Evidence:** 29 retained posts were classified as code or demos; public repositories exist for Home Assistant, MCP, and a MAGI-style experiment.
+- **Evidence:** 36 retained posts were classified as code or demos; public repositories exist for Home Assistant, MCP, and a MAGI-style experiment.
 - **Sources:** [source 1](https://github.com/AboveColin/HA-Jev), [source 2](https://github.com/itsmostafa/typesafe-mcp), [source 3](https://github.com/hide-G/magi-system-on-jev)
 - **Counterarguments:** Existence of code is not evidence of production reliability or commercial demand.
 - **Open questions:** Which projects have active users, evaluations, and maintained integrations?

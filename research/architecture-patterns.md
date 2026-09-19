@@ -4,14 +4,14 @@
 
 A typed judgment service sits beside ordinary code; code owns effects and safety boundaries.
 
-- **Evidence:** [source 1](https://docs.typesafe.ai/primitives), [source 2](https://x.com/i/web/status/2100499596095209849), [source 3](https://x.com/i/web/status/2099928269785272613), [source 4](https://x.com/i/web/status/2100988217931809255)
+- **Evidence:** [source 1](https://docs.typesafe.ai/primitives), [source 2](https://x.com/i/web/status/2099986548007559657), [source 3](https://x.com/i/web/status/2100499596095209849), [source 4](https://x.com/i/web/status/2100059711210954797)
 - **Caveat:** The extra network hop must beat a local rule or classifier.
 
 ## Cascade router
 
 A cheap decision chooses whether to use rules, a small model, a premium model, a specialist, or a human.
 
-- **Evidence:** [source 1](https://x.com/i/web/status/2100078473419104388), [source 2](https://x.com/i/web/status/2100544757248278933), [source 3](https://x.com/i/web/status/2099928269785272613)
+- **Evidence:** [source 1](https://x.com/i/web/status/2100078473419104388), [source 2](https://x.com/i/web/status/2099933273736765905), [source 3](https://x.com/i/web/status/2100544757248278933)
 - **Caveat:** Bad routing can erase all cost savings through failures and retries.
 
 ## Confidence gate
