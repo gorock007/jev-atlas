@@ -5,25 +5,25 @@ item; an item goes in when it opens and comes out when it's done. Don't
 rebuild "what's pending" by searching the handoff folders.
 
 Jarvis session: 2b33bb90-8d47-4390-b30d-dd1484366462
-Usage band: green (assumed — Jarvis cannot run /usage itself; user to confirm the %) — green <50%, amber 50%+ (no fable for workers), red 75%+ (new heavy work to Codex)
+Usage band: green (assumed; user said not to worry, 2026-09-19) — green <50%, amber 50%+ (no fable for workers), red 75%+ (new heavy work to Codex)
 
 Other live terminals in this workspace that are NOT Jarvis workers: 9392c2d0 ("Build from PRD", the earlier Codex session), e3e98662 (untitled). Leave them alone.
 
 ## Questions for the user
-- 2026-09-18 1651 · plan · Q1 Fit checker needs a model pass to be worth sharing (the offline heuristic returns one generic decision point). OK to add an LLM call behind it (API key + per-use cost, rate-limited)? Which provider/budget?
-- 2026-09-18 1651 · plan · Q2 Buy a domain (jevatlas.com / .dev, ~$12/yr)? MCP URLs are sticky, so decide before promoting the endpoint.
-- 2026-09-18 1651 · plan · Q3 Budget ceiling for a fresh X collection + a weekly refresh cadence?
-- 2026-09-18 1651 · ops · Q4 Current /usage % so the band is real, not assumed.
+- 2026-09-19 · bookmarks · Chrome extension is not connected, and X bookmarks need user-login (the app bearer token cannot read them). User to reconnect the Claude Chrome extension, or paste the bookmarked links.
+- 2026-09-18 · domain · user is looking for one; will report back. Then: wire in Vercel + NEXT_PUBLIC_SITE_URL.
 
 ## Running workers
-- 2026-09-18 1651 · claude/sonnet · term 73bdc9f4-5678-4f3a-bebb-5e81fee61503 · handoffs/briefs/2026-09-18-1651-social-card.md · social-card
-- 2026-09-18 1651 · claude/opus · term 1c4c6d59-a4cc-4014-ac8c-922ccc894a64 · handoffs/briefs/2026-09-18-1651-homepage-builder-frame.md · homepage-builder-frame
+- 2026-09-19 1240 · claude/opus · term 91383e2d-507c-4d71-bb85-18f3acf68dae · handoffs/briefs/2026-09-19-1240-fit-checker.md · fit-checker
 
 ## Waiting on Jarvis
-- After both merge: deploy is automatic on push to main (Vercel Git integration) — verify https://jev-atlas.vercel.app and run an X card check.
+- After fit-checker merges: confirm AI Gateway auth works on the deployment (OIDC, else create AI_GATEWAY_API_KEY and add via `vercel env`), then test /fit live.
+
+## Decisions
+- Fit checker provider: Vercel AI Gateway, `google/gemini-2.5-flash-lite` (fallback `openai/gpt-5.6-luna`), ~US$0.0006/check; no auto top-up so credits are the hard ceiling.
+- X collection ceiling: A$4 (~US$2.60) per run. 2026-09-19 run spent US$0.83 → 301 posts, 133 retained. Old run states backed up in the session scratchpad.
 
 ## To-do
-- Fit checker page (Phase 4): deterministic retrieval stays as grounding; model pass does the decomposition, constrained to retrieved records. Blocked on Q1. Split into a fable design brief + opus build brief.
-- "Jev Weekly": collection cadence + what's-new diff + a repeatable post format. Blocked on Q3.
-- Custom domain wiring in Vercel + NEXT_PUBLIC_SITE_URL update. Blocked on Q2.
-- Revisit hook noise: ~/.claude/settings.json points 7 hooks at a revisit-hook binary missing from Revisit.app/Contents/Helpers (built copy exists under revist/.build/.../release). User to choose: copy in, fix Revisit build, or repoint.
+- "Jev Weekly": weekly collection under the A$4 ceiling + what's-new diff + a repeatable post format.
+- Fold bookmark resources into the catalog once readable.
+- Revisit hook noise: ~/.claude/settings.json points 7 hooks at a missing revisit-hook binary (built copy under revist/.build/.../release). User to choose.
