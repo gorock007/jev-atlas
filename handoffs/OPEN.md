@@ -12,8 +12,6 @@ Other live terminals in this workspace that are NOT Jarvis workers: 9392c2d0 ("B
 ## Questions for the user
 
 ## Running workers
-- 2026-09-20 0900 · codex/gpt-5.6-sol · term 5b6d4d54-3396-49bb-b341-4d807e99cdc1 · handoffs/briefs/2026-09-20-0900-hardening.md · hardening
-- 2026-09-20 0900 · claude/sonnet · term 960239c5-0340-49de-b3ad-5f217dccc9a1 · handoffs/briefs/2026-09-20-0900-readme.md · readme
 
 ## Waiting on Jarvis
 - /fit model pass confirmed live 2026-09-19 (gemini-2.5-flash-lite). Still to eyeball: /fit at 375px.
