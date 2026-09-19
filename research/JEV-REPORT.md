@@ -1,6 +1,6 @@
 # Jev Research Report
 
-Generated: 2026-09-19T03:05:17.482Z
+Generated: 2026-09-19T10:54:33.829Z
 
 ## Executive Summary
 
@@ -41,8 +41,8 @@ That changes the failure surface. Invalid prose and parser failures shrink, whil
 
 ## What TypeSafe Claims
 
-- **Latency:** The launch material reports large latency multiples; X discussion mostly repeats those figures. Status: **Vendor Claim**. Sources: [source](https://typesafe.ai/blog/introducing-system-one-models-and-jev), [source](https://x.com/i/web/status/2099928060644749682).
-- **Economics:** Published pricing is echoed across launch discussion, but remains mutable vendor pricing. Status: **Vendor Claim**. Sources: [source](https://typesafe.ai/), [source](https://x.com/i/web/status/2100946612369420594).
+- **Latency:** The launch material reports large latency multiples; X discussion mostly repeats those figures. Trade press (The Register) relays the same vendor figures without independent measurement. Status: **Vendor Claim**. Sources: [source](https://typesafe.ai/blog/introducing-system-one-models-and-jev), [source](https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711), [source](https://x.com/i/web/status/2099928060644749682).
+- **Economics:** Published pricing is echoed across launch discussion, but remains mutable vendor pricing. Status: **Vendor Claim**. Sources: [source](https://typesafe.ai/), [source](https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711), [source](https://x.com/i/web/status/2100946612369420594).
 - **Calibration and reliability:** TypeSafe describes calibrated confidence and markets “zero hallucinations.” Typed output is demonstrated; workload-level calibration and error rates are not independently established.
 
 ## What Has Been Independently Demonstrated

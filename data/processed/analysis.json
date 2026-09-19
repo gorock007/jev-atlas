@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-19T03:05:17.482Z",
+  "generatedAt": "2026-09-19T10:54:33.829Z",
   "dataset": {
     "totalPosts": 431,
     "retainedPosts": 155,
@@ -43,9 +43,10 @@
     {
       "claim": "TypeSafe reports Jev as materially faster than LLM workflows on its own evaluations.",
       "status": "Vendor Claim",
-      "evidence": "The launch material reports large latency multiples; X discussion mostly repeats those figures.",
+      "evidence": "The launch material reports large latency multiples; X discussion mostly repeats those figures. Trade press (The Register) relays the same vendor figures without independent measurement.",
       "sources": [
         "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+        "https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711",
         "https://x.com/i/web/status/2099928060644749682"
       ],
       "counterarguments": "No independent benchmark in the collected dataset reproduces the headline range on representative workloads.",
@@ -57,6 +58,7 @@
       "evidence": "Published pricing is echoed across launch discussion, but remains mutable vendor pricing.",
       "sources": [
         "https://typesafe.ai/",
+        "https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711",
         "https://x.com/i/web/status/2100946612369420594"
       ],
       "counterarguments": "Application cost also includes retries, state construction, integration, and any fallback LLM calls.",
@@ -98,12 +100,14 @@
     {
       "claim": "The strongest near-term architecture is Jev as a complement and control layer around generative models.",
       "status": "Plausible",
-      "evidence": "Jev produces decisions rather than prose, and Vercel exposes it through an evaluation-oriented API.",
+      "evidence": "Jev produces decisions rather than prose; Vercel and OpenRouter expose it through evaluation-oriented endpoints, and LangChain documents it as a routing and guardrail layer inside its own harness.",
       "sources": [
         "https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway",
+        "https://openrouter.ai/typesafe/jev-latest",
+        "https://www.langchain.com/blog/building-a-harness-with-jev",
         "https://docs.typesafe.ai/primitives"
       ],
-      "counterarguments": "Simple rules or conventional classifiers may be cheaper and more predictable for many bounded tasks.",
+      "counterarguments": "Simple rules or conventional classifiers may be cheaper and more predictable for many bounded tasks. Platform and framework integrations are partner announcements, not independent evaluations.",
       "openQuestions": "At what ambiguity and volume does Jev outperform rules, embeddings, and compact classifiers?"
     },
     {
@@ -123,6 +127,7 @@
       "evidence": "The collected discussion overwhelmingly relays launch claims; at least one source explicitly labels the figures self-reported.",
       "sources": [
         "https://x.com/i/web/status/2100371159778746390",
+        "https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711",
         "https://typesafe.ai/blog/introducing-system-one-models-and-jev"
       ],
       "counterarguments": "The ecosystem is only days old, so absence of independent evidence is expected rather than disconfirming.",

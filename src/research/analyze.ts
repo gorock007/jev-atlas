@@ -13,6 +13,9 @@ import { BUILD_IDEAS } from "./catalog.js";
 const OFFICIAL_DOCS = "https://docs.typesafe.ai/primitives";
 const OFFICIAL_LAUNCH = "https://typesafe.ai/blog/introducing-system-one-models-and-jev";
 const VERCEL = "https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway";
+const LANGCHAIN = "https://www.langchain.com/blog/building-a-harness-with-jev";
+const OPENROUTER = "https://openrouter.ai/typesafe/jev-latest";
+const THE_REGISTER = "https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711";
 
 function mdLink(url: string, label = "source"): string {
   return `[${label}](${url})`;
@@ -45,8 +48,8 @@ function deriveClaims(posts: ProcessedPost[]): ResearchClaim[] {
     {
       claim: "TypeSafe reports Jev as materially faster than LLM workflows on its own evaluations.",
       status: "Vendor Claim",
-      evidence: "The launch material reports large latency multiples; X discussion mostly repeats those figures.",
-      sources: [OFFICIAL_LAUNCH, ...(latency ? [latency] : [])],
+      evidence: "The launch material reports large latency multiples; X discussion mostly repeats those figures. Trade press (The Register) relays the same vendor figures without independent measurement.",
+      sources: [OFFICIAL_LAUNCH, THE_REGISTER, ...(latency ? [latency] : [])],
       counterarguments: "No independent benchmark in the collected dataset reproduces the headline range on representative workloads.",
       openQuestions: "What are p50/p95 latency and accuracy under equal task definitions and concurrency?",
     },
@@ -54,7 +57,7 @@ function deriveClaims(posts: ProcessedPost[]): ResearchClaim[] {
       claim: "TypeSafe reports a low input-token price and no metered output-token charge for Jev.",
       status: "Vendor Claim",
       evidence: "Published pricing is echoed across launch discussion, but remains mutable vendor pricing.",
-      sources: ["https://typesafe.ai/", ...(cost ? [cost] : [])],
+      sources: ["https://typesafe.ai/", THE_REGISTER, ...(cost ? [cost] : [])],
       counterarguments: "Application cost also includes retries, state construction, integration, and any fallback LLM calls.",
       openQuestions: "Will pricing and limits remain attractive at production volume?",
     },
@@ -85,9 +88,9 @@ function deriveClaims(posts: ProcessedPost[]): ResearchClaim[] {
     {
       claim: "The strongest near-term architecture is Jev as a complement and control layer around generative models.",
       status: "Plausible",
-      evidence: "Jev produces decisions rather than prose, and Vercel exposes it through an evaluation-oriented API.",
-      sources: [VERCEL, OFFICIAL_DOCS],
-      counterarguments: "Simple rules or conventional classifiers may be cheaper and more predictable for many bounded tasks.",
+      evidence: "Jev produces decisions rather than prose; Vercel and OpenRouter expose it through evaluation-oriented endpoints, and LangChain documents it as a routing and guardrail layer inside its own harness.",
+      sources: [VERCEL, OPENROUTER, LANGCHAIN, OFFICIAL_DOCS],
+      counterarguments: "Simple rules or conventional classifiers may be cheaper and more predictable for many bounded tasks. Platform and framework integrations are partner announcements, not independent evaluations.",
       openQuestions: "At what ambiguity and volume does Jev outperform rules, embeddings, and compact classifiers?",
     },
     {
@@ -102,7 +105,7 @@ function deriveClaims(posts: ProcessedPost[]): ResearchClaim[] {
       claim: "Headline benchmark and reliability claims remain insufficiently independently verified.",
       status: "Plausible",
       evidence: "The collected discussion overwhelmingly relays launch claims; at least one source explicitly labels the figures self-reported.",
-      sources: [...(skepticism ? [skepticism] : []), OFFICIAL_LAUNCH],
+      sources: [...(skepticism ? [skepticism] : []), THE_REGISTER, OFFICIAL_LAUNCH],
       counterarguments: "The ecosystem is only days old, so absence of independent evidence is expected rather than disconfirming.",
       openQuestions: "Who will publish the first task-matched, reproducible comparison?",
     },

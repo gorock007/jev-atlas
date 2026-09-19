@@ -13,8 +13,8 @@ Generated from cached evidence. Repetition on X is not treated as independent co
 ## TypeSafe reports Jev as materially faster than LLM workflows on its own evaluations.
 
 - **Status:** Vendor Claim
-- **Evidence:** The launch material reports large latency multiples; X discussion mostly repeats those figures.
-- **Sources:** [source 1](https://typesafe.ai/blog/introducing-system-one-models-and-jev), [source 2](https://x.com/i/web/status/2099928060644749682)
+- **Evidence:** The launch material reports large latency multiples; X discussion mostly repeats those figures. Trade press (The Register) relays the same vendor figures without independent measurement.
+- **Sources:** [source 1](https://typesafe.ai/blog/introducing-system-one-models-and-jev), [source 2](https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711), [source 3](https://x.com/i/web/status/2099928060644749682)
 - **Counterarguments:** No independent benchmark in the collected dataset reproduces the headline range on representative workloads.
 - **Open questions:** What are p50/p95 latency and accuracy under equal task definitions and concurrency?
 
@@ -22,7 +22,7 @@ Generated from cached evidence. Repetition on X is not treated as independent co
 
 - **Status:** Vendor Claim
 - **Evidence:** Published pricing is echoed across launch discussion, but remains mutable vendor pricing.
-- **Sources:** [source 1](https://typesafe.ai/), [source 2](https://x.com/i/web/status/2100946612369420594)
+- **Sources:** [source 1](https://typesafe.ai/), [source 2](https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711), [source 3](https://x.com/i/web/status/2100946612369420594)
 - **Counterarguments:** Application cost also includes retries, state construction, integration, and any fallback LLM calls.
 - **Open questions:** Will pricing and limits remain attractive at production volume?
 
@@ -53,9 +53,9 @@ Generated from cached evidence. Repetition on X is not treated as independent co
 ## The strongest near-term architecture is Jev as a complement and control layer around generative models.
 
 - **Status:** Plausible
-- **Evidence:** Jev produces decisions rather than prose, and Vercel exposes it through an evaluation-oriented API.
-- **Sources:** [source 1](https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway), [source 2](https://docs.typesafe.ai/primitives)
-- **Counterarguments:** Simple rules or conventional classifiers may be cheaper and more predictable for many bounded tasks.
+- **Evidence:** Jev produces decisions rather than prose; Vercel and OpenRouter expose it through evaluation-oriented endpoints, and LangChain documents it as a routing and guardrail layer inside its own harness.
+- **Sources:** [source 1](https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway), [source 2](https://openrouter.ai/typesafe/jev-latest), [source 3](https://www.langchain.com/blog/building-a-harness-with-jev), [source 4](https://docs.typesafe.ai/primitives)
+- **Counterarguments:** Simple rules or conventional classifiers may be cheaper and more predictable for many bounded tasks. Platform and framework integrations are partner announcements, not independent evaluations.
 - **Open questions:** At what ambiguity and volume does Jev outperform rules, embeddings, and compact classifiers?
 
 ## Cheap decision calls could make tens or hundreds of semantic judgments per event economical.
@@ -70,6 +70,6 @@ Generated from cached evidence. Repetition on X is not treated as independent co
 
 - **Status:** Plausible
 - **Evidence:** The collected discussion overwhelmingly relays launch claims; at least one source explicitly labels the figures self-reported.
-- **Sources:** [source 1](https://x.com/i/web/status/2100371159778746390), [source 2](https://typesafe.ai/blog/introducing-system-one-models-and-jev)
+- **Sources:** [source 1](https://x.com/i/web/status/2100371159778746390), [source 2](https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711), [source 3](https://typesafe.ai/blog/introducing-system-one-models-and-jev)
 - **Counterarguments:** The ecosystem is only days old, so absence of independent evidence is expected rather than disconfirming.
 - **Open questions:** Who will publish the first task-matched, reproducible comparison?

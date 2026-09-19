@@ -22,6 +22,7 @@ Other live terminals in this workspace that are NOT Jarvis workers: 9392c2d0 ("B
 - X collection ceiling: A$4 (~US$2.60) per run. 2026-09-19: three passes, US$1.65 total (~A$2.55) → 431 posts, 155 retained. Do not collect again today. Old run states backed up in the session scratchpad.
 
 ## To-do
-- Place three third-party sources (LangChain harness post — vendor-adjacent; OpenRouter Decisions endpoint — platform support; The Register launch piece — independent press repeating vendor numbers) as claim evidence without upgrading status. Summaries in handoffs/merged/2026-09-19-1600-located-work-2.md. Needs a small brief against the claims catalog.
+- Domain: user owns gorock.sh; Jarvis recommended jev.gorock.sh (awaiting go-ahead + DNS CNAME from user). Then add domain in Vercel, set NEXT_PUBLIC_SITE_URL, redeploy, keep vercel.app redirecting.
+- OpenCode note: exact-edit brief in one file worked first try (muse-spark, ~7 min). Good for this shape of task.
 - "Jev Weekly": weekly collection under the A$4 ceiling + what's-new diff + a repeatable post format.
 - Revisit hook noise: ~/.claude/settings.json points 7 hooks at a missing revisit-hook binary (built copy under revist/.build/.../release). User to choose.
