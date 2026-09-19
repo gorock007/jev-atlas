@@ -3,9 +3,21 @@ import type { ReactNode } from "react";
 import { AppNavigation } from "@/components/app-navigation";
 import "./globals.css";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteDescription = "An evidence-first interface for exploring Jev research, claims, projects, patterns, and opportunities.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: { default: "Jev Atlas", template: "%s · Jev Atlas" },
-  description: "An evidence-first interface for exploring Jev research, claims, projects, patterns, and opportunities.",
+  description: siteDescription,
+  openGraph: {
+    siteName: "Jev Atlas",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export const viewport: Viewport = {
