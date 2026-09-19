@@ -1,10 +1,19 @@
 import Link from "next/link";
+import { CopyMcpConfig } from "@/components/copy-mcp-config";
 import { ResearchSearch, type SearchItem } from "@/components/research-search";
 import { UiIcon } from "@/components/ui-icon";
+import { OPPORTUNITY_LENSES } from "@/knowledge/lenses";
 import { loadAnalysis, loadProcessedPosts, loadRunSummary, RESEARCH_DOCUMENTS } from "@/lib/research-data";
 import { formatCategory, safeHref } from "@/lib/format";
 
 export const dynamic = "force-static";
+
+/** The three MCP tools that answer the questions an agent cannot answer on its own. */
+const AGENT_TOOLS = [
+  ["assess_jev_fit", "Is this workload actually a bounded semantic decision, and where does it stop?"],
+  ["get_build_blueprint", "Open an authored opportunity with its architecture, MVP, experiment, and unknowns."],
+  ["trace_jev_claim", "Check a claim's evidence status, counterarguments, open questions, and sources."],
+];
 
 export default async function OverviewPage() {
   const [analysis, posts, runSummary] = await Promise.all([loadAnalysis(), loadProcessedPosts(), loadRunSummary()]);
@@ -23,6 +32,9 @@ export default async function OverviewPage() {
   const topCategories = categories.slice(0, 6);
   const actualProjects = analysis.projects.filter((project) => project.status === "ACTUALLY BUILT");
   const topIdeas = [...analysis.ideas].sort((a, b) => b.indieFit - a.indieFit || b.confidence.localeCompare(a.confidence)).slice(0, 5);
+  const lensCounts = OPPORTUNITY_LENSES.map((lens) => ({ lens, count: analysis.ideas.filter((idea) => idea.lens === lens.id).length }));
+  const demonstratedClaims = analysis.claims.filter((claim) => claim.status === "Demonstrated").length;
+  const vendorClaims = analysis.claims.filter((claim) => claim.status === "Vendor Claim").length;
   const searchItems: SearchItem[] = [
     ...analysis.claims.map((claim, index) => ({ id: `claim-${index}`, type: "Claim", title: claim.claim, description: claim.evidence, href: "/claims", tags: [claim.status] })),
     ...analysis.projects.map((project, index) => ({ id: `project-${index}`, type: "Project", title: project.name, description: project.description, href: "/projects", tags: [project.status, project.jevRole] })),
@@ -34,10 +46,75 @@ export default async function OverviewPage() {
   return (
     <div>
       <section className="site-container atlas-hero">
-        <p className="atlas-kicker">An independent field guide to system-one models</p>
-        <h1>The Jev research atlas</h1>
-        <p className="atlas-deck">165 posts mapping the claims, experiments, architectures, and open questions around intelligence that decides.</p>
+        <p className="atlas-kicker">An independent, evidence-checked field guide to Jev</p>
+        <h1>What can you actually build with Jev?</h1>
+        <p className="atlas-deck">
+          {analysis.ideas.length} build blueprints drawn from the public record, {analysis.claims.length} claims sorted by what has been
+          demonstrated and what is still a vendor claim, and an MCP endpoint your coding agent can read directly.
+        </p>
 
+        <div className="home-cta-row">
+          <Link href="/map" className="home-cta-primary">See what to build <span aria-hidden="true">→</span></Link>
+          <Link href="/start" className="home-cta-secondary">Jev in 60 seconds</Link>
+          <Link href="/agent" className="atlas-text-link">Connect your agent <span>→</span></Link>
+        </div>
+
+        <div className="home-trust-line">
+          <span className="atlas-label">Evidence status</span>
+          <p>
+            Of {analysis.claims.length} tracked claims, <strong>{demonstratedClaims}</strong> are demonstrated by located work and{" "}
+            <strong>{vendorClaims}</strong> remain vendor claims. Status is recorded per claim and never upgraded by repetition.
+          </p>
+          <Link href="/claims" className="atlas-text-link">Claims ledger <span>→</span></Link>
+        </div>
+
+        <div className="lens-strip">
+          <div className="lens-strip-head">
+            <p className="atlas-label">Nine lenses · what a workload needs before Jev fits</p>
+            <Link href="/map" className="atlas-text-link">Open the opportunity map <span>→</span></Link>
+          </div>
+          <ul aria-label="Opportunity lenses">
+            {lensCounts.map(({ lens, count }, index) => (
+              <li key={lens.id}>
+                <Link href={`/map#${lens.id}`}>
+                  <b>{String(index + 1).padStart(2, "0")}</b>
+                  <span>{lens.title}</span>
+                  <em>{count} {count === 1 ? "blueprint" : "blueprints"}</em>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="site-container home-agent-invite">
+        <div className="home-agent-intro">
+          <p className="atlas-label"><span>01</span> Agent interface · MCP</p>
+          <h2>Don’t make your agent guess about Jev.</h2>
+          <p>The same normalized claims, projects, patterns, opportunities, evidence status, and sources that power this website, over one public read-only endpoint.</p>
+          <Link href="/agent" className="atlas-text-link">See the full agent interface <span>→</span></Link>
+        </div>
+
+        <div className="home-agent-panel">
+          <div className="mcp-compare">
+            <div>
+              <p className="atlas-label">Without the atlas</p>
+              <p>Your agent answers from whatever it absorbed before Jev existed, or reads vendor pages and cannot tell a located demonstration from launch copy.</p>
+            </div>
+            <div>
+              <p className="atlas-label">With the atlas</p>
+              <ul>
+                {AGENT_TOOLS.map(([tool, note]) => (
+                  <li key={tool}><code>{tool}</code><span>{note}</span></li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <CopyMcpConfig />
+        </div>
+      </section>
+
+      <section className="site-container home-index">
         <div className="atlas-strip" aria-label="Research layers">
           <span>Explore the index</span>
           {[
@@ -63,7 +140,7 @@ export default async function OverviewPage() {
           </aside>
 
           <div className="atlas-feature">
-            <p className="atlas-label"><span>01</span> Field synthesis</p>
+            <p className="atlas-label"><span>02</span> Field synthesis</p>
             <div className="atlas-feature-copy">
               <h2>Intelligence that decides, mapped.</h2>
               <p>What Jev is, what TypeSafe claims, what developers have actually built, and where the architecture gets interesting.</p>
@@ -108,12 +185,6 @@ export default async function OverviewPage() {
 
       <ResearchSearch items={searchItems} />
 
-      <section className="site-container home-agent-invite">
-        <div><p className="atlas-label">Agent interface · MCP</p><h2>Don’t make your agent scrape the atlas.</h2></div>
-        <p>Connect it directly to the same normalized claims, projects, patterns, opportunities, evidence status, and sources that power this website.</p>
-        <Link href="/agent">Connect an agent <span>→</span></Link>
-      </section>
-
       <section className="site-container benchmark-section">
         <div className="benchmark-intro">
           <p className="atlas-label">The research run</p>
@@ -139,7 +210,7 @@ export default async function OverviewPage() {
 
       <section className="site-container findings-section">
         <div className="section-heading">
-          <p className="atlas-label">02 Located work</p>
+          <p className="atlas-label">03 Located work</p>
           <h2>What people have actually built.</h2>
           <p>Public repositories, demonstrations, and integrations—kept separate from proposals and launch copy.</p>
         </div>
