@@ -10,6 +10,7 @@ Usage band: green (assumed; user said not to worry, 2026-09-19) — green <50%, 
 Other live terminals in this workspace that are NOT Jarvis workers: 9392c2d0 ("Build from PRD", the earlier Codex session), e3e98662 (untitled). Leave them alone.
 
 ## Questions for the user
+- 2026-09-19 · domain · jev.gorock.sh attached to project jev-atlas but unverified (apex gorock.sh lives in the other Vercel team). User to add TXT `_vercel` = `vc-domain-verify=jev.gorock.sh,c7d8d3b30b3fe6c8fef4` in Cloudflare. Then Jarvis: verify (POST /v9/projects/jev-atlas/domains/jev.gorock.sh/verify), set NEXT_PUBLIC_SITE_URL=https://jev.gorock.sh (production), redeploy, check sitemap/OG/MCP, update README + /agent copy.
 - 2026-09-18 · domain · user is looking for one; will report back. Then: wire in Vercel + NEXT_PUBLIC_SITE_URL.
 
 ## Running workers
