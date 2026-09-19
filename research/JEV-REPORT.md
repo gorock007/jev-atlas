@@ -1,6 +1,6 @@
 # Jev Research Report
 
-Generated: 2026-09-19T03:00:27.664Z
+Generated: 2026-09-19T03:05:17.482Z
 
 ## Executive Summary
 
@@ -49,7 +49,7 @@ That changes the failure surface. Invalid prose and parser failures shrink, whil
 
 - The documented Choice, Score, and Noul interface exists.
 - Vercel added **typesafe-ai/jev** through AI Gateway's evaluation interface. See the [Vercel announcement](https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway).
-- Public integrations and demos exist: [HA-Jev](https://github.com/AboveColin/HA-Jev), [typesafe-mcp](https://github.com/itsmostafa/typesafe-mcp), [MAGI System on Jev](https://github.com/hide-G/magi-system-on-jev), [Goblin HR](https://goblin-hr.kostysh.chatgpt.site/), [Axon Work integration](https://axon123.com), [ProgressGate](https://github.com/AshutoshVJTI/progressgate), [chess-jev](https://github.com/gopalanj/chess-jev), [TypeSafe Agent Skills](https://github.com/typesafe-ai/skills), [Jev Playground](https://jevtypesafe.vercel.app/).
+- Public integrations and demos exist: [HA-Jev](https://github.com/AboveColin/HA-Jev), [typesafe-mcp](https://github.com/itsmostafa/typesafe-mcp), [MAGI System on Jev](https://github.com/hide-G/magi-system-on-jev), [Goblin HR](https://goblin-hr.kostysh.chatgpt.site/), [Axon Work integration](https://axon123.com), [ProgressGate](https://github.com/AshutoshVJTI/progressgate), [chess-jev](https://github.com/gopalanj/chess-jev), [TypeSafe Agent Skills](https://github.com/typesafe-ai/skills), [Jev Playground](https://jevtypesafe.vercel.app/), [jev-router](https://github.com/gargpratyush/jev-router), [SemIf (formerly OpenJev)](https://github.com/TheoLeeCJ/SemIf), [J3vRoute](https://j3vroute.agents.bakingbad.dev), [system-one-router](https://www.npmjs.com/package/system-one-router), [is-odd-jev](https://www.npmjs.com/package/is-odd-jev).
 - The collected discussion overwhelmingly relays launch claims; at least one source explicitly labels the figures self-reported.
 
 ## What Developers Think
@@ -66,9 +66,14 @@ Enthusiasm focuses on moving intelligence from a visible chat surface into invis
 - **Goblin HR:** A small inspectable demo that evaluates candidates for an impossible mission. [source](https://x.com/i/web/status/2100386714250354786)
 - **Axon Work integration:** The author states that Axon Work uses Jev-style model decisions with a skill/action harness. [source](https://x.com/i/web/status/2100166309405413785)
 - **ProgressGate:** An npm package that detects semantic stagnation in agent tool-calling loops, published with tests, a quickstart, and a live demo build. [source](https://github.com/AshutoshVJTI/progressgate)
-- **chess-jev:** A chess move scorer with a working FastAPI/uvicorn server, browser UI, and test suite; its primary scoring backends are local fine-tuned models, with Jev wired in as one optional hosted backend. [source](https://github.com/gopalanj/chess-jev)
+- **chess-jev:** A chess move scorer with a working FastAPI/uvicorn server, browser UI, and test suite; its primary scoring backends are local fine-tuned models, with Jev wired in as one optional hosted backend. The builder also published a companion local model, ChessJev-MiniLM-v1 (huggingface.co/gopalanj/chessjev-minilm-v1): a MiniLM-L6 encoder with an attention head, full-finetuned on Apple M1 MPS against Stockfish 19 teacher labels. [source](https://github.com/gopalanj/chess-jev)
 - **TypeSafe Agent Skills:** TypeSafe's own published Claude Code plugin and skills.sh package that teaches coding agents to design and wire up Jev workflows. [source](https://github.com/typesafe-ai/skills)
 - **Jev Playground:** A live, interactive hosted demo with three preset use cases (Support Router, Compare & Choose, Content Triage) that runs real text through Jev and renders the typed judgments and computed routing. [source](https://jevtypesafe.vercel.app/)
+- **jev-router:** An npm-published CLI wrapper that launches Claude Code or OpenAI Codex through a loopback proxy, with a documented test suite covering shared policy, both request formats, and decision display. [source](https://github.com/gargpratyush/jev-router)
+- **SemIf (formerly OpenJev):** An independent open-weights reproduction of Jev's runtime-defined typed-decision interface, running a locally hosted 4B model (e.g. Qwen3.5-4B) on a consumer GPU with a browser WebGPU demo, committed benchmark runs, and row-level output data. [source](https://github.com/TheoLeeCJ/SemIf)
+- **J3vRoute:** A live, working single-page paper-trading demo: it simulates a virtual USDG portfolio traded across three markets on "Robinhood Chain," with fills clearly labelled as simulated (no swap is signed or broadcast). [source](https://j3vroute.agents.bakingbad.dev)
+- **system-one-router:** A published npm extension (v0.4.5) for the Pi coding agent that adds a per-turn model router; its README states it is based on and retains attribution to an existing router, yeliu84/pi-model-router. [source](https://www.npmjs.com/package/system-one-router)
+- **is-odd-jev:** A published npm package (v1.1.0, zero dependencies) that answers whether a number is odd by calling a Jev Noul primitive and returning its calibrated probability instead of a bare boolean. [source](https://www.npmjs.com/package/is-odd-jev)
 
 Proposals are tracked separately:
 

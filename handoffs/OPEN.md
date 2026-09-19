@@ -14,7 +14,6 @@ Other live terminals in this workspace that are NOT Jarvis workers: 9392c2d0 ("B
 - 2026-09-18 · domain · user is looking for one; will report back. Then: wire in Vercel + NEXT_PUBLIC_SITE_URL.
 
 ## Running workers
-- 2026-09-19 1520 · claude/sonnet · term 6bdf5c9b-43bc-45c0-8f3b-192ec2cfe380 · handoffs/briefs/2026-09-19-1520-located-work-2.md · located-work-2 (after merge: Jarvis runs analyze + report; decide where the LangChain/OpenRouter/Register sources go)
 
 ## Waiting on Jarvis
 - After the card is added: POST the live fit-check and confirm mode:"model"; eyeball /fit at 375px.
@@ -24,5 +23,6 @@ Other live terminals in this workspace that are NOT Jarvis workers: 9392c2d0 ("B
 - X collection ceiling: A$4 (~US$2.60) per run. 2026-09-19: three passes, US$1.65 total (~A$2.55) → 431 posts, 155 retained. Do not collect again today. Old run states backed up in the session scratchpad.
 
 ## To-do
+- Place three third-party sources (LangChain harness post — vendor-adjacent; OpenRouter Decisions endpoint — platform support; The Register launch piece — independent press repeating vendor numbers) as claim evidence without upgrading status. Summaries in handoffs/merged/2026-09-19-1600-located-work-2.md. Needs a small brief against the claims catalog.
 - "Jev Weekly": weekly collection under the A$4 ceiling + what's-new diff + a repeatable post format.
 - Revisit hook noise: ~/.claude/settings.json points 7 hooks at a missing revisit-hook binary (built copy under revist/.build/.../release). User to choose.
