@@ -1,0 +1,99 @@
+.panel {
+  --mm-bg: #121212;
+  --mm-text: #f4f3ef;
+  --mm-dim: #9c9a93;
+  --mm-line: #34332f;
+  border: 1px solid #121212;
+  background: var(--mm-bg);
+  color: var(--mm-text);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .6rem 1.5rem;
+  border-bottom: 1px solid var(--mm-line);
+  padding: .8rem 1.1rem;
+}
+.toolbar p { margin: 0; color: var(--mm-dim); font-size: .78rem; line-height: 1.4; }
+.toolbar div { display: flex; gap: .5rem; }
+.toolbar button {
+  border: 1px solid #4a4944;
+  background: transparent;
+  padding: .45rem .8rem;
+  color: var(--mm-text);
+  font-size: .74rem;
+  cursor: pointer;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+.toolbar button:hover { border-color: #ff6a4d; color: #ff6a4d; }
+
+.canvas { overflow-x: auto; padding: .4rem 0 .8rem; scrollbar-color: #4a4944 transparent; }
+.canvas svg { display: block; max-width: none; }
+
+.edge { fill: none; stroke: currentColor; stroke-width: 1.6; opacity: .85; }
+.rule { fill: none; stroke: currentColor; stroke-width: 1.6; }
+.node { animation: unfold 260ms ease both; }
+
+/* One hue per top-level branch; red stays reserved for the root and for focus. */
+.root { color: #ff5a3c; }
+.c0 { color: #d9b676; }
+.c1 { color: #9cc28e; }
+.c2 { color: #86b8d4; }
+.c3 { color: #c3a6de; }
+.c4 { color: #e6a08f; }
+.c5 { color: #cfcdc6; }
+
+.link { text-decoration: none; outline: none; }
+.label, .branchLabel, .rootLabel { fill: var(--mm-text); font-family: Arial, Helvetica, sans-serif; font-size: 14px; }
+.branchLabel { font-size: 15.5px; font-weight: 700; }
+.rootLabel { font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 25px; letter-spacing: -.03em; }
+.link:hover text, .link:focus-visible text { fill: #ff6a4d; }
+.link:focus-visible text { text-decoration: underline; }
+.count { fill: var(--mm-dim); font-family: SFMono-Regular, Consolas, "Liberation Mono", monospace; font-size: 11px; }
+.status { fill: currentColor; font-family: SFMono-Regular, Consolas, "Liberation Mono", monospace; font-size: 11.5px; letter-spacing: .02em; }
+
+.toggle { cursor: pointer; outline: none; }
+.hit { fill: transparent; }
+.knob, .knobOpen { stroke: currentColor; stroke-width: 2; transition: fill 160ms ease; }
+.knob { fill: currentColor; }
+.knobOpen { fill: var(--mm-bg); }
+.toggle:hover .knob, .toggle:hover .knobOpen { fill: #fffefb; }
+.toggle:focus-visible .hit { stroke: #ff6a4d; stroke-width: 2; }
+
+.list { display: none; padding: .4rem 1rem 1.2rem; }
+.list ul { margin: 0; padding: 0; list-style: none; }
+.list ul ul { margin-left: .45rem; border-left: 1px solid var(--mm-line); padding-left: .9rem; }
+.list summary, .listLink, .listOpenAll {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .2rem .6rem;
+  min-height: 2.75rem;
+  padding: .7rem 0;
+  color: var(--mm-text);
+  font-size: .95rem;
+  line-height: 1.3;
+  text-decoration: none;
+}
+.list summary { cursor: pointer; font-weight: 700; list-style: none; }
+.list summary::-webkit-details-marker { display: none; }
+.list summary::before { content: "+"; width: .8rem; color: #ff6a4d; font-family: SFMono-Regular, Consolas, monospace; font-weight: 400; }
+.list details[open] > summary::before { content: "−"; }
+.list details details summary { font-weight: 400; }
+.listLink { border-bottom: 1px solid var(--mm-line); }
+.listOpenAll { color: #ff6a4d; font-size: .82rem; }
+.listCount { color: var(--mm-dim); font-family: SFMono-Regular, Consolas, monospace; font-size: .72rem; font-weight: 400; }
+.listStatus { color: #e6a08f; font-family: SFMono-Regular, Consolas, monospace; font-size: .7rem; font-weight: 400; }
+
+@keyframes unfold {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 639px) {
+  .toolbar, .canvas { display: none; }
+  .list { display: block; }
+}

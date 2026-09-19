@@ -3,27 +3,51 @@
 import { ListIcon, MagnifyingGlassIcon, XIcon } from "@phosphor-icons/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const links = [
-  { href: "/", label: "The atlas" },
   { href: "/start", label: "Start here" },
+  { href: "/map", label: "Build ideas" },
   { href: "/fit", label: "Fit check" },
   { href: "/claims", label: "Claims" },
+  { href: "/agent", label: "For agents" },
+];
+
+const moreLinks = [
   { href: "/projects", label: "Projects" },
   { href: "/patterns", label: "Patterns" },
   { href: "/ideas", label: "Ideas" },
-  { href: "/map", label: "Map" },
   { href: "/evidence", label: "Evidence" },
   { href: "/library", label: "Library" },
-  { href: "/agent", label: "For agents" },
 ];
+
+function isActive(pathname: string, href: string): boolean {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export function AppNavigation() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const more = useRef<HTMLDetailsElement>(null);
 
-  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    setOpen(false);
+    if (more.current) more.current.open = false;
+  }, [pathname]);
+  // The "More" menu is a native <details>, so it opens without JavaScript; this only adds dismissal.
+  useEffect(() => {
+    const dismiss = (event: Event) => {
+      const menu = more.current;
+      if (!menu?.open) return;
+      if (event instanceof KeyboardEvent ? event.key === "Escape" : !menu.contains(event.target as Node)) menu.open = false;
+    };
+    document.addEventListener("keydown", dismiss);
+    document.addEventListener("pointerdown", dismiss);
+    return () => {
+      document.removeEventListener("keydown", dismiss);
+      document.removeEventListener("pointerdown", dismiss);
+    };
+  }, []);
   useEffect(() => {
     if (!open) return;
     const close = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
@@ -46,10 +70,13 @@ export function AppNavigation() {
         </Link>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
-          {links.map((item) => {
-            const active = item.href === "/" ? pathname === "/" : pathname === item.href || pathname.startsWith(`${item.href}/`);
-            return <Link key={item.href} href={item.href} aria-current={active ? "page" : undefined}>{item.label}</Link>;
-          })}
+          {links.map((item) => <Link key={item.href} href={item.href} aria-current={isActive(pathname, item.href) ? "page" : undefined}>{item.label}</Link>)}
+          <details className="nav-more" ref={more}>
+            <summary data-current={moreLinks.some((item) => isActive(pathname, item.href)) ? "true" : undefined}>More</summary>
+            <div className="nav-more-panel">
+              {moreLinks.map((item) => <Link key={item.href} href={item.href} aria-current={isActive(pathname, item.href) ? "page" : undefined}>{item.label}</Link>)}
+            </div>
+          </details>
         </nav>
 
         <Link href="/#research-search" className="header-search" aria-label="Search the research index">
@@ -66,14 +93,10 @@ export function AppNavigation() {
       {open ? (
         <div className="mobile-nav-panel">
           <nav aria-label="Mobile navigation">
-            {links.map((item, index) => {
-              const active = item.href === "/" ? pathname === "/" : pathname === item.href || pathname.startsWith(`${item.href}/`);
-              return (
-                <Link key={item.href} href={item.href} aria-current={active ? "page" : undefined}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>{item.label}
-                </Link>
-              );
-            })}
+            {links.map((item) => <Link key={item.href} href={item.href} aria-current={isActive(pathname, item.href) ? "page" : undefined}>{item.label}</Link>)}
+          </nav>
+          <nav aria-label="More sections" className="mobile-nav-more">
+            {moreLinks.map((item) => <Link key={item.href} href={item.href} aria-current={isActive(pathname, item.href) ? "page" : undefined}>{item.label}</Link>)}
           </nav>
           <Link href="/#research-search" className="mobile-search"><MagnifyingGlassIcon size={17} /> Search the index</Link>
         </div>

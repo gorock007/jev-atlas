@@ -1,7 +1,10 @@
 import Link from "next/link";
+import { AtlasMindmap } from "@/components/atlas-mindmap";
 import { CopyContext } from "@/components/copy-context";
+import { PrimitiveDiagrams } from "@/components/primitive-diagrams";
 import { StatusChip } from "@/components/record-chrome";
 import { UiIcon } from "@/components/ui-icon";
+import { buildMindmap, START_ANCHORS } from "@/knowledge/mindmap";
 import { renderRecordMarkdown } from "@/knowledge/repository";
 import { atlasRecords } from "@/lib/atlas";
 import { safeHref } from "@/lib/format";
@@ -62,7 +65,16 @@ export default async function StartPage() {
         ) : null}
       </header>
 
-      <section className="border-b border-ink/15 py-12">
+      <section className="border-b border-ink/15 py-10" aria-label="Map of the atlas">
+        <AtlasMindmap tree={buildMindmap(records)} />
+      </section>
+
+      <section id={START_ANCHORS.primitives} className="border-b border-ink/15 py-12">
+        <h2 className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">Three question types</h2>
+        <div className="mt-7"><PrimitiveDiagrams /></div>
+      </section>
+
+      <section id={START_ANCHORS.shape} className="border-b border-ink/15 py-12">
         <h2 className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">The shape of an integration</h2>
         <ol className="mt-7 grid gap-px bg-ink/10">
           {PIPELINE.map((entry, index) => (
@@ -78,7 +90,7 @@ export default async function StartPage() {
         </p>
       </section>
 
-      <section className="border-b border-ink/15 py-12">
+      <section id={START_ANCHORS.isNot} className="border-b border-ink/15 py-12">
         <div className="grid gap-10 lg:grid-cols-2">
           <div>
             <h2 className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">Jev is</h2>

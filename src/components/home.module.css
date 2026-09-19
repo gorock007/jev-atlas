@@ -1,0 +1,61 @@
+/* Homepage sections. Shared chrome (CTAs, lens strip, labels) stays in globals.css. */
+.hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 2rem 3.5rem; align-items: center; padding-block: 2.2rem 3rem; }
+.heroCopy h1 {
+  max-width: 13ch;
+  margin: .9rem 0 0;
+  font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif;
+  font-size: clamp(2.5rem, 5.6vw, 5.6rem);
+  font-weight: 400;
+  letter-spacing: -.055em;
+  line-height: .9;
+  text-transform: uppercase;
+}
+.heroCopy :global(.atlas-deck) { max-width: 46ch; margin: 1.2rem 0 1.7rem; }
+.ctas { margin-bottom: 0; }
+.heroVisual { width: 100%; max-width: 35rem; justify-self: end; }
+
+.section { border-top: 1px solid #121212; padding-block: 3.5rem; }
+.sectionHead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem 3.5rem; align-items: end; margin-bottom: 2rem; }
+.sectionHead h2, .fit h2 { max-width: 16ch; margin: 0; font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: clamp(2.1rem, 3.6vw, 3.6rem); font-weight: 400; letter-spacing: -.05em; line-height: .95; }
+.sectionHead p, .fit p { max-width: 52ch; margin: 0; color: #3c3a36; font-family: "Iowan Old Style", Baskerville, serif; font-size: 1.05rem; line-height: 1.45; }
+
+.video { display: block; width: 100%; max-width: 60rem; aspect-ratio: 16 / 9; margin: 0 0 2rem; border: 1px solid #121212; background: #121212; }
+
+.fit { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.5rem 3rem; align-items: center; background: #f4f3ef; padding: 2.4rem 2.2rem; }
+.fit p { margin-top: .9rem; }
+
+.agent { display: grid; grid-template-columns: .8fr 1.2fr; gap: 2rem 4rem; align-items: start; }
+.agent .sectionHead { display: block; margin: 0; }
+.agent .sectionHead p { margin: 1.1rem 0 1.4rem; }
+.tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: 0 0 1.4rem; padding: 0; border: 1px solid #d9d8d3; background: #d9d8d3; list-style: none; }
+.tools li { background: #fffefb; padding: 1rem; }
+.tools code { color: #121212; font-family: SFMono-Regular, Consolas, monospace; font-size: .72rem; font-weight: 600; overflow-wrap: anywhere; }
+.tools span { display: block; margin-top: .4rem; color: #65635f; font-size: .76rem; line-height: 1.45; }
+
+.corpus { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; margin: 0; border: 1px solid #d9d8d3; background: #d9d8d3; }
+.corpus div { display: grid; align-content: space-between; min-height: 8rem; background: #fffefb; padding: 1rem; }
+.corpus dd { margin: 0; font-family: "Iowan Old Style", Baskerville, serif; font-size: clamp(2rem, 3.4vw, 3.2rem); letter-spacing: -.05em; line-height: 1; }
+.corpus dt { color: #65635f; font-size: .78rem; line-height: 1.3; }
+.corpusFoot { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .8rem 2rem; margin-top: 1rem; }
+.corpusFoot p { max-width: 70ch; margin: 0; color: #65635f; font-size: .8rem; line-height: 1.5; }
+
+@media (max-width: 1000px) {
+  .hero { grid-template-columns: 1fr; padding-block: 1.6rem 2.5rem; }
+  .heroCopy h1 { max-width: 16ch; }
+  .heroVisual { justify-self: start; max-width: 30rem; }
+  .agent { grid-template-columns: 1fr; }
+  .corpus { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .section { padding-block: 2.6rem; }
+  .sectionHead { grid-template-columns: 1fr; margin-bottom: 1.5rem; }
+  .fit { grid-template-columns: 1fr; padding: 1.6rem 1.2rem; }
+  .tools { grid-template-columns: 1fr; }
+  .corpus { grid-template-columns: 1fr 1fr; }
+  .corpus div { min-height: 6.5rem; }
+}
+@media (max-width: 600px) {
+  .hero { padding-top: 1.2rem; }
+  .heroCopy h1 { font-size: clamp(2.2rem, 10.6vw, 3.6rem); }
+  .heroCopy :global(.atlas-deck) { margin: .9rem 0 1.3rem; }
+}

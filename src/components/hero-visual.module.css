@@ -1,0 +1,17 @@
+/* The frame reserves its box up front, so the scene can never shift the layout. */
+.frame { position: relative; width: 100%; aspect-ratio: 4 / 3; }
+.poster, .canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.canvas { pointer-events: none; }
+.hidden { visibility: hidden; }
+
+.stream { fill: none; stroke: #121212; stroke-opacity: .13; stroke-width: 1; }
+.outflow { fill: none; stroke: #121212; stroke-opacity: .34; stroke-width: 1; }
+.core { fill: #fffefb; stroke: #121212; stroke-width: 1.4; }
+.coreInner { fill: #121212; }
+.outline { fill: none; stroke: #121212; stroke-width: 1.2; }
+.pivot { fill: #121212; }
+.dot { fill: #3c3a36; fill-opacity: .8; }
+.accent { fill: #d62f12; }
+.needle { fill: none; stroke: #d62f12; stroke-width: 2.2; }
+.caption { fill: #65635f; font-family: SFMono-Regular, Consolas, "Liberation Mono", monospace; font-size: 10.5px; letter-spacing: .04em; }
+.scale { fill: #8a8882; font-family: SFMono-Regular, Consolas, "Liberation Mono", monospace; font-size: 9px; }

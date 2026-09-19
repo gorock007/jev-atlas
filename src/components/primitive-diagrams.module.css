@@ -1,0 +1,31 @@
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: 0; padding: 0; border: 1px solid #d9d8d3; background: #d9d8d3; list-style: none; }
+.grid li { background: #fffefb; padding: 1.5rem 1.5rem 1.6rem; }
+.grid svg { display: block; width: 100%; max-width: 20rem; height: auto; }
+.grid h3 { margin: 1.1rem 0 .35rem; font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.6rem; font-weight: 400; letter-spacing: -.03em; line-height: 1; }
+.grid p { max-width: 34ch; margin: 0; color: #3c3a36; font-size: .9rem; line-height: 1.45; }
+.note { margin: .8rem 0 0; color: #65635f; font-size: .75rem; line-height: 1.4; }
+
+.question { fill: #121212; font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 13px; font-style: italic; }
+.text, .strong, .number { font-family: SFMono-Regular, Consolas, "Liberation Mono", monospace; font-size: 10.5px; }
+.text { fill: #3c3a36; }
+.strong { fill: #d62f12; font-weight: 700; }
+.number { fill: #65635f; }
+.box { fill: none; stroke: #121212; stroke-width: 1.2; }
+.track { fill: #ecebe6; }
+.ink { fill: #3c3a36; }
+.fill { fill: #d62f12; }
+.axis { fill: none; stroke: #121212; stroke-width: 1.2; }
+.marker { fill: none; stroke: #d62f12; stroke-width: 1.6; }
+.threshold { fill: none; stroke: #121212; stroke-width: 1.4; stroke-dasharray: 3 3; }
+
+@media (max-width: 860px) {
+  .grid { grid-template-columns: 1fr; }
+  .grid li { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 0 1.5rem; align-items: center; padding: 1.2rem; }
+  .grid svg { grid-row: 1 / span 2; }
+  .grid h3 { align-self: end; margin-top: 0; }
+  .grid p { align-self: start; }
+}
+@media (max-width: 600px) {
+  .grid li { display: block; }
+  .grid h3 { margin-top: 1rem; }
+}
