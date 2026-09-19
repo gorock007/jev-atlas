@@ -10,9 +10,9 @@ Usage band: green (assumed; user said not to worry, 2026-09-19) — green <50%, 
 Other live terminals in this workspace that are NOT Jarvis workers: 9392c2d0 ("Build from PRD", the earlier Codex session), e3e98662 (untitled). Leave them alone.
 
 ## Questions for the user
-- Which of: 'How to ask Jev well' page, first-build starter on /start, cost calculator? (Jarvis recommends the first and third.)
 
 ## Running workers
+- 35dd4d42-fc77-4ce5-984a-5cc692876b11 — claude opus/high — briefs/2026-09-20-0030-guide-and-cost.md (/guide techniques page, /cost calculator)
 - 9d7f56aa-84fa-4954-aae2-ffb84b6abe2d — claude opus/high — briefs/2026-09-20-0010-article-sources.md (Browser Use, 1k Papers, inbox demo, independent speed report; status unchanged)
 
 ## Waiting on Jarvis
