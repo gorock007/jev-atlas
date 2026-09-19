@@ -53,7 +53,7 @@ list of things below that only Jarvis may do.
 - **Keeps building without waiting:** does every open item, not one at a time,
   and stops only for a product decision or a risky permission (deleting real
   data, force-pushing, anything irreversible).
-- **Verification:** the user checks work in a browser — `npm run dev` locally, then https://jev-atlas.vercel.app once Jarvis deploys. Workers list the exact URLs to look at in the handoff; Jarvis ends each batch with that list.
+- **Verification:** the user checks work in a browser — `npm run dev` locally, then https://jev.gorock.sh once Jarvis deploys. Workers list the exact URLs to look at in the handoff; Jarvis ends each batch with that list.
 
 ### Spawning a worker
 

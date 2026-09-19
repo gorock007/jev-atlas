@@ -31,7 +31,7 @@ Several workers edit the same checkout at once, on separate terminals. So:
   questions in your first handoff with `status: blocked` and stop. After the
   answers arrive on this terminal, build every phase through to done without
   stopping again, unless something truly new comes up.
-- **Verification:** the user checks work in a browser — `npm run dev` locally, then https://jev-atlas.vercel.app once Jarvis deploys. Workers list the exact URLs to look at in the handoff; Jarvis ends each batch with that list.
+- **Verification:** the user checks work in a browser — `npm run dev` locally, then https://jev.gorock.sh once Jarvis deploys. Workers list the exact URLs to look at in the handoff; Jarvis ends each batch with that list.
 - **Checks:** run `npm run check` (typecheck, tests, production build) before handing off and report the results. Say
   plainly what you didn't check.
 

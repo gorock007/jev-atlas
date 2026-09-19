@@ -10,8 +10,6 @@ Usage band: green (assumed; user said not to worry, 2026-09-19) — green <50%, 
 Other live terminals in this workspace that are NOT Jarvis workers: 9392c2d0 ("Build from PRD", the earlier Codex session), e3e98662 (untitled). Leave them alone.
 
 ## Questions for the user
-- 2026-09-19 · domain · jev.gorock.sh attached to project jev-atlas but unverified (apex gorock.sh lives in the other Vercel team). User to add TXT `_vercel` = `vc-domain-verify=jev.gorock.sh,c7d8d3b30b3fe6c8fef4` in Cloudflare. Then Jarvis: verify (POST /v9/projects/jev-atlas/domains/jev.gorock.sh/verify), set NEXT_PUBLIC_SITE_URL=https://jev.gorock.sh (production), redeploy, check sitemap/OG/MCP, update README + /agent copy.
-- 2026-09-18 · domain · user is looking for one; will report back. Then: wire in Vercel + NEXT_PUBLIC_SITE_URL.
 
 ## Running workers
 
@@ -19,11 +17,11 @@ Other live terminals in this workspace that are NOT Jarvis workers: 9392c2d0 ("B
 - /fit model pass confirmed live 2026-09-19 (gemini-2.5-flash-lite). Still to eyeball: /fit at 375px.
 
 ## Decisions
+- Canonical site: https://jev.gorock.sh (verified 2026-09-19; NEXT_PUBLIC_SITE_URL production). jev-atlas.vercel.app keeps working. MCP: https://jev.gorock.sh/mcp
 - Fit checker provider: Vercel AI Gateway, `google/gemini-2.5-flash-lite` (fallback `openai/gpt-5.6-luna`), ~US$0.0006/check; no auto top-up so credits are the hard ceiling.
 - X collection ceiling: A$4 (~US$2.60) per run. 2026-09-19: three passes, US$1.65 total (~A$2.55) → 431 posts, 155 retained. Do not collect again today. Old run states backed up in the session scratchpad.
 
 ## To-do
-- Domain: user owns gorock.sh; Jarvis recommended jev.gorock.sh (awaiting go-ahead + DNS CNAME from user). Then add domain in Vercel, set NEXT_PUBLIC_SITE_URL, redeploy, keep vercel.app redirecting.
 - OpenCode note: exact-edit brief in one file worked first try (muse-spark, ~7 min). Good for this shape of task.
 - "Jev Weekly": weekly collection under the A$4 ceiling + what's-new diff + a repeatable post format.
 - Revisit hook noise: ~/.claude/settings.json points 7 hooks at a missing revisit-hook binary (built copy under revist/.build/.../release). User to choose.

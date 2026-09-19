@@ -67,7 +67,7 @@ export function renderFitCheckMarkdown(workflow: string, result: FitCheckResult)
       point.lensTitle ? `_Lens: ${point.lensTitle}_` : "",
     ].filter(Boolean).join("\n\n");
   });
-  const related = result.relatedRecords.map((record) => `- [${record.title}](https://jev-atlas.vercel.app${record.canonicalPath}) — ${record.status}`);
+  const related = result.relatedRecords.map((record) => `- [${record.title}](https://jev.gorock.sh${record.canonicalPath}) — ${record.status}`);
   return [
     "# Jev fit check",
     `- Verdict: **${result.verdict}**`,
