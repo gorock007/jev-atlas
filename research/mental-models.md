@@ -4,12 +4,12 @@ These frequencies describe the retained, query-conditioned X sample; they are no
 
 | Mental model | Posts in retained sample | Reading |
 |---|---:|---|
-| Typed classifier | 32 (51%) | Jev replaces prose with labels, scores, and probabilities. |
-| Agent router | 7 (11%) | Jev chooses a model, tool, specialist, or next action. |
+| Typed classifier | 63 (47%) | Jev replaces prose with labels, scores, and probabilities. |
+| Agent router | 22 (17%) | Jev chooses a model, tool, specialist, or next action. |
 | Verification gate | 0 (0%) | Jev decides whether another system's output may proceed. |
-| Probabilistic rules engine | 6 (10%) | Fuzzy predicates feed deterministic workflows. |
-| LLM complement | 8 (13%) | A fast control plane surrounds generative work. |
-| LLM replacement | 6 (10%) | For bounded decisions, a text-generating model may be unnecessary. |
+| Probabilistic rules engine | 9 (7%) | Fuzzy predicates feed deterministic workflows. |
+| LLM complement | 23 (17%) | A fast control plane surrounds generative work. |
+| LLM replacement | 12 (9%) | For bounded decisions, a text-generating model may be unnecessary. |
 
 ## Disagreements
 

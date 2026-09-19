@@ -4,7 +4,7 @@
 
 A typed judgment service sits beside ordinary code; code owns effects and safety boundaries.
 
-- **Evidence:** [source 1](https://docs.typesafe.ai/primitives), [source 2](https://x.com/i/web/status/2100499596095209849), [source 3](https://x.com/i/web/status/2099928269785272613), [source 4](https://x.com/i/web/status/2100075581115351115)
+- **Evidence:** [source 1](https://docs.typesafe.ai/primitives), [source 2](https://x.com/i/web/status/2100499596095209849), [source 3](https://x.com/i/web/status/2099928269785272613), [source 4](https://x.com/i/web/status/2100988217931809255)
 - **Caveat:** The extra network hop must beat a local rule or classifier.
 
 ## Cascade router

@@ -1,33 +1,33 @@
 {
-  "generatedAt": "2026-09-18T06:10:30.832Z",
+  "generatedAt": "2026-09-19T02:28:47.943Z",
   "dataset": {
-    "totalPosts": 165,
-    "retainedPosts": 63,
-    "analyzedPosts": 6,
+    "totalPosts": 301,
+    "retainedPosts": 133,
+    "analyzedPosts": 10,
     "highValuePosts": 1
   },
   "categoryCounts": {
-    "TECHNICAL_EXPLANATION": 31,
-    "PROJECT": 28,
-    "PERFORMANCE": 20,
-    "SPECULATION": 4,
-    "CODE": 10,
-    "ROUTING": 5,
-    "ARCHITECTURE": 6,
-    "ANNOUNCEMENT": 8,
-    "COST": 8,
-    "LIMITATION": 2,
-    "DEMO": 5,
+    "TECHNICAL_EXPLANATION": 62,
+    "PROJECT": 60,
+    "PERFORMANCE": 38,
+    "SPECULATION": 5,
+    "CODE": 25,
+    "ROUTING": 12,
+    "ARCHITECTURE": 9,
+    "ANNOUNCEMENT": 11,
+    "QUESTION": 9,
+    "COST": 18,
+    "LIMITATION": 5,
+    "DEMO": 6,
     "CLASSIFICATION": 1,
-    "QUESTION": 6,
-    "AUTOMATION": 4,
-    "AGENT_INFRASTRUCTURE": 2,
-    "CRITICISM": 3,
+    "AUTOMATION": 6,
+    "AGENT_INFRASTRUCTURE": 11,
+    "USE_CASE": 6,
+    "CRITICISM": 5,
     "PRODUCT_IDEA": 1,
-    "USE_CASE": 2,
-    "BENCHMARK": 1,
-    "OTHER": 3,
-    "COMPARISON": 6
+    "BENCHMARK": 3,
+    "COMPARISON": 12,
+    "OTHER": 6
   },
   "claims": [
     {
@@ -57,7 +57,7 @@
       "evidence": "Published pricing is echoed across launch discussion, but remains mutable vendor pricing.",
       "sources": [
         "https://typesafe.ai/",
-        "https://x.com/i/web/status/2099927622335795646"
+        "https://x.com/i/web/status/2100946612369420594"
       ],
       "counterarguments": "Application cost also includes retries, state construction, integration, and any fallback LLM calls.",
       "openQuestions": "Will pricing and limits remain attractive at production volume?"
@@ -86,7 +86,7 @@
     {
       "claim": "Developers have published small Jev integrations and demonstrations.",
       "status": "Demonstrated",
-      "evidence": "13 retained posts were classified as code or demos; public repositories exist for Home Assistant, MCP, and a MAGI-style experiment.",
+      "evidence": "29 retained posts were classified as code or demos; public repositories exist for Home Assistant, MCP, and a MAGI-style experiment.",
       "sources": [
         "https://github.com/AboveColin/HA-Jev",
         "https://github.com/itsmostafa/typesafe-mcp",
@@ -205,7 +205,7 @@
         "https://docs.typesafe.ai/primitives",
         "https://x.com/i/web/status/2100499596095209849",
         "https://x.com/i/web/status/2099928269785272613",
-        "https://x.com/i/web/status/2100075581115351115"
+        "https://x.com/i/web/status/2100988217931809255"
       ],
       "caveat": "The extra network hop must beat a local rule or classifier."
     },
@@ -958,6 +958,27 @@
       ]
     },
     {
+      "url": "https://x.com/i/web/status/2100898939545538659",
+      "relevance": 78,
+      "technicalDepth": 58,
+      "buildPotential": 45,
+      "categories": [
+        "TECHNICAL_EXPLANATION",
+        "PROJECT"
+      ],
+      "themes": [
+        "typed",
+        "probability",
+        "system one"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: typed, probability, system one",
+        "build signals: built",
+        "contains an external source"
+      ]
+    },
+    {
       "url": "https://x.com/i/web/status/2100499596095209849",
       "relevance": 78,
       "technicalDepth": 43,
@@ -977,6 +998,51 @@
         "names Jev and TypeSafe",
         "technical signals: typed, latency",
         "build signals: built, integration, open source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2100796524091621447",
+      "relevance": 77,
+      "technicalDepth": 54,
+      "buildPotential": 45,
+      "categories": [
+        "ANNOUNCEMENT",
+        "TECHNICAL_EXPLANATION",
+        "PROJECT",
+        "PERFORMANCE"
+      ],
+      "themes": [
+        "typed",
+        "confidence",
+        "classifier"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: typed, confidence, classifier",
+        "build signals: built",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2100887554375745848",
+      "relevance": 76,
+      "technicalDepth": 64,
+      "buildPotential": 35,
+      "categories": [
+        "TECHNICAL_EXPLANATION",
+        "PROJECT",
+        "QUESTION"
+      ],
+      "themes": [
+        "typed",
+        "probability",
+        "router",
+        "system one"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: typed, probability, router, system one",
+        "contains an external source"
       ]
     },
     {
@@ -1000,6 +1066,28 @@
         "technical signals: typed, workflow, system one",
         "build signals: built",
         "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2100946612369420594",
+      "relevance": 75,
+      "technicalDepth": 77,
+      "buildPotential": 25,
+      "categories": [
+        "TECHNICAL_EXPLANATION",
+        "PERFORMANCE",
+        "COST"
+      ],
+      "themes": [
+        "typed",
+        "probability",
+        "confidence",
+        "latency",
+        "system one"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: typed, probability, confidence, latency"
       ]
     },
     {
@@ -1129,6 +1217,25 @@
       ]
     },
     {
+      "url": "https://x.com/i/web/status/2101075646050947511",
+      "relevance": 74,
+      "technicalDepth": 29,
+      "buildPotential": 35,
+      "categories": [
+        "CODE",
+        "PROJECT"
+      ],
+      "themes": [
+        "system one"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: system one",
+        "build signals: built",
+        "links to source code"
+      ]
+    },
+    {
       "url": "https://x.com/i/web/status/2099928269785272613",
       "relevance": 73,
       "technicalDepth": 51,
@@ -1147,6 +1254,25 @@
       "scoreReasons": [
         "names Jev and TypeSafe",
         "technical signals: api, workflow, routing",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2100894797997523400",
+      "relevance": 73,
+      "technicalDepth": 29,
+      "buildPotential": 50,
+      "categories": [
+        "TECHNICAL_EXPLANATION",
+        "PROJECT"
+      ],
+      "themes": [
+        "rlcd"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: rlcd",
+        "build signals: building, experiment",
         "contains an external source"
       ]
     },
@@ -1172,173 +1298,44 @@
       ]
     },
     {
-      "url": "https://x.com/i/web/status/2100166309405413785",
+      "url": "https://x.com/i/web/status/2100870543578718331",
       "relevance": 72,
-      "technicalDepth": 43,
-      "buildPotential": 40,
-      "categories": [
-        "TECHNICAL_EXPLANATION",
-        "PROJECT"
-      ],
-      "themes": [
-        "typed",
-        "probability"
-      ],
-      "scoreReasons": [
-        "names Jev and TypeSafe",
-        "technical signals: typed, probability",
-        "build signals: built",
-        "contains an external source"
-      ]
-    },
-    {
-      "url": "https://x.com/i/web/status/2100125011444932869",
-      "relevance": 71,
-      "technicalDepth": 63,
-      "buildPotential": 15,
-      "categories": [
-        "TECHNICAL_EXPLANATION",
-        "AGENT_INFRASTRUCTURE",
-        "CRITICISM"
-      ],
-      "themes": [
-        "typed",
-        "confidence",
-        "agent",
-        "wrong"
-      ],
-      "scoreReasons": [
-        "names Jev and TypeSafe",
-        "technical signals: typed, confidence, agent",
-        "evidence/limitation signals: wrong"
-      ]
-    },
-    {
-      "url": "https://x.com/i/web/status/2099940549973443047",
-      "relevance": 71,
-      "technicalDepth": 58,
-      "buildPotential": 30,
-      "categories": [
-        "TECHNICAL_EXPLANATION",
-        "CODE",
-        "PRODUCT_IDEA",
-        "ROUTING",
-        "QUESTION"
-      ],
-      "themes": [
-        "api",
-        "typed",
-        "confidence"
-      ],
-      "scoreReasons": [
-        "names Jev and TypeSafe",
-        "technical signals: api, typed, confidence",
-        "contains an external source"
-      ]
-    },
-    {
-      "url": "https://x.com/i/web/status/2100357266616574169",
-      "relevance": 71,
       "technicalDepth": 53,
       "buildPotential": 30,
       "categories": [
         "TECHNICAL_EXPLANATION",
-        "PROJECT",
+        "ROUTING",
         "PERFORMANCE"
       ],
       "themes": [
         "typed",
-        "confidence",
-        "latency"
-      ],
-      "scoreReasons": [
-        "names Jev and TypeSafe",
-        "technical signals: typed, confidence, latency",
-        "build signals: built"
-      ]
-    },
-    {
-      "url": "https://x.com/i/web/status/2099981047676940418",
-      "relevance": 71,
-      "technicalDepth": 44,
-      "buildPotential": 40,
-      "categories": [
-        "TECHNICAL_EXPLANATION",
-        "PROJECT",
-        "PERFORMANCE"
-      ],
-      "themes": [
-        "typed",
-        "agent"
-      ],
-      "scoreReasons": [
-        "names Jev and TypeSafe",
-        "technical signals: typed, agent",
-        "build signals: built",
-        "contains an external source"
-      ]
-    },
-    {
-      "url": "https://x.com/i/web/status/2100161604549501214",
-      "relevance": 71,
-      "technicalDepth": 42,
-      "buildPotential": 40,
-      "categories": [
-        "PROJECT",
-        "AGENT_INFRASTRUCTURE",
-        "PERFORMANCE",
-        "COST"
-      ],
-      "themes": [
-        "latency",
-        "agent"
-      ],
-      "scoreReasons": [
-        "names Jev and TypeSafe",
-        "technical signals: latency, agent",
-        "build signals: built",
-        "contains an external source"
-      ]
-    },
-    {
-      "url": "https://x.com/i/web/status/2100075581115351115",
-      "relevance": 70,
-      "technicalDepth": 48,
-      "buildPotential": 25,
-      "categories": [
-        "ARCHITECTURE",
-        "USE_CASE",
-        "AUTOMATION",
-        "BENCHMARK",
-        "PERFORMANCE"
-      ],
-      "themes": [
-        "benchmark",
-        "workflow"
-      ],
-      "scoreReasons": [
-        "names Jev and TypeSafe",
-        "technical signals: benchmark, workflow",
-        "evidence/limitation signals: benchmark",
-        "contains an external source"
-      ]
-    },
-    {
-      "url": "https://x.com/i/web/status/2099926312194605418",
-      "relevance": 70,
-      "technicalDepth": 46,
-      "buildPotential": 25,
-      "categories": [
-        "CODE",
-        "COST"
-      ],
-      "themes": [
-        "api",
+        "routing",
         "system one"
       ],
       "scoreReasons": [
         "names Jev and TypeSafe",
-        "technical signals: api, system one",
+        "technical signals: typed, routing, system one",
+        "contains an external source"
+      ]
+    },
+    {
+      "url": "https://x.com/i/web/status/2101130405197828345",
+      "relevance": 72,
+      "technicalDepth": 47,
+      "buildPotential": 40,
+      "categories": [
+        "PROJECT",
+        "AGENT_INFRASTRUCTURE",
+        "QUESTION"
+      ],
+      "themes": [
+        "agent",
+        "system one"
+      ],
+      "scoreReasons": [
+        "names Jev and TypeSafe",
+        "technical signals: agent, system one",
+        "build signals: building",
         "contains an external source"
       ]
     }

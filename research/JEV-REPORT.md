@@ -1,12 +1,12 @@
 # Jev Research Report
 
-Generated: 2026-09-18T06:10:30.832Z
+Generated: 2026-09-19T02:28:47.943Z
 
 ## Executive Summary
 
 Jev is best understood as a machine-facing decision model: software supplies state and named questions, then receives constrained choices, scores, Boolean probabilities, and confidence rather than generated prose. The near-term opportunity is not a better chatbot. It is a control layer that can sit inside agent loops, event pipelines, and ordinary applications wherever software currently relies on brittle rules or expensive generative calls.
 
-The evidence is still early. The cached X sample contains **165 unique posts**, of which **63** met the relevance threshold, **6** met the deeper-analysis band, and **1** met the conversation-expansion threshold. Discussion is launch-heavy and repeatedly echoes TypeSafe's claims. Public code and demos demonstrate that integration is possible; they do not yet independently validate the headline latency, cost, calibration, or reliability claims.
+The evidence is still early. The cached X sample contains **301 unique posts**, of which **133** met the relevance threshold, **10** met the deeper-analysis band, and **1** met the conversation-expansion threshold. Discussion is launch-heavy and repeatedly echoes TypeSafe's claims. Public code and demos demonstrate that integration is possible; they do not yet independently validate the headline latency, cost, calibration, or reliability claims.
 
 The strongest build thesis is **probabilistic judgment plus deterministic execution**. Jev selects or scores; ordinary code enforces permissions, thresholds, budgets, and effects. The most compelling products make tens or hundreds of decisions per workflow and invoke expensive models or humans only for ambiguous cases.
 
@@ -42,7 +42,7 @@ That changes the failure surface. Invalid prose and parser failures shrink, whil
 ## What TypeSafe Claims
 
 - **Latency:** The launch material reports large latency multiples; X discussion mostly repeats those figures. Status: **Vendor Claim**. Sources: [source](https://typesafe.ai/blog/introducing-system-one-models-and-jev), [source](https://x.com/i/web/status/2099928060644749682).
-- **Economics:** Published pricing is echoed across launch discussion, but remains mutable vendor pricing. Status: **Vendor Claim**. Sources: [source](https://typesafe.ai/), [source](https://x.com/i/web/status/2099927622335795646).
+- **Economics:** Published pricing is echoed across launch discussion, but remains mutable vendor pricing. Status: **Vendor Claim**. Sources: [source](https://typesafe.ai/), [source](https://x.com/i/web/status/2100946612369420594).
 - **Calibration and reliability:** TypeSafe describes calibrated confidence and markets “zero hallucinations.” Typed output is demonstrated; workload-level calibration and error rates are not independently established.
 
 ## What Has Been Independently Demonstrated
@@ -54,7 +54,7 @@ That changes the failure surface. Invalid prose and parser failures shrink, whil
 
 ## What Developers Think
 
-The sample is dominated by four ideas: Jev as a typed classifier, agent router, probabilistic rule primitive, and cheap control layer around LLMs. Observed categories were TECHNICAL_EXPLANATION (31), PROJECT (28), PERFORMANCE (20), CODE (10), ANNOUNCEMENT (8), COST (8), ARCHITECTURE (6), QUESTION (6).
+The sample is dominated by four ideas: Jev as a typed classifier, agent router, probabilistic rule primitive, and cheap control layer around LLMs. Observed categories were TECHNICAL_EXPLANATION (62), PROJECT (60), PERFORMANCE (38), CODE (25), COST (18), ROUTING (12), COMPARISON (12), ANNOUNCEMENT (11).
 
 Enthusiasm focuses on moving intelligence from a visible chat surface into invisible software infrastructure. Skepticism is less developed, but the strongest criticism is methodological: launch figures are largely repeated rather than reproduced, and “zero hallucinations” can obscure schema-valid wrong decisions.
 
@@ -85,12 +85,12 @@ Selected high-signal cached evidence:
 
 - [X post](https://x.com/i/web/status/2099928060644749682) — heuristic relevance 91 · Technical Explanation, Project, Performance, Speculation
 - [X post](https://x.com/i/web/status/2100078473419104388) — heuristic relevance 82 · Technical Explanation, Code, Project, Routing
+- [X post](https://x.com/i/web/status/2100898939545538659) — heuristic relevance 78 · Technical Explanation, Project
 - [X post](https://x.com/i/web/status/2100499596095209849) — heuristic relevance 78 · Technical Explanation, Architecture, Code, Project, Performance
+- [X post](https://x.com/i/web/status/2100796524091621447) — heuristic relevance 77 · Announcement, Technical Explanation, Project, Performance
+- [X post](https://x.com/i/web/status/2100887554375745848) — heuristic relevance 76 · Technical Explanation, Project, Question
 - [X post](https://x.com/i/web/status/2100371159778746390) — heuristic relevance 76 · Announcement, Technical Explanation, Project, Cost
-- [X post](https://x.com/i/web/status/2099927622335795646) — heuristic relevance 75 · Technical Explanation, Code, Performance
-- [X post](https://x.com/i/web/status/2099932058152050848) — heuristic relevance 75 · Project
-- [X post](https://x.com/i/web/status/2100348935537660084) — heuristic relevance 74 · Technical Explanation, Limitation
-- [X post](https://x.com/i/web/status/2099927802405654900) — heuristic relevance 74 · Technical Explanation, Performance
+- [X post](https://x.com/i/web/status/2100946612369420594) — heuristic relevance 75 · Technical Explanation, Performance, Cost
 
 ## Criticism
 
