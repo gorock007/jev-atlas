@@ -12,6 +12,8 @@ Other live terminals in this workspace that are NOT Jarvis workers: 9392c2d0 ("B
 ## Questions for the user
 
 ## Running workers
+- adab8cfe-6782-4938-9009-b7ceaa68ae08 — claude fable/high — briefs/2026-09-19-2240-visual-wayfinding.md (mind map, three.js hero, nav 11→5, homepage re-order)
+- e1f67088-60dd-4cbf-87b2-01eecae06c41 — claude opus/high — briefs/2026-09-19-2240-hyperframes-assets.md (explainer loop → public/media, launch clip → video/out)
 
 ## Waiting on Jarvis
 - /fit model pass confirmed live 2026-09-19 (gemini-2.5-flash-lite). Still to eyeball: /fit at 375px.
