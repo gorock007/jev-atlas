@@ -12,8 +12,6 @@ Other live terminals in this workspace that are NOT Jarvis workers: 9392c2d0 ("B
 ## Questions for the user
 
 ## Running workers
-- adab8cfe-6782-4938-9009-b7ceaa68ae08 — claude fable/high — briefs/2026-09-19-2240-visual-wayfinding.md (mind map, three.js hero, nav 11→5, homepage re-order)
-- e1f67088-60dd-4cbf-87b2-01eecae06c41 — claude opus/high — briefs/2026-09-19-2240-hyperframes-assets.md (explainer loop → public/media, launch clip → video/out)
 
 ## Waiting on Jarvis
 - /fit model pass confirmed live 2026-09-19 (gemini-2.5-flash-lite). Still to eyeball: /fit at 375px.
@@ -24,6 +22,9 @@ Other live terminals in this workspace that are NOT Jarvis workers: 9392c2d0 ("B
 - X collection ceiling: A$4 (~US$2.60) per run. 2026-09-19: three passes, US$1.65 total (~A$2.55) → 431 posts, 155 retained. Do not collect again today. Old run states backed up in the session scratchpad.
 
 ## To-do
+- Visual redesign shipped 2026-09-19 (mind map, three.js hero, explainer loop, 5-link nav). User to eyeball Safari/iPhone: hero scene, muted autoplay, mobile map list. /map is still a long list — candidate for the same visual treatment.
+- Homepage spend figure shows $1.22 from loadRunSummary() vs US$1.65 recorded here (run states were moved aside); reconcile before quoting a cost publicly.
+- Launch clip for X/LinkedIn: video/out/jev-atlas-launch.mp4 (1080², 15 s).
 - Fit-check limiter is per-instance (audit finding, medium): credits are hard-capped with auto top-up off, so worst case is rules fallback. If abuse shows up, add a Vercel Firewall rate-limit rule on /api/v1/fit-check or a shared store.
 - OpenCode note: exact-edit brief in one file worked first try (muse-spark, ~7 min). Good for this shape of task.
 - "Jev Weekly": weekly collection under the A$4 ceiling + what's-new diff + a repeatable post format.
