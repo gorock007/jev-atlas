@@ -144,6 +144,36 @@
 - **Interesting insight:** This is a joke package in the lineage of is-odd/is-odd-ai (its README says as much), but it is not a fake integration: it genuinely calls Jev's API and correctly demonstrates that Noul returns a probability rather than a confidence field bolted onto a boolean.
 - **Repository / demo:** Not independently located
 
+### jev-ultrafast
+
+- **Builder:** Browser Use (third party, not TypeSafe)
+- **Source:** [source](https://github.com/browser-use/jev-ultrafast)
+- **What was built:** A browser-automation runtime from Browser Use with a published performance report (docs/performance.md). The report documents a 7.07 s Google Flights run made with 17 Jev requests; that timing excludes browser setup and post-run verification, and the run finds flight results rather than booking anything.
+- **Jev's role:** Jev picks the next action and its target from a list of page controls rebuilt at every step; a small LLM is used only to fill text inputs, and the outcome is verified separately after the run reports DONE.
+- **Architecture:** Page → control list rebuilt each step → Jev action + target choice → small LLM for text entry only → action → DONE → separate outcome verification.
+- **Interesting insight:** The report attributes its gains to runtime changes rather than model changes: with the same models, median browser protocol calls fell from 1,092 to 101 and median task time fell 25%. The per-run cost figure circulating with this project appears only in the author's X post, not in the report, so it is not carried here.
+- **Repository / demo:** [source](https://github.com/browser-use/jev-ultrafast)
+
+### 1k Papers
+
+- **Builder:** Hassan El Mghari
+- **Source:** [source](https://1kpapers.com)
+- **What was built:** A live site that classifies 1,018 AI papers against 24 topics, with Jev doing the classification after an LLM has summarised each paper.
+- **Jev's role:** One typed classification per paper against a fixed 24-topic taxonomy; the LLM summary is Jev's input, not the classifier.
+- **Architecture:** Paper → LLM summary → Jev classification against 24 topics → browsable topic index.
+- **Interesting insight:** A bulk-classification shape rather than an agent loop: the corpus is fixed, the taxonomy is fixed, and the interesting cost question is per-item. The build's cost and latency numbers are self-reported by the author and are not repeated here; only the published corpus size and topic count are.
+- **Repository / demo:** [source](https://1kpapers.com)
+
+### Inbox triage demo
+
+- **Builder:** Riley Brown
+- **Source:** [source](https://madewithjev.com)
+- **What was built:** An inbox triage demonstration attributed to Riley Brown. Confirmed at second hand only: it appears in the madewithjev.com directory of Jev builds, and the demo itself was not opened for this record.
+- **Jev's role:** Typed triage judgments over incoming mail, as the directory describes it; the mechanics were not verified directly.
+- **Architecture:** Incoming message → Jev triage judgment → application-side sorting, as listed rather than as inspected.
+- **Interesting insight:** A directory listing is secondary evidence: it establishes that the build was claimed, not that it works as described. This entry should be upgraded on a first-hand look at the demo, or dropped if none is available.
+- **Repository / demo:** Not independently located
+
 ## PROPOSED
 
 ### Confidence-gated agent control loops

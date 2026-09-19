@@ -1,6 +1,6 @@
 # Jev Research Report
 
-Generated: 2026-09-19T10:54:33.829Z
+Generated: 2026-09-19T13:28:59.577Z
 
 ## Executive Summary
 
@@ -41,7 +41,7 @@ That changes the failure surface. Invalid prose and parser failures shrink, whil
 
 ## What TypeSafe Claims
 
-- **Latency:** The launch material reports large latency multiples; X discussion mostly repeats those figures. Trade press (The Register) relays the same vendor figures without independent measurement. Status: **Vendor Claim**. Sources: [source](https://typesafe.ai/blog/introducing-system-one-models-and-jev), [source](https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711), [source](https://x.com/i/web/status/2099928060644749682).
+- **Latency:** The launch material reports large latency multiples; X discussion mostly repeats those figures. Trade press (The Register) relays the same vendor figures without independent measurement. One report from outside TypeSafe — a Vercel engineer, amplified by Vercel's chief executive — reports a large speedup measured on the reporter's own workload. Status: **Vendor Claim**. Sources: [source](https://typesafe.ai/blog/introducing-system-one-models-and-jev), [source](https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711), [source](https://x.com/fazxes/status/2100300097695232164), [source](https://x.com/rauchg/status/2100307962262872105), [source](https://x.com/i/web/status/2099928060644749682).
 - **Economics:** Published pricing is echoed across launch discussion, but remains mutable vendor pricing. Status: **Vendor Claim**. Sources: [source](https://typesafe.ai/), [source](https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711), [source](https://x.com/i/web/status/2100946612369420594).
 - **Calibration and reliability:** TypeSafe describes calibrated confidence and markets “zero hallucinations.” Typed output is demonstrated; workload-level calibration and error rates are not independently established.
 
@@ -49,7 +49,7 @@ That changes the failure surface. Invalid prose and parser failures shrink, whil
 
 - The documented Choice, Score, and Noul interface exists.
 - Vercel added **typesafe-ai/jev** through AI Gateway's evaluation interface. See the [Vercel announcement](https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway).
-- Public integrations and demos exist: [HA-Jev](https://github.com/AboveColin/HA-Jev), [typesafe-mcp](https://github.com/itsmostafa/typesafe-mcp), [MAGI System on Jev](https://github.com/hide-G/magi-system-on-jev), [Goblin HR](https://goblin-hr.kostysh.chatgpt.site/), [Axon Work integration](https://axon123.com), [ProgressGate](https://github.com/AshutoshVJTI/progressgate), [chess-jev](https://github.com/gopalanj/chess-jev), [TypeSafe Agent Skills](https://github.com/typesafe-ai/skills), [Jev Playground](https://jevtypesafe.vercel.app/), [jev-router](https://github.com/gargpratyush/jev-router), [SemIf (formerly OpenJev)](https://github.com/TheoLeeCJ/SemIf), [J3vRoute](https://j3vroute.agents.bakingbad.dev), [system-one-router](https://www.npmjs.com/package/system-one-router), [is-odd-jev](https://www.npmjs.com/package/is-odd-jev).
+- Public integrations and demos exist: [HA-Jev](https://github.com/AboveColin/HA-Jev), [typesafe-mcp](https://github.com/itsmostafa/typesafe-mcp), [MAGI System on Jev](https://github.com/hide-G/magi-system-on-jev), [Goblin HR](https://goblin-hr.kostysh.chatgpt.site/), [Axon Work integration](https://axon123.com), [ProgressGate](https://github.com/AshutoshVJTI/progressgate), [chess-jev](https://github.com/gopalanj/chess-jev), [TypeSafe Agent Skills](https://github.com/typesafe-ai/skills), [Jev Playground](https://jevtypesafe.vercel.app/), [jev-router](https://github.com/gargpratyush/jev-router), [SemIf (formerly OpenJev)](https://github.com/TheoLeeCJ/SemIf), [J3vRoute](https://j3vroute.agents.bakingbad.dev), [system-one-router](https://www.npmjs.com/package/system-one-router), [is-odd-jev](https://www.npmjs.com/package/is-odd-jev), [jev-ultrafast](https://github.com/browser-use/jev-ultrafast), [1k Papers](https://1kpapers.com), [Inbox triage demo](https://madewithjev.com).
 - The collected discussion overwhelmingly relays launch claims; at least one source explicitly labels the figures self-reported.
 
 ## What Developers Think
@@ -74,6 +74,9 @@ Enthusiasm focuses on moving intelligence from a visible chat surface into invis
 - **J3vRoute:** A live, working single-page paper-trading demo: it simulates a virtual USDG portfolio traded across three markets on "Robinhood Chain," with fills clearly labelled as simulated (no swap is signed or broadcast). [source](https://j3vroute.agents.bakingbad.dev)
 - **system-one-router:** A published npm extension (v0.4.5) for the Pi coding agent that adds a per-turn model router; its README states it is based on and retains attribution to an existing router, yeliu84/pi-model-router. [source](https://www.npmjs.com/package/system-one-router)
 - **is-odd-jev:** A published npm package (v1.1.0, zero dependencies) that answers whether a number is odd by calling a Jev Noul primitive and returning its calibrated probability instead of a bare boolean. [source](https://www.npmjs.com/package/is-odd-jev)
+- **jev-ultrafast:** A browser-automation runtime from Browser Use with a published performance report (docs/performance.md). The report documents a 7.07 s Google Flights run made with 17 Jev requests; that timing excludes browser setup and post-run verification, and the run finds flight results rather than booking anything. [source](https://github.com/browser-use/jev-ultrafast)
+- **1k Papers:** A live site that classifies 1,018 AI papers against 24 topics, with Jev doing the classification after an LLM has summarised each paper. [source](https://1kpapers.com)
+- **Inbox triage demo:** An inbox triage demonstration attributed to Riley Brown. Confirmed at second hand only: it appears in the madewithjev.com directory of Jev builds, and the demo itself was not opened for this record. [source](https://madewithjev.com)
 
 Proposals are tracked separately:
 

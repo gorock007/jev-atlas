@@ -13,9 +13,9 @@ Generated from cached evidence. Repetition on X is not treated as independent co
 ## TypeSafe reports Jev as materially faster than LLM workflows on its own evaluations.
 
 - **Status:** Vendor Claim
-- **Evidence:** The launch material reports large latency multiples; X discussion mostly repeats those figures. Trade press (The Register) relays the same vendor figures without independent measurement.
-- **Sources:** [source 1](https://typesafe.ai/blog/introducing-system-one-models-and-jev), [source 2](https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711), [source 3](https://x.com/i/web/status/2099928060644749682)
-- **Counterarguments:** No independent benchmark in the collected dataset reproduces the headline range on representative workloads.
+- **Evidence:** The launch material reports large latency multiples; X discussion mostly repeats those figures. Trade press (The Register) relays the same vendor figures without independent measurement. One report from outside TypeSafe — a Vercel engineer, amplified by Vercel's chief executive — reports a large speedup measured on the reporter's own workload.
+- **Sources:** [source 1](https://typesafe.ai/blog/introducing-system-one-models-and-jev), [source 2](https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711), [source 3](https://x.com/fazxes/status/2100300097695232164), [source 4](https://x.com/rauchg/status/2100307962262872105), [source 5](https://x.com/i/web/status/2099928060644749682)
+- **Counterarguments:** No independent benchmark in the collected dataset reproduces the headline range on representative workloads. The one report from outside the vendor covers a single workload (safety classification) compared against a single model, with no published method, so it does not generalise; the amplifying post adds reach rather than a second measurement. The status therefore stays Vendor Claim.
 - **Open questions:** What are p50/p95 latency and accuracy under equal task definitions and concurrency?
 
 ## TypeSafe reports a low input-token price and no metered output-token charge for Jev.

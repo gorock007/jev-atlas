@@ -16,6 +16,8 @@ const VERCEL = "https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai
 const LANGCHAIN = "https://www.langchain.com/blog/building-a-harness-with-jev";
 const OPENROUTER = "https://openrouter.ai/typesafe/jev-latest";
 const THE_REGISTER = "https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711";
+const VERCEL_ENGINEER_SPEED_REPORT = "https://x.com/fazxes/status/2100300097695232164";
+const VERCEL_CEO_SPEED_ECHO = "https://x.com/rauchg/status/2100307962262872105";
 
 function mdLink(url: string, label = "source"): string {
   return `[${label}](${url})`;
@@ -48,9 +50,9 @@ function deriveClaims(posts: ProcessedPost[]): ResearchClaim[] {
     {
       claim: "TypeSafe reports Jev as materially faster than LLM workflows on its own evaluations.",
       status: "Vendor Claim",
-      evidence: "The launch material reports large latency multiples; X discussion mostly repeats those figures. Trade press (The Register) relays the same vendor figures without independent measurement.",
-      sources: [OFFICIAL_LAUNCH, THE_REGISTER, ...(latency ? [latency] : [])],
-      counterarguments: "No independent benchmark in the collected dataset reproduces the headline range on representative workloads.",
+      evidence: "The launch material reports large latency multiples; X discussion mostly repeats those figures. Trade press (The Register) relays the same vendor figures without independent measurement. One report from outside TypeSafe — a Vercel engineer, amplified by Vercel's chief executive — reports a large speedup measured on the reporter's own workload.",
+      sources: [OFFICIAL_LAUNCH, THE_REGISTER, VERCEL_ENGINEER_SPEED_REPORT, VERCEL_CEO_SPEED_ECHO, ...(latency ? [latency] : [])],
+      counterarguments: "No independent benchmark in the collected dataset reproduces the headline range on representative workloads. The one report from outside the vendor covers a single workload (safety classification) compared against a single model, with no published method, so it does not generalise; the amplifying post adds reach rather than a second measurement. The status therefore stays Vendor Claim.",
       openQuestions: "What are p50/p95 latency and accuracy under equal task definitions and concurrency?",
     },
     {
@@ -242,6 +244,33 @@ function deriveProjects(posts: ProcessedPost[]): ProjectFinding[] {
       jevRole: "The entire package: one Noul call per invocation, against api.typesafe.ai or the Vercel AI Gateway's typesafe-ai/jev model, returns { odd, p, ms, output_tokens }.",
       architecture: "Integer input → single Noul question (\"Is n odd?\") → probability read from the model's own distribution, not narrated.",
       insight: "This is a joke package in the lineage of is-odd/is-odd-ai (its README says as much), but it is not a fake integration: it genuinely calls Jev's API and correctly demonstrates that Noul returns a probability rather than a confidence field bolted onto a boolean.",
+      repositoryOrDemo: null,
+    },
+    {
+      name: "jev-ultrafast", builder: "Browser Use (third party, not TypeSafe)", status: "ACTUALLY BUILT",
+      source: "https://github.com/browser-use/jev-ultrafast",
+      description: "A browser-automation runtime from Browser Use with a published performance report (docs/performance.md). The report documents a 7.07 s Google Flights run made with 17 Jev requests; that timing excludes browser setup and post-run verification, and the run finds flight results rather than booking anything.",
+      jevRole: "Jev picks the next action and its target from a list of page controls rebuilt at every step; a small LLM is used only to fill text inputs, and the outcome is verified separately after the run reports DONE.",
+      architecture: "Page → control list rebuilt each step → Jev action + target choice → small LLM for text entry only → action → DONE → separate outcome verification.",
+      insight: "The report attributes its gains to runtime changes rather than model changes: with the same models, median browser protocol calls fell from 1,092 to 101 and median task time fell 25%. The per-run cost figure circulating with this project appears only in the author's X post, not in the report, so it is not carried here.",
+      repositoryOrDemo: "https://github.com/browser-use/jev-ultrafast",
+    },
+    {
+      name: "1k Papers", builder: "Hassan El Mghari", status: "ACTUALLY BUILT",
+      source: "https://1kpapers.com",
+      description: "A live site that classifies 1,018 AI papers against 24 topics, with Jev doing the classification after an LLM has summarised each paper.",
+      jevRole: "One typed classification per paper against a fixed 24-topic taxonomy; the LLM summary is Jev's input, not the classifier.",
+      architecture: "Paper → LLM summary → Jev classification against 24 topics → browsable topic index.",
+      insight: "A bulk-classification shape rather than an agent loop: the corpus is fixed, the taxonomy is fixed, and the interesting cost question is per-item. The build's cost and latency numbers are self-reported by the author and are not repeated here; only the published corpus size and topic count are.",
+      repositoryOrDemo: "https://1kpapers.com",
+    },
+    {
+      name: "Inbox triage demo", builder: "Riley Brown", status: "ACTUALLY BUILT",
+      source: "https://madewithjev.com",
+      description: "An inbox triage demonstration attributed to Riley Brown. Confirmed at second hand only: it appears in the madewithjev.com directory of Jev builds, and the demo itself was not opened for this record.",
+      jevRole: "Typed triage judgments over incoming mail, as the directory describes it; the mechanics were not verified directly.",
+      architecture: "Incoming message → Jev triage judgment → application-side sorting, as listed rather than as inspected.",
+      insight: "A directory listing is secondary evidence: it establishes that the build was claimed, not that it works as described. This entry should be upgraded on a first-hand look at the demo, or dropped if none is available.",
       repositoryOrDemo: null,
     },
     {
