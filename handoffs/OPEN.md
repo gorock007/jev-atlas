@@ -12,7 +12,6 @@ Other live terminals in this workspace that are NOT Jarvis workers: 9392c2d0 ("B
 ## Questions for the user
 
 ## Running workers
-- 35dd4d42-fc77-4ce5-984a-5cc692876b11 — claude opus/high — briefs/2026-09-20-0030-guide-and-cost.md (/guide techniques page, /cost calculator)
 
 ## Waiting on Jarvis
 - /fit model pass confirmed live 2026-09-19 (gemini-2.5-flash-lite). Still to eyeball: /fit at 375px.

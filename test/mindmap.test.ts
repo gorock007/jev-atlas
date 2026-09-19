@@ -73,6 +73,16 @@ test("every mind map node links to a route that exists", async () => {
   const lensIds = new Set<string>(OPPORTUNITY_LENSES.map((lens) => lens.id));
   for (const node of nodes.filter((entry) => entry.href.startsWith("/map#"))) assert.ok(lensIds.has(node.href.slice(5)), node.href);
 
+  // The two practice pages are leaves, not collections, so nothing else would
+  // catch them silently dropping out of the tree.
+  const leafParents = [["what", "what:guide", "/guide"], ["fit", "fit:cost", "/cost"]] as const;
+  for (const [parent, id, href] of leafParents) {
+    const node = nodes.find((entry) => entry.id === id);
+    assert.equal(node?.href, href, `${id} does not link to ${href}`);
+    const under = nodes.find((entry) => entry.id === parent)?.children?.some((child) => child.id === id);
+    assert.ok(under, `${id} does not sit under ${parent}`);
+  }
+
   const startPage = await readFile(resolve(process.cwd(), "src/app/start/page.tsx"), "utf8");
   for (const [key, anchor] of Object.entries(START_ANCHORS)) {
     assert.ok(startPage.includes(`START_ANCHORS.${key}`), `/start does not render the #${anchor} anchor`);

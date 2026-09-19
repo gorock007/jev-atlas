@@ -1,0 +1,45 @@
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin: 0; border: 1px solid #d9d8d3; background: #d9d8d3; }
+.field { display: grid; gap: .55rem; align-content: start; background: #fffefb; padding: 1.15rem 1.25rem 1.3rem; }
+.field label { color: #65635f; font-family: SFMono-Regular, Consolas, "Liberation Mono", monospace; font-size: .6rem; letter-spacing: .09em; text-transform: uppercase; }
+.field input { width: 100%; border: 0; border-bottom: 2px solid #121212; background: transparent; padding: .3rem 0 .45rem; color: #121212; font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.75rem; letter-spacing: -.03em; }
+.field input:focus-visible { border-color: #d62f12; outline: none; }
+.field p { max-width: 42ch; margin: 0; color: #65635f; font-size: .7rem; line-height: 1.45; }
+.field a { color: #b3260e; text-underline-offset: 3px; }
+.prefix { display: flex; align-items: baseline; gap: .4rem; border-bottom: 2px solid #121212; }
+.prefix:focus-within { border-color: #d62f12; }
+.prefix span { color: #65635f; font-family: "Iowan Old Style", Baskerville, serif; font-size: 1.35rem; }
+.prefix input { border-bottom: 0; }
+
+.vendorRow { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .7rem; }
+.reset { border: 1px solid #d9d8d3; background: #fffefb; padding: .3rem .55rem; color: #65635f; font-family: SFMono-Regular, Consolas, monospace; font-size: .55rem; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
+.reset:hover { border-color: #d62f12; color: #d62f12; }
+
+.outputs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin-top: 1px; border: 1px solid #d9d8d3; background: #d9d8d3; }
+.output { display: grid; gap: .5rem; background: #f4f3ef; padding: 1.3rem 1.25rem 1.4rem; }
+.output span { color: #65635f; font-family: SFMono-Regular, Consolas, monospace; font-size: .58rem; letter-spacing: .08em; text-transform: uppercase; }
+.output strong { overflow-wrap: anywhere; font-family: "Iowan Old Style", Baskerville, serif; font-size: clamp(1.7rem, 3.4vw, 2.5rem); font-weight: 400; letter-spacing: -.045em; line-height: 1; }
+.output em { color: #65635f; font-size: .68rem; font-style: normal; line-height: 1.4; }
+
+.chart { margin-top: 2.2rem; }
+.chart svg { display: block; width: 100%; max-width: 34rem; height: auto; }
+.chartLabel, .chartValue { font-family: SFMono-Regular, Consolas, "Liberation Mono", monospace; font-size: 10px; }
+.chartLabel { fill: #121212; letter-spacing: .06em; text-transform: uppercase; }
+.chartValue { fill: #65635f; }
+.barTrack { fill: #ecebe6; }
+.barPriced { fill: #d62f12; }
+.barCurrent { fill: #3c3a36; }
+.baseline { fill: none; stroke: #121212; stroke-width: 1; }
+
+.verdict { margin: 1.1rem 0 0; color: #3c3a36; font-size: .8rem; line-height: 1.5; }
+.verdict b { color: #121212; font-weight: 600; }
+.caveat { max-width: 68ch; margin: 1.6rem 0 0; border-left: 2px solid #d62f12; padding-left: 1rem; color: #3c3a36; font-size: .8rem; line-height: 1.6; }
+
+@media (max-width: 860px) {
+  .fields, .outputs { grid-template-columns: 1fr; }
+}
+
+/* Same reason as the guide figures: the chart stops being capped here, so the
+   labels are stepped up to survive the shrinking scale. */
+@media (max-width: 600px) {
+  .chartLabel, .chartValue { font-size: 13px; }
+}

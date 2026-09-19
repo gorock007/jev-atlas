@@ -1,0 +1,55 @@
+.figure { margin: 1.5rem 0 0; border: 1px solid #d9d8d3; background: #fffefb; padding: 1.3rem 1.4rem 1.1rem; }
+.figure svg { display: block; width: 100%; max-width: 30rem; height: auto; }
+.figure figcaption { max-width: 56ch; margin-top: .9rem; color: #65635f; font-size: .72rem; line-height: 1.5; }
+
+.lane, .value, .tick { font-family: SFMono-Regular, Consolas, "Liberation Mono", monospace; }
+.lane { fill: #121212; font-size: 9.5px; letter-spacing: .07em; text-transform: uppercase; }
+.value { fill: #65635f; font-size: 9.5px; }
+.tick { fill: #8a8882; font-size: 8.5px; }
+.strong { fill: #d62f12; font-family: SFMono-Regular, Consolas, monospace; font-size: 9.5px; font-weight: 700; }
+.serif { fill: #121212; font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 12px; font-style: italic; }
+
+.ink { fill: #3c3a36; }
+.accent { fill: #d62f12; }
+.track { fill: #ecebe6; }
+.outline { fill: none; stroke: #121212; stroke-width: 1.1; }
+.faint { fill: #d9d8d3; }
+.rule { fill: none; stroke: #121212; stroke-width: 1.1; }
+.dashed { fill: none; stroke: #8a8882; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.marker { fill: none; stroke: #d62f12; stroke-width: 1.6; }
+.curve { fill: none; stroke: #d62f12; stroke-width: 1.8; }
+.cross { fill: none; stroke: #d62f12; stroke-width: 1.6; }
+
+/* Before / after pairs */
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin: 1.5rem 0 0; border: 1px solid #d9d8d3; background: #d9d8d3; }
+.pair > div { display: grid; gap: .5rem; align-content: start; background: #fffefb; padding: 1.1rem 1.2rem 1.25rem; }
+.pair h4 { display: flex; align-items: center; gap: .5rem; margin: 0; color: #65635f; font-family: SFMono-Regular, Consolas, monospace; font-size: .58rem; font-weight: 400; letter-spacing: .09em; text-transform: uppercase; }
+.pair .after h4 { color: #d62f12; }
+.pair code { display: block; overflow-wrap: anywhere; color: #121212; font-family: SFMono-Regular, Consolas, monospace; font-size: .74rem; line-height: 1.6; white-space: pre-wrap; }
+.pair .before code { color: #65635f; }
+.pair p { max-width: 44ch; margin: .15rem 0 0; color: #65635f; font-size: .7rem; line-height: 1.45; }
+
+/* The closing three-column picture */
+.boundary { margin: 2rem 0 0; border: 1px solid #121212; background: #d9d8d3; }
+.boundaryGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; }
+.boundaryGrid > div { display: grid; gap: .8rem; align-content: start; background: #fffefb; padding: 1.4rem 1.3rem 1.6rem; }
+.boundaryGrid h3 { margin: 0; font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.45rem; font-weight: 400; letter-spacing: -.03em; line-height: 1.05; }
+.boundaryGrid > div > p { max-width: 34ch; margin: 0; color: #65635f; font-size: .72rem; line-height: 1.45; }
+.boundaryGrid ul { display: grid; gap: .55rem; margin: .2rem 0 0; padding: 0; list-style: none; }
+.boundaryGrid li { border-left: 2px solid #d9d8d3; padding-left: .7rem; color: #3c3a36; font-size: .78rem; line-height: 1.45; }
+.boundaryGrid .jev li { border-left-color: #d62f12; color: #121212; }
+.boundaryKey { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; border-top: 1px solid #d9d8d3; background: #fffefb; padding: .8rem 1.3rem; color: #65635f; font-family: SFMono-Regular, Consolas, monospace; font-size: .56rem; letter-spacing: .06em; text-transform: uppercase; }
+
+@media (max-width: 860px) {
+  .pair, .boundaryGrid { grid-template-columns: 1fr; }
+  .figure { padding: 1.1rem 1rem 1rem; }
+}
+
+/* Below this width the figures are no longer capped by max-width, so the SVG's
+   own units shrink with the column. The type is stepped up to stay readable. */
+@media (max-width: 600px) {
+  .figure { padding: 1rem .8rem .9rem; }
+  .lane, .value, .strong { font-size: 12.5px; }
+  .tick { font-size: 11px; }
+  .pair code { font-size: .68rem; }
+}

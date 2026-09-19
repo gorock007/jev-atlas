@@ -14,6 +14,8 @@ const links = [
 ];
 
 const moreLinks = [
+  { href: "/guide", label: "Ask well" },
+  { href: "/cost", label: "Cost" },
   { href: "/projects", label: "Projects" },
   { href: "/patterns", label: "Patterns" },
   { href: "/ideas", label: "Ideas" },

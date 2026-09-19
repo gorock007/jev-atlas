@@ -9,6 +9,8 @@ import type { EvidenceStatus, KnowledgeRecord } from "./types";
 const SITE_ROUTES = {
   map: "/map",
   fit: "/fit",
+  guide: "/guide",
+  cost: "/cost",
   agent: "/agent",
   library: "/library",
   llms: "/llms.txt",
@@ -99,6 +101,7 @@ export function buildMindmap(records: KnowledgeRecord[]): MindmapNode {
             children: ["Choice", "Score", "Noul"].map((name) => ({ id: `what:${name.toLocaleLowerCase()}`, label: name, href: `${start}#${START_ANCHORS.primitives}` })),
           },
           { id: "what:parallel", label: "Many questions in parallel", href: parallel?.canonicalPath ?? canonicalPathFor("document", "mental-models") },
+          { id: "what:guide", label: "Ask Jev well", href: SITE_ROUTES.guide },
           { id: "what:library", label: "Research library", href: SITE_ROUTES.library, count: ofKind("document").length },
         ],
       },
@@ -140,6 +143,7 @@ export function buildMindmap(records: KnowledgeRecord[]): MindmapNode {
         children: [
           { id: "fit:check", label: "Check a workflow", href: SITE_ROUTES.fit },
           { id: "fit:patterns", label: "Architecture patterns", href: collectionPath("pattern"), count: ofKind("pattern").length },
+          { id: "fit:cost", label: "What the decisions cost", href: SITE_ROUTES.cost },
         ],
       },
       {
