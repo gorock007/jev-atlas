@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1080" />
+    <title>Jev Atlas — launch clip</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        background: #fffefb;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #fffefb;
+        color: #121212;
+        font-family: "IBM Plex Mono", monospace;
+      }
+
+      /* ---------- persistent chrome ---------- */
+      #top-rule {
+        position: absolute;
+        top: 132px;
+        left: 72px;
+        width: 936px;
+        height: 3px;
+        background: #121212;
+      }
+      #kicker {
+        position: absolute;
+        top: 88px;
+        left: 72px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        color: #65635f;
+        font-size: 26px;
+        letter-spacing: 0.1em;
+      }
+      #kicker i {
+        display: block;
+        width: 16px;
+        height: 16px;
+        background: #d62f12;
+      }
+      .reg {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+      }
+      .reg::before,
+      .reg::after {
+        content: "";
+        position: absolute;
+        background: #d9d8d3;
+      }
+      .reg::before {
+        top: 11px;
+        left: 0;
+        width: 24px;
+        height: 2px;
+      }
+      .reg::after {
+        top: 0;
+        left: 11px;
+        width: 2px;
+        height: 24px;
+      }
+      #foot-rule {
+        position: absolute;
+        top: 916px;
+        left: 72px;
+        width: 936px;
+        height: 2px;
+        background: #d9d8d3;
+      }
+      #foot {
+        position: absolute;
+        top: 942px;
+        left: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 936px;
+        font-size: 26px;
+        letter-spacing: 0.08em;
+      }
+      #foot b {
+        color: #d62f12;
+        font-weight: 700;
+      }
+      #foot span {
+        color: #65635f;
+      }
+      #reg-bl {
+        top: 976px;
+        left: 36px;
+      }
+      #reg-br {
+        top: 976px;
+        left: 1020px;
+      }
+
+      /* ---------- scene 1 · the question ---------- */
+      #headline {
+        position: absolute;
+        top: 300px;
+        left: 72px;
+        width: 936px;
+      }
+      .hl {
+        display: block;
+        overflow: hidden;
+        height: 114px;
+      }
+      .hl b {
+        display: block;
+        font-family: "EB Garamond", serif;
+        font-size: 100px;
+        font-weight: 400;
+        line-height: 1.06;
+        letter-spacing: -0.05em;
+        opacity: 0;
+      }
+      #hl-3 b {
+        color: #d62f12;
+      }
+
+      /* ---------- scene 2 · what the atlas holds ---------- */
+      #index {
+        position: absolute;
+        top: 300px;
+        left: 72px;
+        width: 936px;
+        opacity: 0;
+      }
+      #index-title {
+        font-family: "EB Garamond", serif;
+        font-size: 76px;
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: -0.045em;
+      }
+      .ix {
+        display: grid;
+        grid-template-columns: 74px 1fr;
+        align-items: baseline;
+        gap: 0 18px;
+        border-bottom: 2px solid #d9d8d3;
+        padding: 26px 0;
+        opacity: 0;
+      }
+      .ix:first-of-type {
+        border-top: 2px solid #121212;
+      }
+      .ix b {
+        color: #d62f12;
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+      .ix strong {
+        font-size: 40px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+      .ix span {
+        grid-column: 2;
+        margin-top: 12px;
+        color: #65635f;
+        font-size: 28px;
+        line-height: 1.35;
+      }
+      #index-rows {
+        margin-top: 40px;
+      }
+
+      /* ---------- scene 3 · evidence status ---------- */
+      #evidence {
+        position: absolute;
+        top: 300px;
+        left: 72px;
+        width: 936px;
+        opacity: 0;
+      }
+      #ev-title {
+        font-family: "EB Garamond", serif;
+        font-size: 76px;
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: -0.045em;
+      }
+      #ev-cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+        margin-top: 48px;
+      }
+      .ev-col {
+        border-top: 3px solid #121212;
+        padding-top: 20px;
+      }
+      .ev-col > span {
+        display: block;
+        color: #65635f;
+        font-size: 26px;
+        letter-spacing: 0.1em;
+      }
+      #ev-col-2 > span {
+        color: #d62f12;
+      }
+      .ev-card {
+        margin-top: 24px;
+        border: 2px solid #d9d8d3;
+        background: #f4f3ef;
+        padding: 26px 24px;
+        font-size: 30px;
+        line-height: 1.3;
+        opacity: 0;
+      }
+      #ev-card-2 {
+        border-color: #d62f12;
+        background: #f8ded7;
+      }
+      #ev-lock {
+        width: 100%;
+        height: 6px;
+        margin-top: 20px;
+        background: #d62f12;
+        transform-origin: left center;
+        opacity: 0;
+      }
+      #ev-line {
+        margin-top: 54px;
+        font-size: 34px;
+        letter-spacing: 0.06em;
+        opacity: 0;
+      }
+
+      /* ---------- scene 4 · the address ---------- */
+      #close {
+        position: absolute;
+        top: 340px;
+        left: 72px;
+        width: 936px;
+        opacity: 0;
+      }
+      #close-mark {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+      #close-mark b {
+        font-family: "EB Garamond", serif;
+        font-size: 150px;
+        font-weight: 400;
+        line-height: 0.74;
+        letter-spacing: -0.08em;
+      }
+      #close-mark span {
+        font-size: 44px;
+        letter-spacing: 0.12em;
+      }
+      #close-rule {
+        width: 936px;
+        height: 4px;
+        margin: 60px 0 48px;
+        background: #121212;
+        transform-origin: left center;
+        opacity: 0;
+      }
+      #close-addr {
+        color: #d62f12;
+        font-size: 60px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        opacity: 0;
+      }
+      #close-note {
+        margin-top: 34px;
+        color: #65635f;
+        font-size: 28px;
+        line-height: 1.45;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="jev-launch"
+      data-start="0"
+      data-duration="15"
+      data-width="1080"
+      data-height="1080"
+    >
+      <div id="kicker"><i></i>AN INDEPENDENT, EVIDENCE-FIRST FIELD GUIDE</div>
+      <div id="top-rule"></div>
+      <div id="foot-rule"></div>
+      <div id="foot"><b>JEV.GOROCK.SH</b><span>INDEPENDENT RESEARCH</span></div>
+      <span class="reg" id="reg-bl"></span>
+      <span class="reg" id="reg-br"></span>
+
+      <div id="headline">
+        <span class="hl" id="hl-1" data-layout-allow-overflow><b>WHAT CAN</b></span>
+        <span class="hl" id="hl-2" data-layout-allow-overflow><b>YOU ACTUALLY</b></span>
+        <span class="hl" id="hl-3" data-layout-allow-overflow><b>BUILD WITH JEV?</b></span>
+      </div>
+
+      <div id="index">
+        <div id="index-title">What the atlas holds.</div>
+        <div id="index-rows">
+          <div class="ix" id="ix-1">
+            <b>01</b><strong>BUILD BLUEPRINTS</strong>
+            <span>What to build, by the property each one needs.</span>
+          </div>
+          <div class="ix" id="ix-2">
+            <b>02</b><strong>CLAIMS LEDGER</strong>
+            <span>Every claim keeps its evidence status.</span>
+          </div>
+          <div class="ix" id="ix-3">
+            <b>03</b><strong>MCP ENDPOINT</strong>
+            <span>Five read-only tools your agent can read.</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="evidence">
+        <div id="ev-title">Status is never upgraded.</div>
+        <div id="ev-cols">
+          <div class="ev-col" id="ev-col-1">
+            <span>DEMONSTRATED</span>
+            <div class="ev-card" id="ev-card-1">Shown by work that was located and read.</div>
+          </div>
+          <div class="ev-col" id="ev-col-2">
+            <span>VENDOR CLAIM</span>
+            <div class="ev-card" id="ev-card-2">Stated by the vendor. Repetition does not move it.</div>
+            <div id="ev-lock"></div>
+          </div>
+        </div>
+        <div id="ev-line">A VENDOR CLAIM STAYS A VENDOR CLAIM.</div>
+      </div>
+
+      <div id="close">
+        <div id="close-mark"><b>J</b><span>JEV ATLAS</span></div>
+        <div id="close-rule"></div>
+        <div id="close-addr">JEV.GOROCK.SH</div>
+        <div id="close-note">Not affiliated with or endorsed by TypeSafe AI.</div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var tl = gsap.timeline({ paused: true });
+        var F = 1 / 30;
+
+        // ---- 0.0–4.0 · the question ----------------------------------------
+
+        // waterfall-entry: binary reveal, whip up from below, overlapping.
+        var t = 0.4;
+        tl.set("#hl-1 b", { opacity: 1, y: 114 }, t);
+        tl.to("#hl-1 b", { y: 0, duration: 0.42, ease: "power4.out" }, t);
+        t = t + 0.42 - 2 * F;
+        tl.set("#hl-2 b", { opacity: 1, y: 114 }, t);
+        tl.to("#hl-2 b", { y: 0, duration: 0.38, ease: "power4.out" }, t);
+        t = t + 0.38 - 3 * F;
+        tl.set("#hl-3 b", { opacity: 1, y: 114 }, t);
+        tl.to("#hl-3 b", { y: 0, duration: 0.36, ease: "expo.out" }, t);
+
+        // ---- 4.0 · hand over to the index ----------------------------------
+        tl.to("#headline", { opacity: 0, y: -46, duration: 0.42, ease: "power2.in" }, 4.0);
+        tl.fromTo("#index", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 4.42);
+        tl.fromTo("#index-title", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.5, ease: "power4.out" }, 4.42);
+        tl.fromTo(
+          ".ix",
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.46, ease: "power4.out", stagger: 0.16 },
+          4.85,
+        );
+
+        // ---- 8.0 · evidence status -----------------------------------------
+        tl.to("#index", { opacity: 0, y: -46, duration: 0.42, ease: "power2.in" }, 8.0);
+        tl.fromTo("#evidence", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 8.42);
+        tl.fromTo("#ev-title", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.5, ease: "power4.out" }, 8.42);
+        tl.fromTo("#ev-lock", { opacity: 1, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.5, ease: "power3.inOut" }, 9.55);
+        tl.fromTo(
+          "#ev-card-1",
+          { opacity: 0, y: 26 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power4.out" },
+          8.9,
+        );
+        tl.fromTo(
+          "#ev-card-2",
+          { opacity: 0, y: 26, scale: 0.92 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.46, ease: "back.out(2.1)" },
+          9.15,
+        );
+        tl.fromTo("#ev-line", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.42, ease: "power4.out" }, 10.1);
+
+        // ---- 12.0 · the address, held ---------------------------------------
+        tl.to("#evidence", { opacity: 0, y: -46, duration: 0.42, ease: "power2.in" }, 11.9);
+        tl.fromTo("#close", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 12.32);
+        tl.fromTo("#close-mark", { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.46, ease: "power4.out" }, 12.32);
+        tl.fromTo("#close-rule", { opacity: 1, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.55, ease: "power3.inOut" }, 12.6);
+        tl.fromTo("#close-addr", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.42, ease: "power4.out" }, 12.9);
+        tl.fromTo("#close-note", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 13.3);
+
+        window.__timelines["jev-launch"] = tl;
+        tl.seek(0);
+      })();
+    </script>
+  </body>
+</html>
