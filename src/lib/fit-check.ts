@@ -88,9 +88,13 @@ export interface FitCheckOptions {
   timeoutMs?: number;
 }
 
-/** True when the AI Gateway can authenticate, by key or by Vercel OIDC. */
+/**
+ * True when the AI Gateway can authenticate, by key or by Vercel OIDC. On a Vercel
+ * deployment the OIDC token arrives per request rather than in the environment, so
+ * `VERCEL` alone is enough to try; a rejected call still falls back to rules.
+ */
 export function isFitCheckModelConfigured(env: Record<string, string | undefined> = process.env): boolean {
-  return Boolean(env.AI_GATEWAY_API_KEY || env.VERCEL_OIDC_TOKEN);
+  return Boolean(env.AI_GATEWAY_API_KEY || env.VERCEL_OIDC_TOKEN || env.VERCEL === "1");
 }
 
 function clamp(value: unknown, max: number): string {
