@@ -10,14 +10,14 @@ Usage band: green (assumed; user said not to worry, 2026-09-19) — green <50%, 
 Other live terminals in this workspace that are NOT Jarvis workers: 9392c2d0 ("Build from PRD", the earlier Codex session), e3e98662 (untitled). Leave them alone.
 
 ## Questions for the user
+- 2026-09-19 · fit checker · AI Gateway refuses requests until a credit card is on file for team gorock007-s-team (error customer_verification_required). User adds the card at vercel.com → AI → add credit card (keep auto top-up OFF); then Jarvis re-tests /api/v1/fit-check. Until then /fit serves the rules result with an honest note.
 - 2026-09-19 · bookmarks · Chrome extension is not connected, and X bookmarks need user-login (the app bearer token cannot read them). User to reconnect the Claude Chrome extension, or paste the bookmarked links.
 - 2026-09-18 · domain · user is looking for one; will report back. Then: wire in Vercel + NEXT_PUBLIC_SITE_URL.
 
 ## Running workers
-- 2026-09-19 1240 · claude/opus · term 91383e2d-507c-4d71-bb85-18f3acf68dae · handoffs/briefs/2026-09-19-1240-fit-checker.md · fit-checker
 
 ## Waiting on Jarvis
-- After fit-checker merges: confirm AI Gateway auth works on the deployment (OIDC, else create AI_GATEWAY_API_KEY and add via `vercel env`), then test /fit live.
+- After the card is added: POST the live fit-check and confirm mode:"model"; eyeball /fit at 375px.
 
 ## Decisions
 - Fit checker provider: Vercel AI Gateway, `google/gemini-2.5-flash-lite` (fallback `openai/gpt-5.6-luna`), ~US$0.0006/check; no auto top-up so credits are the hard ceiling.
