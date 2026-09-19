@@ -98,7 +98,7 @@ export function isFitCheckModelConfigured(env: Record<string, string | undefined
 }
 
 function clamp(value: unknown, max: number): string {
-  const text = typeof value === "string" ? value.replace(/\s+/gu, " ").trim() : "";
+  const text = typeof value === "string" ? value.replace(/[<>]/gu, "").replace(/\s+/gu, " ").trim() : "";
   return text.length > max ? `${text.slice(0, max - 1).trimEnd()}…` : text;
 }
 

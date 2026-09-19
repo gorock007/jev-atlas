@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { LoadedDocument } from "@/lib/research-data";
 import { UiIcon } from "@/components/ui-icon";
+import { safeMarkdownHref } from "@/lib/format";
 
 function textFromNode(node: ReactNode): string {
   if (typeof node === "string" || typeof node === "number") return String(node);
@@ -41,8 +42,10 @@ export function DocumentReader({ document }: { document: LoadedDocument }) {
               h2: ({ children }) => <h2 id={slugify(textFromNode(children))}>{children}</h2>,
               h3: ({ children }) => <h3 id={slugify(textFromNode(children))}>{children}</h3>,
               a: ({ href, children }) => {
-                const external = href?.startsWith("http");
-                return <a href={href} {...(external ? { target: "_blank", rel: "noreferrer" } : {})}>{children}{external ? <UiIcon name="arrow-out" size={11} className="ml-1 inline -translate-y-px" /> : null}</a>;
+                const safe = safeMarkdownHref(href);
+                if (!safe) return <>{children}</>;
+                const external = safe.startsWith("http://") || safe.startsWith("https://");
+                return <a href={safe} {...(external ? { target: "_blank", rel: "noreferrer" } : {})}>{children}{external ? <UiIcon name="arrow-out" size={11} className="ml-1 inline -translate-y-px" /> : null}</a>;
               },
             }}
           >

@@ -8,6 +8,7 @@ import { knowledgeSlug } from "@/knowledge/paths";
 import { loadAnalysis } from "@/lib/research-data";
 
 export const dynamic = "force-static";
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return recordSlugs("opportunity");

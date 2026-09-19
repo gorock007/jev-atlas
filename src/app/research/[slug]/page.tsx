@@ -5,6 +5,8 @@ import { loadDocument, RESEARCH_DOCUMENTS } from "@/lib/research-data";
 
 type Props = { params: Promise<{ slug: string }> };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return RESEARCH_DOCUMENTS.map((document) => ({ slug: document.slug }));
 }
