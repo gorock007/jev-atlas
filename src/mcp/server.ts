@@ -1,7 +1,6 @@
 import { McpServer, ResourceTemplate } from "@modelcontextprotocol/server";
 import * as z from "zod/v4";
 import {
-  assessJevFit,
   findKnowledgeRecord,
   getContextPack,
   loadKnowledgeRecords,
@@ -10,6 +9,7 @@ import {
   searchKnowledge,
 } from "@/knowledge/repository";
 import { OPPORTUNITY_LENSES } from "@/knowledge/lenses";
+import { runFitCheck } from "@/lib/fit-check";
 import { ADDRESSABLE_KINDS, idSlug, resourceUriFor } from "@/knowledge/paths";
 import { KNOWLEDGE_KINDS } from "@/knowledge/types";
 
@@ -141,7 +141,18 @@ export async function createJevMcpServer(): Promise<McpServer> {
       inputSchema: z.object({ workflow: z.string().min(20).max(5_000).describe("Describe the workflow, inputs, decisions, side effects, latency, and risk."), stack: z.array(z.string().max(100)).max(20).optional() }),
       annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
     },
-    async ({ workflow, stack }) => result({ workflow, stack: stack ?? [], assessment: assessJevFit(`${workflow} ${(stack ?? []).join(" ")}`, records) }),
+    // Shares the website's assessment path, but never its model pass: this
+    // endpoint is public and unauthenticated, so a model call here is gateway
+    // credit anyone can spend. The caller is itself an LLM and is better placed
+    // to do the decomposition, so MCP gets the deterministic pass and the
+    // grounded records and does the rest itself.
+    async ({ workflow, stack }) => {
+      const assessment = await runFitCheck(`${workflow} ${(stack ?? []).join(" ")}`, records, {
+        allowModel: false,
+        skipReason: "Served over MCP: deterministic grounding only; the calling agent does the decomposition.",
+      });
+      return result({ workflow, stack: stack ?? [], assessment });
+    },
   );
 
   server.registerTool(

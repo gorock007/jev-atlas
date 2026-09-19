@@ -56,6 +56,7 @@ export default async function OverviewPage() {
         <div className="home-cta-row">
           <Link href="/map" className="home-cta-primary">See what to build <span aria-hidden="true">→</span></Link>
           <Link href="/start" className="home-cta-secondary">Jev in 60 seconds</Link>
+          <Link href="/fit" className="home-cta-secondary">Will it help my workflow?</Link>
           <Link href="/agent" className="atlas-text-link">Connect your agent <span>→</span></Link>
         </div>
 
