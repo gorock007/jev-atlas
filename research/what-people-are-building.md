@@ -54,6 +54,46 @@
 - **Interesting insight:** A decision model can be invisible infrastructure beneath a workflow product.
 - **Repository / demo:** [source](https://axon123.com)
 
+### ProgressGate
+
+- **Builder:** AshutoshVJTI
+- **Source:** [source](https://github.com/AshutoshVJTI/progressgate)
+- **What was built:** An npm package that detects semantic stagnation in agent tool-calling loops, published with tests, a quickstart, and a live demo build.
+- **Jev's role:** One Jev systemOne call per check returns six atomic signals (assumption contradicted, strategy novelty, material progress, and others); Jev never executes or blocks a tool call itself.
+- **Architecture:** Agent trajectory → Jev semantic signals → deterministic hysteresis policy in application code → CONTINUE/WARN/REPLAN/HALT decision.
+- **Interesting insight:** Keeping the halt decision in a deterministic policy layer, with a fail-open default on Jev/network errors, means an API outage cannot itself look like agent stagnation.
+- **Repository / demo:** [source](https://github.com/AshutoshVJTI/progressgate)
+
+### chess-jev
+
+- **Builder:** gopalanj
+- **Source:** [source](https://github.com/gopalanj/chess-jev)
+- **What was built:** A chess move scorer with a working FastAPI/uvicorn server, browser UI, and test suite; its primary scoring backends are local fine-tuned models, with Jev wired in as one optional hosted backend.
+- **Jev's role:** An optional CHESS_JEV_SCORER=typesafe backend that posts board state and move candidates to TypeSafe's hosted System One API and falls back to a local model on error.
+- **Architecture:** Board state → candidate move generation → scorer router (local MiniLM/byte model, hosted Jev, or heuristic fallback) → ranked move.
+- **Interesting insight:** The repository explicitly disclaims being 'TypeSafe Jev' or 'OpenJev' — Jev appears only as a pluggable hosted option behind locally trained defaults, not the core of the product.
+- **Repository / demo:** [source](https://github.com/gopalanj/chess-jev)
+
+### TypeSafe Agent Skills
+
+- **Builder:** TypeSafe (vendor)
+- **Source:** [source](https://github.com/typesafe-ai/skills)
+- **What was built:** TypeSafe's own published Claude Code plugin and skills.sh package that teaches coding agents to design and wire up Jev workflows.
+- **Jev's role:** The skill's entire purpose is composing typed Jev judgments (Choice, Score, Noul) into agent-written code.
+- **Architecture:** Agent skill install (plugin marketplace or skills.sh) → SKILL.md instructions → agent composes TypeSafe API calls in the user's codebase.
+- **Interesting insight:** Vendor-authored, so it demonstrates TypeSafe's own recommended integration pattern rather than independent adoption evidence.
+- **Repository / demo:** [source](https://github.com/typesafe-ai/skills)
+
+### Jev Playground
+
+- **Builder:** Unknown (no linked repo)
+- **Source:** [source](https://jevtypesafe.vercel.app/)
+- **What was built:** A live, interactive hosted demo with three preset use cases (Support Router, Compare & Choose, Content Triage) that runs real text through Jev and renders the typed judgments and computed routing.
+- **Jev's role:** Every threshold, route, and explanation shown is computed by the demo's own application code from Jev's Choice/Score/Noul judgments, not by Jev directly.
+- **Architecture:** Free-text customer request → Jev typed judgment call → client-side thresholding and routing display.
+- **Interesting insight:** The page has no visible link to a GitHub repository or builder identity, so it reads as a demo of the interface pattern rather than an attributable third-party build.
+- **Repository / demo:** Not independently located
+
 ## PROPOSED
 
 ### Confidence-gated agent control loops
