@@ -2,18 +2,24 @@
 
 Jarvis reads this first, every session, and keeps it current. One line per
 item; an item goes in when it opens and comes out when it's done. Don't
-rebuild "what's pending" by searching the handoff folders.
+rebuild "what's pending" by searching the handoff folders. Before Jarvis
+stops, this file must hold everything a fresh session needs: `jarvis watch`
+may `/clear` Jarvis after a long idle.
 
-Jarvis session: 2b33bb90-8d47-4390-b30d-dd1484366462
-Usage band: green (assumed; user said not to worry, 2026-09-19) — green <50%, amber 50%+ (no fable for workers), red 75%+ (new heavy work to Codex)
+Jarvis session: <terminal id — `handoffs/bin/jarvis start` writes it>
+Usage band: <green | amber | red> — `handoffs/bin/jarvis status` writes it from the statusline reading
 
 Other live terminals in this workspace that are NOT Jarvis workers: 9392c2d0 ("Build from PRD", the earlier Codex session), e3e98662 (untitled). Leave them alone.
 
 ## Questions for the user
+<!-- - <date> · <slug> · Q1 …  (batched from worker handoffs; remove when answered and passed back) -->
 
 ## Running workers
+<!-- `jarvis spawn` adds: - <date HH:MM> · claude/claude-opus-5-5 high · term <id> · handoffs/briefs/<file>.md -->
+<!-- `jarvis merge` removes the line -->
 
 ## Waiting on Jarvis
+<!-- - handoff to review: handoffs/<file>.md · migration to apply · release to cut -->
 - /fit model pass confirmed live 2026-09-19 (gemini-2.5-flash-lite). Still to eyeball: /fit at 375px.
 
 ## Decisions
@@ -22,6 +28,7 @@ Other live terminals in this workspace that are NOT Jarvis workers: 9392c2d0 ("B
 - X collection ceiling: A$4 (~US$2.60) per run. 2026-09-19: three passes, US$1.65 total (~A$2.55) → 431 posts, 155 retained. Do not collect again today. Old run states backed up in the session scratchpad.
 
 ## To-do
+<!-- - next things to brief, in order; briefs queued behind the Claude cap go here -->
 - Visual redesign shipped 2026-09-19 (mind map, three.js hero, explainer loop, 5-link nav). User to eyeball Safari/iPhone: hero scene, muted autoplay, mobile map list. /map is still a long list — candidate for the same visual treatment.
 - Homepage spend figure shows $1.22 from loadRunSummary() vs US$1.65 recorded here (run states were moved aside); reconcile before quoting a cost publicly.
 - Launch clip for X/LinkedIn: video/out/jev-atlas-launch.mp4 (1080², 15 s).

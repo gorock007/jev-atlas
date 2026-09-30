@@ -18,3 +18,7 @@ data/*run-state.json
 .vercel
 .env*
 !.env.example
+
+# Jarvis: local logs, usage readings and watcher state
+handoffs/.jev/
+handoffs/.jarvis/

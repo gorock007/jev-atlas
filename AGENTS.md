@@ -24,13 +24,17 @@ Several workers edit the same checkout at once, on separate terminals. So:
   you edit outside it is someone else's work you just broke. If you must edit a shared file
   (`src/app/layout.tsx`, `src/app/globals.css`, `src/components/app-navigation.tsx`, `src/components/record-chrome.tsx`, `src/types.ts`, `src/knowledge/paths.ts`, `src/knowledge/repository.ts`, `package.json`, `.gitignore`), keep the edit minimal and name it in your handoff.
 - **Your own subagents follow these same rules** — say so in their briefs.
+  They read and summarise; they don't edit. They run on Sonnet by default.
 - **Only Jarvis does these:** running any paid X collection (`npm run collect`, `explore`, `expand` — they spend real API credits); deploying to Vercel or changing its env vars; editing `package-lock.json`; touching `.env`, `.env.local`, or the local corpus (`data/raw/*.jsonl`, `data/processed/*.jsonl`, `data/seen-posts.json`, `data/*run-state.json`); and regenerating the committed `data/processed/analysis.json` and `research/*.md` (`npm run analyze` / `report` / `research`), which collide when two workers run them at once. Write what's needed (a migration
   file, a release note) but leave applying it to Jarvis and flag it in your
   handoff.
 - **Ask everything once, up front.** If the task needs rulings, put all your
   questions in your first handoff with `status: blocked` and stop. After the
-  answers arrive on this terminal, build every phase through to done without
-  stopping again, unless something truly new comes up.
+  answers arrive on this terminal, finish your brief without stopping again,
+  unless something truly new comes up.
+- **One brief, then hand off.** Do the phase your brief describes, write the
+  handoff, and stop. The next phase gets a fresh worker that starts from your
+  handoff, so write it for that reader: what's done, what's left, where.
 - **Verification:** the user checks work in a browser — `npm run dev` locally, then https://jev.gorock.sh once Jarvis deploys. Workers list the exact URLs to look at in the handoff; Jarvis ends each batch with that list.
 - **Checks:** run `npm run check` (typecheck, tests, production build) before handing off and report the results. Say
   plainly what you didn't check.
