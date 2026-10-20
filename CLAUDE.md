@@ -2,8 +2,8 @@
 
 # Working in Jev Atlas
 
-The app lives at the repo root. This repo runs the **Jarvis workflow** on Superset: one main
-agent (Jarvis) the user talks to, and workers on separate Superset terminals
+The app lives at the repo root. This repo runs the **Jarvis workflow**: one main
+agent (Jarvis) the user talks to, and workers on separate terminals (Superset or tmux)
 that do the building, all in one shared checkout.
 
 - **Worker** — your first prompt is a task brief, says you're a Jarvis
